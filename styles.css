@@ -3002,7 +3002,3 @@ footer::before {
     display: none !important;
 }
 
-/* Or if specific elements have double symbols */
-.product-card .price:first-letter {
-    display: none;
-}
