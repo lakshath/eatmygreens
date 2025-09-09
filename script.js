@@ -1318,13 +1318,6 @@ document.addEventListener('DOMContentLoaded', initSlider);
 
 
 
-// Remove duplicate rupee symbols
-document.addEventListener('DOMContentLoaded', function() {
-    const priceElements = document.querySelectorAll('.price');
-    priceElements.forEach(element => {
-        element.textContent = element.textContent.replace('₹₹', '₹');
-    });
-});
 
 
 
@@ -1379,3 +1372,21 @@ document.addEventListener("DOMContentLoaded", function() {
         window.open(whatsappUrl, "_blank");
     });
 });
+
+
+
+
+// Add this function to remove duplicate rupee symbols
+function fixDoubleRupeeSymbols() {
+    document.querySelectorAll('.price, .cart-item p').forEach(element => {
+        if (element.textContent.includes('₹₹')) {
+            element.textContent = element.textContent.replace('₹₹', '₹');
+        }
+    });
+}
+
+// Call this function in your updateCart() function:
+function updateCart() {
+    // ... your existing code ...
+    fixDoubleRupeeSymbols(); // Add this line
+}

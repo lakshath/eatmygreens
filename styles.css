@@ -2997,8 +2997,7 @@ footer::before {
 }
 
 
-/* Hide duplicate rupee symbols */
-.price::before {
+.price::before,
+.cart-item p::before {
     display: none !important;
 }
-
