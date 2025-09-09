@@ -1318,7 +1318,13 @@ document.addEventListener('DOMContentLoaded', initSlider);
 
 
 
-
+// Remove duplicate rupee symbols
+document.addEventListener('DOMContentLoaded', function() {
+    const priceElements = document.querySelectorAll('.price');
+    priceElements.forEach(element => {
+        element.textContent = element.textContent.replace('₹₹', '₹');
+    });
+});
 
 
 
