@@ -16,7 +16,7 @@ const cancelBtn = document.getElementById('cancelBtn');
 
 // Initialize button states
 function initializeAddToCartButtons() {
-    const addToCartButtons = document.querySelectorAll('.add-to-cart');
+    const addToCartButtons = document.querySelectorAll('.add-to-cart:not(.coming-soon)');
     addToCartButtons.forEach(button => {
         updateButtonState(button);
         
@@ -47,6 +47,9 @@ function initializeAddToCartButtons() {
 
 // Update button state based on cart
 function updateButtonState(button) {
+    // Skip if button is disabled (coming soon products)
+    if (button.classList.contains('coming-soon')) return;
+    
     const id = button.getAttribute('data-id');
     const existingItem = cart.find(item => item.id === id);
     
@@ -210,7 +213,7 @@ function setupQuantityEventListeners() {
 
 // Update all add to cart buttons
 function updateAllButtonStates() {
-    const addToCartButtons = document.querySelectorAll('.add-to-cart');
+    const addToCartButtons = document.querySelectorAll('.add-to-cart:not(.coming-soon)');
     addToCartButtons.forEach(button => {
         updateButtonState(button);
     });
@@ -336,11 +339,15 @@ document.querySelectorAll('nav a').forEach(anchor => {
 function init() {
     initializeAddToCartButtons();
     updateCart();
-    initSlider(); // Initialize the slider
+    if (typeof initSlider === 'function') {
+        initSlider(); // Initialize the slider if the function exists
+    }
 }
 
 // Start the application
 init();
+
+// Rest of your code remains the same...
 
 // Form validation with specific input restrictions
 const nameInput = document.getElementById('name');
