@@ -18,9 +18,6 @@ const cancelBtn = document.getElementById('cancelBtn');
 function initializeAddToCartButtons() {
     const addToCartButtons = document.querySelectorAll('.add-to-cart');
     addToCartButtons.forEach(button => {
-        // Skip if button is disabled (not methi)
-        if (button.disabled) return;
-        
         updateButtonState(button);
         
         button.addEventListener('click', () => {
@@ -50,9 +47,6 @@ function initializeAddToCartButtons() {
 
 // Update button state based on cart
 function updateButtonState(button) {
-    // Skip if button is disabled (not methi)
-    if (button.disabled) return;
-    
     const id = button.getAttribute('data-id');
     const existingItem = cart.find(item => item.id === id);
     
@@ -218,9 +212,6 @@ function setupQuantityEventListeners() {
 function updateAllButtonStates() {
     const addToCartButtons = document.querySelectorAll('.add-to-cart');
     addToCartButtons.forEach(button => {
-        // Skip if button is disabled (not methi)
-        if (button.disabled && button.classList.contains('disabled')) return;
-        
         updateButtonState(button);
     });
 }
@@ -345,9 +336,7 @@ document.querySelectorAll('nav a').forEach(anchor => {
 function init() {
     initializeAddToCartButtons();
     updateCart();
-    if (typeof initSlider === 'function') {
-        initSlider(); // Initialize the slider if the function exists
-    }
+    initSlider(); // Initialize the slider
 }
 
 // Start the application
