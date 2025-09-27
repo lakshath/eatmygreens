@@ -308,3 +308,127 @@ function initSlider() {
     updateCardWidth();
     updateSlider();
 }
+
+
+
+// Enhanced Reveal on Scroll for Microgreens Section
+document.addEventListener("DOMContentLoaded", () => {
+  const section = document.querySelector("#microgreens-info");
+  const cards = document.querySelectorAll("#microgreens-info .card");
+  
+  // Add initial hidden state
+  cards.forEach((card, index) => {
+    card.style.opacity = "0";
+    card.style.transform = "translateY(30px)";
+    card.style.transition = "all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1)";
+    card.style.transitionDelay = `${index * 0.1}s`;
+  });
+
+  // Create intersection observer with better options
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          // Animate the entire section first
+          if (entry.target === section) {
+            entry.target.classList.add("section-visible");
+          }
+          
+          // Animate individual cards with staggered delay
+          if (entry.target.classList.contains("card")) {
+            setTimeout(() => {
+              entry.target.style.opacity = "1";
+              entry.target.style.transform = "translateY(0)";
+              entry.target.classList.add("card-visible");
+            }, 100);
+          }
+        }
+      });
+    },
+    { 
+      threshold: 0.15,
+      rootMargin: "0px 0px -50px 0px"
+    }
+  );
+
+  // Observe both section and individual cards
+  observer.observe(section);
+  cards.forEach(card => observer.observe(card));
+
+  // Add hover effects via JavaScript for better control
+  cards.forEach(card => {
+    card.addEventListener("mouseenter", () => {
+      card.style.transform = "translateY(-8px) scale(1.02)";
+    });
+    
+    card.addEventListener("mouseleave", () => {
+      if (card.classList.contains("card-visible")) {
+        card.style.transform = "translateY(0) scale(1)";
+      }
+    });
+  });
+});
+
+// Add scroll progress indicator (optional enhancement)
+window.addEventListener("scroll", () => {
+  const section = document.querySelector("#microgreens-info");
+  if (section) {
+    const sectionTop = section.offsetTop;
+    const sectionHeight = section.offsetHeight;
+    const scrollPosition = window.scrollY + window.innerHeight;
+    
+    const progress = Math.max(0, Math.min(1, (scrollPosition - sectionTop) / sectionHeight));
+    
+    // Update a progress bar if you add one
+    const progressBar = document.querySelector(".scroll-progress");
+    if (progressBar) {
+      progressBar.style.width = `${progress * 100}%`;
+    }
+  }
+});
+
+// Enhanced Reveal on Scroll for Microgreens Section
+document.addEventListener("DOMContentLoaded", () => {
+  const section = document.querySelector("#microgreens-info");
+  const cards = document.querySelectorAll("#microgreens-info .card");
+  
+  // Set initial state for cards
+  cards.forEach((card, index) => {
+    card.style.transitionDelay = `${index * 0.1}s`;
+  });
+
+  // Create intersection observer
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          if (entry.target.classList.contains("card")) {
+            setTimeout(() => {
+              entry.target.classList.add("card-visible");
+            }, 100);
+          }
+        }
+      });
+    },
+    { 
+      threshold: 0.15,
+      rootMargin: "0px 0px -50px 0px"
+    }
+  );
+
+  // Observe individual cards
+  cards.forEach(card => observer.observe(card));
+
+  // Enhanced hover effects
+  cards.forEach(card => {
+    card.addEventListener("mouseenter", function() {
+      this.style.transform = "translateY(-6px) scale(1.01)";
+    });
+    
+    card.addEventListener("mouseleave", function() {
+      if (this.classList.contains("card-visible")) {
+        this.style.transform = "translateY(0) scale(1)";
+      }
+    });
+  });
+});
