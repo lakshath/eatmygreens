@@ -432,3 +432,16 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
+
+
+// Scroll to Products Section when clicking "Order Now"
+document.addEventListener("DOMContentLoaded", () => {
+  const orderBtn = document.getElementById("orderNowBtn");
+  const productsSection = document.getElementById("products");
+
+  if (orderBtn && productsSection) {
+    orderBtn.addEventListener("click", () => {
+      productsSection.scrollIntoView({ behavior: "smooth" });
+    });
+  }
+});
