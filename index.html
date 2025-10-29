@@ -169,7 +169,20 @@ header { background: #fff; position: fixed; width: 100%; top: 0; z-index: 1000; 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <!-- GOOGLE SITE VERIFICATION -->
+    
     <meta name="google-site-verification" content="Y1pGvzBxmS66kejSNHCEG2JfTfKR3_bFToJZXvaQHJ8" />
+
+<style>
+/* Critical font styles - loads immediately */
+body {
+    font-family: system-ui, -apple-system, sans-serif;
+    font-display: swap;
+}
+</style>
+
+<!-- Load non-critical fonts async -->
+<link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+
 </head>
 <body>
     
@@ -217,7 +230,15 @@ header { background: #fff; position: fixed; width: 100%; top: 0; z-index: 1000; 
 
                 </div>
                 <div class="hero-image">
-                    <img src="https://images.unsplash.com/photo-1640671511581-0cc93ea3ebf2?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Fresh Microgreens">
+                    <img 
+    src="https://images.unsplash.com/photo-1640671511581-0cc93ea3ebf2?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+    alt="Fresh Microgreens"
+    width="687"
+    height="400"
+    loading="eager"
+    decoding="sync"
+    fetchpriority="high"
+>
                 </div>
             </div>
         </div>
@@ -303,7 +324,11 @@ header { background: #fff; position: fixed; width: 100%; top: 0; z-index: 1000; 
                 <!-- Product 1 -->
                 <div class="product-card">
                     <div class="product-image">
-                        <img src="https://www.allthatgrows.in/cdn/shop/articles/Feat-Broccoli_Microgreens.jpg?v=1611040823" alt="Fresh Broccoli Microgreens - high in sulforaphane for detox">
+                        <img src="https://www.allthatgrows.in/cdn/shop/articles/Feat-Broccoli_Microgreens.jpg?v=1611040823" alt="Fresh Broccoli Microgreens - high in sulforaphane for detox"  width="418"
+    height="279"
+    loading="lazy"
+    decoding="async"
+    fetchpriority="low">
                     </div>
                     <div class="product-info">
                         <h3>Broccoli Microgreens</h3>
@@ -316,7 +341,11 @@ header { background: #fff; position: fixed; width: 100%; top: 0; z-index: 1000; 
                 <!-- Product 2 -->
                 <div class="product-card">
                     <div class="product-image">
-                        <img src="https://mybageecha.com/cdn/shop/products/What-Are-M.jpg?v=1623598708" alt="Radish Microgreens - rich in Vitamin C for immunity">
+                        <img src="https://mybageecha.com/cdn/shop/products/What-Are-M.jpg?v=1623598708" alt="Radish Microgreens - rich in Vitamin C for immunity"  width="418"
+    height="279"
+    loading="lazy"
+    decoding="async"
+    fetchpriority="low">
                     </div>
                     <div class="product-info">
                         <h3>Radish Microgreens</h3>
@@ -329,7 +358,11 @@ header { background: #fff; position: fixed; width: 100%; top: 0; z-index: 1000; 
                 <!-- Product 3 -->
                 <div class="product-card">
                     <div class="product-image">
-                        <img src="https://5.imimg.com/data5/GG/GH/RN/SELLER-49389010/sunflower-microgreens.jpg" alt="Sunflower Microgreens - high protein for energy">
+                        <img src="https://5.imimg.com/data5/GG/GH/RN/SELLER-49389010/sunflower-microgreens.jpg" alt="Sunflower Microgreens - high protein for energy"  width="418"
+    height="279"
+    loading="lazy"
+    decoding="async"
+    fetchpriority="low">
                     </div>
                     <div class="product-info">
                         <h3>Sunflower Microgreens</h3>
@@ -342,7 +375,11 @@ header { background: #fff; position: fixed; width: 100%; top: 0; z-index: 1000; 
                 <!-- Product 4 -->
                 <div class="product-card">
                     <div class="product-image">
-                        <img src="https://m.media-amazon.com/images/I/61x6KFkBqzL._UF1000,1000_QL80_.jpg" alt="Pea Shoot Microgreens - rich in Vitamin K and folate">
+                        <img src="https://m.media-amazon.com/images/I/61x6KFkBqzL._UF1000,1000_QL80_.jpg" alt="Pea Shoot Microgreens - rich in Vitamin K and folate"  width="418"
+    height="279"
+    loading="lazy"
+    decoding="async"
+    fetchpriority="low">
                     </div>
                     <div class="product-info">
                         <h3>Pea Shoot Microgreens</h3>
@@ -354,7 +391,11 @@ header { background: #fff; position: fixed; width: 100%; top: 0; z-index: 1000; 
 
                 <div class="product-card">
                     <div class="product-image">
-                        <img src="https://bettergreenhealth.com/wp-content/uploads/2022/07/Fenugreek.jpeg" alt="Methi Fenugreek Microgreens - helps control blood sugar">
+                        <img src="https://bettergreenhealth.com/wp-content/uploads/2022/07/Fenugreek.jpeg" alt="Methi Fenugreek Microgreens - helps control blood sugar"  width="418"
+    height="279"
+    loading="lazy"
+    decoding="async"
+    fetchpriority="low">
                     </div>
                     <div class="product-info">
                         <h3>Methi (Fenugreek) Microgreens</h3>
@@ -366,7 +407,11 @@ header { background: #fff; position: fixed; width: 100%; top: 0; z-index: 1000; 
 
                 <div class="product-card">
                     <div class="product-image">
-                        <img src="https://goldenhillsfarm.in/media/product_images/efhjefgeh.jpg" alt="Basil Microgreens - antioxidant rich for heart health">
+                        <img src="https://goldenhillsfarm.in/media/product_images/efhjefgeh.jpg" alt="Basil Microgreens - antioxidant rich for heart health"  width="418"
+    height="279"
+    loading="lazy"
+    decoding="async"
+    fetchpriority="low">
                     </div>
                     <div class="product-info">
                         <h3>Basil Microgreens</h3>
@@ -418,7 +463,11 @@ header { background: #fff; position: fixed; width: 100%; top: 0; z-index: 1000; 
                         <!-- Plant 1 -->
                         <div class="benefit-item">
                             <div class="benefit-image">
-                                <img src="https://www.allthatgrows.in/cdn/shop/articles/Feat-Broccoli_Microgreens.jpg?v=1611040823" alt="Broccoli Microgreens nutrition comparison">
+                                <img src="https://www.allthatgrows.in/cdn/shop/articles/Feat-Broccoli_Microgreens.jpg?v=1611040823" alt="Broccoli Microgreens nutrition comparison"  width="418"
+    height="279"
+    loading="lazy"
+    decoding="async"
+    fetchpriority="low">
                             </div>
                             <div class="benefit-content">
                                 <h3>Broccoli Microgreens (30g) = Nutrition of:</h3>
@@ -434,7 +483,11 @@ header { background: #fff; position: fixed; width: 100%; top: 0; z-index: 1000; 
                         <!-- Plant 2 -->
                         <div class="benefit-item">
                             <div class="benefit-image">
-                                <img src="https://mybageecha.com/cdn/shop/products/What-Are-M.jpg?v=1623598708" alt="Radish Microgreens nutrition benefits">
+                                <img src="https://mybageecha.com/cdn/shop/products/What-Are-M.jpg?v=1623598708" alt="Radish Microgreens nutrition benefits"  width="418"
+    height="279"
+    loading="lazy"
+    decoding="async"
+    fetchpriority="low">
                             </div>
                             <div class="benefit-content">
                                 <h3>Radish Microgreens (30g) = Nutrition of:</h3>
@@ -450,7 +503,11 @@ header { background: #fff; position: fixed; width: 100%; top: 0; z-index: 1000; 
                         <!-- Plant 3 -->
                         <div class="benefit-item">
                             <div class="benefit-image">
-                                <img src="https://5.imimg.com/data5/GG/GH/RN/SELLER-49389010/sunflower-microgreens.jpg" alt="Sunflower Microgreens protein content">
+                                <img src="https://5.imimg.com/data5/GG/GH/RN/SELLER-49389010/sunflower-microgreens.jpg" alt="Sunflower Microgreens protein content"  width="418"
+    height="279"
+    loading="lazy"
+    decoding="async"
+    fetchpriority="low">
                             </div>
                             <div class="benefit-content">
                                 <h3>Sunflower Microgreens (30g) = Nutrition of:</h3>
@@ -466,7 +523,11 @@ header { background: #fff; position: fixed; width: 100%; top: 0; z-index: 1000; 
                         <!-- Plant 4 -->
                         <div class="benefit-item">
                             <div class="benefit-image">
-                                <img src="https://m.media-amazon.com/images/I/61x6KFkBqzL._UF1000,1000_QL80_.jpg" alt="Pea Shoot Microgreens Vitamin K benefits">
+                                <img src="https://m.media-amazon.com/images/I/61x6KFkBqzL._UF1000,1000_QL80_.jpg" alt="Pea Shoot Microgreens Vitamin K benefits"  width="418"
+    height="279"
+    loading="lazy"
+    decoding="async"
+    fetchpriority="low">
                             </div>
                             <div class="benefit-content">
                                 <h3>Pea Shoot Microgreens (30g) = Nutrition of:</h3>
@@ -482,7 +543,11 @@ header { background: #fff; position: fixed; width: 100%; top: 0; z-index: 1000; 
                         <!-- Plant 5 -->
                         <div class="benefit-item">
                             <div class="benefit-image">
-                                <img src="https://bettergreenhealth.com/wp-content/uploads/2022/07/Fenugreek.jpeg" alt="Methi Microgreens blood sugar control">
+                                <img src="https://bettergreenhealth.com/wp-content/uploads/2022/07/Fenugreek.jpeg" alt="Methi Microgreens blood sugar control"  width="418"
+    height="279"
+    loading="lazy"
+    decoding="async"
+    fetchpriority="low">
                             </div>
                             <div class="benefit-content">
                                 <h3>Methi Microgreens (30g) = Nutrition of:</h3>
@@ -498,7 +563,11 @@ header { background: #fff; position: fixed; width: 100%; top: 0; z-index: 1000; 
                         <!-- Plant 6 -->
                         <div class="benefit-item">
                             <div class="benefit-image">
-                                <img src="https://goldenhillsfarm.in/media/product_images/efhjefgeh.jpg" alt="Basil Microgreens antioxidant properties">
+                                <img src="https://goldenhillsfarm.in/media/product_images/efhjefgeh.jpg" alt="Basil Microgreens antioxidant properties"  width="418"
+    height="279"
+    loading="lazy"
+    decoding="async"
+    fetchpriority="low">
                             </div>
                             <div class="benefit-content">
                                 <h3>Basil Microgreens (30g) = Nutrition of:</h3>
