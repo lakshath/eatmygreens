@@ -198,6 +198,118 @@ nav ul li a:active {
     }
 }
 
+
+
+
+
+/* IMAGE OPTIMIZATION - PREVENT LAYOUT SHIFTS */
+img {
+    aspect-ratio: attr(width) / attr(height);
+    height: auto;
+}
+
+/* Optimize image loading */
+.hero-image img,
+.product-image img,
+.benefit-image img {
+    content-visibility: auto;
+}
+
+/* Critical above-the-fold images */
+.hero-image img {
+    loading: eager;
+    fetchpriority: high;
+}
+
+/* Below-the-fold images */
+.product-image img,
+.benefit-image img {
+    loading: lazy;
+    fetchpriority: low;
+}
+
+
+
+
+:root {
+    /* Your existing variables... */
+    
+    /* Font optimization */
+    font-display: swap;
+}
+
+/* Remove unused font weights */
+* {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    font-weight: 400; /* Remove unused font weights */
+}
+
+/* Only keep used font weights */
+h1, h2, h3, .logo, .section-title {
+    font-weight: 700;
+}
+
+button, .nav a, .cart-count {
+    font-weight: 600;
+}
+
+
+
+/* MOBILE PERFORMANCE OPTIMIZATIONS */
+@media (max-width: 768px) {
+    /* Reduce animations on mobile */
+    * {
+        animation-duration: 0.3s !important;
+        transition-duration: 0.2s !important;
+    }
+    
+    /* Simplify shadows on mobile */
+    .card, .product-card, .benefit-item {
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+    }
+    
+    /* Reduce background effects on mobile */
+    header, .hero, .products, .about {
+        backdrop-filter: none !important;
+    }
+    
+    /* Optimize images for mobile */
+    .hero-image img {
+        height: 300px !important;
+    }
+    
+    .product-image {
+        height: 180px !important;
+    }
+}
+
+
+/* REMOVE UNUSED COMPLEX SELECTORS */
+/* Remove these if not used: */
+.product-badge,
+.product-rating,
+.product-meta,
+.about-highlight::before {
+    display: none;
+}
+
+/* Simplify complex gradients on mobile */
+@media (max-width: 768px) {
+    .cta-button,
+    .add-to-cart,
+    .checkout-btn {
+        background: #2e7d32 !important;
+    }
+    
+    .cart-icon,
+    .header-logo {
+        background: #fff !important;
+    }
+}
+
+
+
+
 /* ================= ENHANCED MOBILE RESPONSIVENESS ================= */
 @media (max-width: 968px) {
     .header-content {

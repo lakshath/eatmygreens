@@ -49,6 +49,25 @@
 
 
 
+    <!-- Add these lines in your head section -->
+<link rel="preconnect" href="https://cdnjs.cloudflare.com">
+<link rel="preconnect" href="https://images.unsplash.com">
+<link rel="preconnect" href="https://images.unsplash.com">
+
+<!-- Optimize font loading -->
+<style>
+/* Critical font styles */
+body {
+    font-family: system-ui, -apple-system, sans-serif;
+    font-display: swap;
+}
+</style>
+
+<!-- Preload critical images -->
+<link rel="preload" href="logoemg.png" as="image" type="image/png">
+<link rel="preload" href="https://images.unsplash.com/photo-1640671511581-0cc93ea3ebf2?q=80&w=600" as="image">
+
+
 
     <!-- ADD THESE LINES IN HEAD -->
 <meta name="description" content="EatMyGreens delivers fresh, nutrient-packed microgreens grown locally in Bangalore. 40x more nutrients than mature vegetables. Chemical-free, same-day harvest.">
@@ -716,7 +735,19 @@ loadCSS('styles.css');
 loadCSS('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
 </script>
 
-
+<script>
+// Mobile performance optimizations
+if (window.innerWidth <= 768) {
+    // Reduce animations on mobile
+    document.documentElement.style.setProperty('--transition', 'all 0.2s ease');
+    
+    // Lazy load non-critical images
+    const lazyImages = document.querySelectorAll('.product-image img, .benefit-image img');
+    lazyImages.forEach(img => {
+        img.loading = 'lazy';
+    });
+}
+</script>
 
 </body>
 </html>
