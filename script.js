@@ -446,6 +446,98 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
+// PERFORMANCE OPTIMIZATIONS - Add this to your existing script.js
 
+// Fix forced reflows by batching DOM operations
+function optimizeDOMOperations() {
+    // Batch style reads
+    const reads = [];
+    const elementsToMeasure = document.querySelectorAll('.product-card, .benefit-item, .card');
+    
+    elementsToMeasure.forEach(el => {
+        reads.push({
+            element: el,
+            width: el.offsetWidth,
+            height: el.offsetHeight
+        });
+    });
+    
+    // Batch style writes
+    requestAnimationFrame(() => {
+        reads.forEach(({element, width, height}) => {
+            // Your layout calculations here
+            if (width < 300) {
+                element.classList.add('compact');
+            }
+        });
+    });
+}
+
+// Fix scroll-based reflows
+function createScrollManager() {
+    let lastScrollY = window.scrollY;
+    let ticking = false;
+    
+    function update() {
+        // Batch all scroll-related reads
+        const scrollY = window.scrollY;
+        const direction = scrollY > lastScrollY ? 'down' : 'up';
+        lastScrollY = scrollY;
+        
+        // Batch all scroll-related writes
+        requestAnimationFrame(() => {
+            const header = document.querySelector('header');
+            if (scrollY > 100 && direction === 'down') {
+                header.style.transform = 'translateY(-100%)';
+            } else {
+                header.style.transform = 'translateY(0)';
+            }
+        });
+        
+        ticking = false;
+    }
+    
+    window.addEventListener('scroll', () => {
+        if (!ticking) {
+            requestAnimationFrame(update);
+            ticking = true;
+        }
+    });
+}
+
+// Fix resize reflows
+function createResizeManager() {
+    let resizeTimeout;
+    
+    function handleResize() {
+        // Batch resize reads
+        const windowWidth = window.innerWidth;
+        const windowHeight = window.innerHeight;
+        
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(() => {
+            requestAnimationFrame(() => {
+                // Batch resize writes
+                document.documentElement.style.setProperty('--vh', `${windowHeight * 0.01}px`);
+                
+                // Update mobile layouts
+                if (windowWidth < 768) {
+                    document.body.classList.add('mobile');
+                } else {
+                    document.body.classList.remove('mobile');
+                }
+            });
+        }, 150);
+    }
+    
+    window.addEventListener('resize', handleResize);
+}
+
+// Initialize all optimizations
+document.addEventListener('DOMContentLoaded', () => {
+    optimizeDOMOperations();
+    createScrollManager();
+    createResizeManager();
+});
 
 
