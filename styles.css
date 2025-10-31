@@ -3483,3 +3483,97 @@ footer::before {
 .microgreens-section {
   background: linear-gradient(135deg, #f1f8e9 0%, #e8f5e9 50%, #c8e6c9 100%) !important;
 }
+
+
+
+
+
+/* ================= FAQ SECTION ================= */
+.faq {
+  padding: 3rem 0;
+  background: linear-gradient(135deg, #f1f8e9 0%, #e8f5e9 100%);
+  position: relative;
+}
+
+.faq::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%232e7d32' fill-opacity='0.05' fill-rule='evenodd'%3E%3Ccircle cx='3' cy='3' r='3'/%3E%3Ccircle cx='13' cy='13' r='3'/%3E%3C/g%3E%3C/svg%3E");
+  opacity: 0.4;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #1b5e20;
+  text-align: center;
+  margin-bottom: 3rem;
+  position: relative;
+  z-index: 1;
+}
+
+.faq-list {
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.faq-item {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(46, 125, 50, 0.1);
+  margin-bottom: 1.2rem;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.faq-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 35px rgba(46, 125, 50, 0.15);
+}
+
+.faq-question {
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 1.4rem 1.8rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #1b5e20;
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.faq-icon {
+  font-size: 1.5rem;
+  transition: transform 0.3s ease, color 0.3s ease;
+  color: #2e7d32;
+}
+
+.faq-answer {
+  display: none;
+  padding: 0 1.8rem 1.6rem;
+  color: #2d3436;
+  line-height: 1.6;
+  font-size: 1rem;
+}
+
+.faq-item.active .faq-answer {
+  display: block;
+  animation: fadeIn 0.4s ease;
+}
+
+.faq-item.active .faq-icon {
+  transform: rotate(45deg);
+  color: #1b5e20;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}

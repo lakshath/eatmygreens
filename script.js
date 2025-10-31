@@ -541,3 +541,15 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
+
+
+// FAQ Accordion Interaction
+document.querySelectorAll('.faq-question').forEach(button => {
+  button.addEventListener('click', () => {
+    const faqItem = button.closest('.faq-item');
+    faqItem.classList.toggle('active');
+  });
+});
+
+
+
