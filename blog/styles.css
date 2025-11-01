@@ -96,13 +96,15 @@ body {
 }
 
 .blog-section a {
-  color: var(--blog-accent);
+  color: #1b5e20; /* Changed from #4caf50 for better contrast */
   text-decoration: underline;
   transition: color 0.3s ease;
+  font-weight: 500;
 }
 
 .blog-section a:hover {
-  color: var(--blog-primary);
+  color: #2e7d32;
+  text-decoration-thickness: 2px;
 }
 
 /* Lists */
