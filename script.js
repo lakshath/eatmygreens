@@ -12,7 +12,6 @@ const orderSummaryItems = document.getElementById('orderSummaryItems');
 const orderTotal = document.getElementById('orderTotal');
 const placeOrderBtn = document.getElementById('placeOrderBtn');
 const paymentOptions = document.querySelectorAll('.payment-option');
-const cancelBtn = document.getElementById('cancelBtn');
 
 // Initialize button states
 function initializeAddToCartButtons() {
@@ -25,7 +24,6 @@ function initializeAddToCartButtons() {
             const name = button.getAttribute('data-name');
             const price = parseFloat(button.getAttribute('data-price'));
             
-            // Check if product already in cart
             const existingItem = cart.find(item => item.id === id);
             
             if (existingItem) {
@@ -57,7 +55,6 @@ function updateButtonState(button) {
     }
 }
 
-// Notification
 function showAddedNotification(productName) {
     let notification = document.getElementById('cart-notification');
     
@@ -99,7 +96,6 @@ function showAddedNotification(productName) {
     }, 3000);
 }
 
-// Update cart
 function updateCart() {
     const totalItems = cart.reduce((t, i) => t + i.quantity, 0);
     cartCountElement.textContent = totalItems;
@@ -168,14 +164,12 @@ function updateAllButtonStates() {
     document.querySelectorAll('.add-to-cart').forEach(updateButtonState);
 }
 
-// Cart navigation
 cartIcon.addEventListener('click', () => {
     cartPage.style.display = 'block';
     paymentPage.style.display = 'none';
     setTimeout(() => cartPage.scrollIntoView({ behavior: 'smooth' }), 100);
 });
 
-// Checkout
 checkoutBtn.addEventListener('click', () => {
     if (!cart.length) return alert('Your cart is empty!');
     
@@ -193,7 +187,6 @@ checkoutBtn.addEventListener('click', () => {
     paymentPage.style.display = 'block';
 });
 
-// Payment
 paymentOptions.forEach(opt =>
     opt.addEventListener('click', () => {
         paymentOptions.forEach(o => o.classList.remove('selected'));
@@ -220,31 +213,43 @@ placeOrderBtn.addEventListener('click', () => {
     paymentPage.style.display = 'none';
 });
 
-// Smooth scrolling
-document.querySelectorAll('nav a').forEach(anchor =>
-    anchor.addEventListener('click', e => {
-        e.preventDefault();
-        const targetId = anchor.getAttribute('href');
-        if (targetId === '#contact') {
-            window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
-        } else {
-            const el = document.querySelector(targetId);
-            if (el) {
-                const offset = el.getBoundingClientRect().top + window.pageYOffset - 80;
-                window.scrollTo({ top: offset, behavior: 'smooth' });
+// ---------------- SMOOTH SCROLLING (FIXED - NO DUPLICATES) ----------------
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        const href = this.getAttribute('href');
+        
+        // Only handle internal # links
+        if (href && href.startsWith('#') && href.length > 1) {
+            e.preventDefault();
+            
+            if (href === '#contact') {
+                window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+            } else {
+                const targetElement = document.querySelector(href);
+                if (targetElement) {
+                    const offset = targetElement.getBoundingClientRect().top + window.pageYOffset - 80;
+                    window.scrollTo({ top: offset, behavior: 'smooth' });
+                }
             }
+            
+            // Update URL without page reload
+            history.pushState(null, null, href);
         }
-        history.pushState(null, null, targetId);
-    })
-);
+        // For links like /blog/, ../page, etc - let them work normally
+    });
+});
 
-// Init
-function init() {
-    initializeAddToCartButtons();
-    updateCart();
-    initSlider();
-}
-init();
+// ---------------- ORDER NOW BUTTON ----------------
+document.addEventListener("DOMContentLoaded", () => {
+    const orderBtn = document.getElementById("orderNowBtn");
+    const productsSection = document.getElementById("products");
+
+    if (orderBtn && productsSection) {
+        orderBtn.addEventListener("click", () => {
+            productsSection.scrollIntoView({ behavior: "smooth" });
+        });
+    }
+});
 
 // ---------------- SLIDER FUNCTION ----------------
 function initSlider() {
@@ -276,7 +281,6 @@ function initSlider() {
         if (nextBtn) nextBtn.disabled = currentIndex === maxIndex;
     }
 
-    // Dots
     if (dotsContainer) {
         dotsContainer.innerHTML = '';
         for (let i = 0; i <= maxIndex; i++) {
@@ -294,7 +298,6 @@ function initSlider() {
     if (nextBtn) nextBtn.addEventListener("click", () => { currentIndex++; updateSlider(); });
     if (prevBtn) prevBtn.addEventListener("click", () => { currentIndex--; updateSlider(); });
 
-    // Swipe
     let startX = 0;
     track.addEventListener("touchstart", e => { startX = e.touches[0].clientX; });
     track.addEventListener("touchend", e => {
@@ -309,148 +312,68 @@ function initSlider() {
     updateSlider();
 }
 
-
-
-// Enhanced Reveal on Scroll for Microgreens Section
+// ---------------- MICROGREENS SECTION REVEAL ----------------
 document.addEventListener("DOMContentLoaded", () => {
-  const section = document.querySelector("#microgreens-info");
-  const cards = document.querySelectorAll("#microgreens-info .card");
-  
-  // Add initial hidden state
-  cards.forEach((card, index) => {
-    card.style.opacity = "0";
-    card.style.transform = "translateY(30px)";
-    card.style.transition = "all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1)";
-    card.style.transitionDelay = `${index * 0.1}s`;
-  });
+    const section = document.querySelector("#microgreens-info");
+    const cards = document.querySelectorAll("#microgreens-info .card");
+    
+    cards.forEach((card, index) => {
+        card.style.opacity = "0";
+        card.style.transform = "translateY(30px)";
+        card.style.transition = "all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1)";
+        card.style.transitionDelay = `${index * 0.1}s`;
+    });
 
-  // Create intersection observer with better options
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          // Animate the entire section first
-          if (entry.target === section) {
-            entry.target.classList.add("section-visible");
-          }
-          
-          // Animate individual cards with staggered delay
-          if (entry.target.classList.contains("card")) {
-            setTimeout(() => {
-              entry.target.style.opacity = "1";
-              entry.target.style.transform = "translateY(0)";
-              entry.target.classList.add("card-visible");
-            }, 100);
-          }
+    const observer = new IntersectionObserver(
+        (entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    if (entry.target === section) {
+                        entry.target.classList.add("section-visible");
+                    }
+                    
+                    if (entry.target.classList.contains("card")) {
+                        setTimeout(() => {
+                            entry.target.style.opacity = "1";
+                            entry.target.style.transform = "translateY(0)";
+                            entry.target.classList.add("card-visible");
+                        }, 100);
+                    }
+                }
+            });
+        },
+        { 
+            threshold: 0.15,
+            rootMargin: "0px 0px -50px 0px"
         }
-      });
-    },
-    { 
-      threshold: 0.15,
-      rootMargin: "0px 0px -50px 0px"
-    }
-  );
+    );
 
-  // Observe both section and individual cards
-  observer.observe(section);
-  cards.forEach(card => observer.observe(card));
+    if (section) observer.observe(section);
+    cards.forEach(card => observer.observe(card));
 
-  // Add hover effects via JavaScript for better control
-  cards.forEach(card => {
-    card.addEventListener("mouseenter", () => {
-      card.style.transform = "translateY(-8px) scale(1.02)";
+    cards.forEach(card => {
+        card.addEventListener("mouseenter", () => {
+            card.style.transform = "translateY(-8px) scale(1.02)";
+        });
+        
+        card.addEventListener("mouseleave", () => {
+            if (card.classList.contains("card-visible")) {
+                card.style.transform = "translateY(0) scale(1)";
+            }
+        });
     });
-    
-    card.addEventListener("mouseleave", () => {
-      if (card.classList.contains("card-visible")) {
-        card.style.transform = "translateY(0) scale(1)";
-      }
-    });
-  });
 });
 
-// Add scroll progress indicator (optional enhancement)
-window.addEventListener("scroll", () => {
-  const section = document.querySelector("#microgreens-info");
-  if (section) {
-    const sectionTop = section.offsetTop;
-    const sectionHeight = section.offsetHeight;
-    const scrollPosition = window.scrollY + window.innerHeight;
-    
-    const progress = Math.max(0, Math.min(1, (scrollPosition - sectionTop) / sectionHeight));
-    
-    // Update a progress bar if you add one
-    const progressBar = document.querySelector(".scroll-progress");
-    if (progressBar) {
-      progressBar.style.width = `${progress * 100}%`;
-    }
-  }
+// ---------------- FAQ ACCORDION ----------------
+document.querySelectorAll('.faq-question').forEach(button => {
+    button.addEventListener('click', () => {
+        const faqItem = button.closest('.faq-item');
+        faqItem.classList.toggle('active');
+    });
 });
 
-// Enhanced Reveal on Scroll for Microgreens Section
-document.addEventListener("DOMContentLoaded", () => {
-  const section = document.querySelector("#microgreens-info");
-  const cards = document.querySelectorAll("#microgreens-info .card");
-  
-  // Set initial state for cards
-  cards.forEach((card, index) => {
-    card.style.transitionDelay = `${index * 0.1}s`;
-  });
-
-  // Create intersection observer
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          if (entry.target.classList.contains("card")) {
-            setTimeout(() => {
-              entry.target.classList.add("card-visible");
-            }, 100);
-          }
-        }
-      });
-    },
-    { 
-      threshold: 0.15,
-      rootMargin: "0px 0px -50px 0px"
-    }
-  );
-
-  // Observe individual cards
-  cards.forEach(card => observer.observe(card));
-
-  // Enhanced hover effects
-  cards.forEach(card => {
-    card.addEventListener("mouseenter", function() {
-      this.style.transform = "translateY(-6px) scale(1.01)";
-    });
-    
-    card.addEventListener("mouseleave", function() {
-      if (this.classList.contains("card-visible")) {
-        this.style.transform = "translateY(0) scale(1)";
-      }
-    });
-  });
-});
-
-
-// Scroll to Products Section when clicking "Order Now"
-document.addEventListener("DOMContentLoaded", () => {
-  const orderBtn = document.getElementById("orderNowBtn");
-  const productsSection = document.getElementById("products");
-
-  if (orderBtn && productsSection) {
-    orderBtn.addEventListener("click", () => {
-      productsSection.scrollIntoView({ behavior: "smooth" });
-    });
-  }
-});
-
-// PERFORMANCE OPTIMIZATIONS - Add this to your existing script.js
-
-// Fix forced reflows by batching DOM operations
+// ---------------- PERFORMANCE OPTIMIZATIONS ----------------
 function optimizeDOMOperations() {
-    // Batch style reads
     const reads = [];
     const elementsToMeasure = document.querySelectorAll('.product-card, .benefit-item, .card');
     
@@ -462,10 +385,8 @@ function optimizeDOMOperations() {
         });
     });
     
-    // Batch style writes
     requestAnimationFrame(() => {
-        reads.forEach(({element, width, height}) => {
-            // Your layout calculations here
+        reads.forEach(({element, width}) => {
             if (width < 300) {
                 element.classList.add('compact');
             }
@@ -473,23 +394,20 @@ function optimizeDOMOperations() {
     });
 }
 
-// Fix scroll-based reflows
 function createScrollManager() {
     let lastScrollY = window.scrollY;
     let ticking = false;
     
     function update() {
-        // Batch all scroll-related reads
         const scrollY = window.scrollY;
         const direction = scrollY > lastScrollY ? 'down' : 'up';
         lastScrollY = scrollY;
         
-        // Batch all scroll-related writes
         requestAnimationFrame(() => {
             const header = document.querySelector('header');
-            if (scrollY > 100 && direction === 'down') {
+            if (header && scrollY > 100 && direction === 'down') {
                 header.style.transform = 'translateY(-100%)';
-            } else {
+            } else if (header) {
                 header.style.transform = 'translateY(0)';
             }
         });
@@ -505,22 +423,18 @@ function createScrollManager() {
     });
 }
 
-// Fix resize reflows
 function createResizeManager() {
     let resizeTimeout;
     
     function handleResize() {
-        // Batch resize reads
         const windowWidth = window.innerWidth;
         const windowHeight = window.innerHeight;
         
         clearTimeout(resizeTimeout);
         resizeTimeout = setTimeout(() => {
             requestAnimationFrame(() => {
-                // Batch resize writes
                 document.documentElement.style.setProperty('--vh', `${windowHeight * 0.01}px`);
                 
-                // Update mobile layouts
                 if (windowWidth < 768) {
                     document.body.classList.add('mobile');
                 } else {
@@ -533,23 +447,19 @@ function createResizeManager() {
     window.addEventListener('resize', handleResize);
 }
 
-// Initialize all optimizations
-document.addEventListener('DOMContentLoaded', () => {
+// ---------------- INITIALIZE ALL ----------------
+function init() {
+    initializeAddToCartButtons();
+    updateCart();
+    initSlider();
     optimizeDOMOperations();
     createScrollManager();
     createResizeManager();
-});
+}
 
-
-
-
-// FAQ Accordion Interaction
-document.querySelectorAll('.faq-question').forEach(button => {
-  button.addEventListener('click', () => {
-    const faqItem = button.closest('.faq-item');
-    faqItem.classList.toggle('active');
-  });
-});
-
-
-
+// Run init when DOM is ready
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+} else {
+    init();
+}
