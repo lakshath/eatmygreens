@@ -1,3 +1,69 @@
+// ================= HAMBURGER MENU (FIXED VERSION) =================
+document.addEventListener('DOMContentLoaded', function() {
+  const hamburger = document.querySelector('.hamburger');
+  const nav = document.querySelector('nav');
+  const overlay = document.querySelector('.nav-overlay');
+  
+  if (hamburger && nav && overlay) {
+    function toggleMenu() {
+      hamburger.classList.toggle('active');
+      nav.classList.toggle('active');
+      overlay.classList.toggle('active');
+      document.body.classList.toggle('menu-open');
+    }
+    
+    hamburger.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      toggleMenu();
+    });
+    
+    overlay.addEventListener('click', function() {
+      toggleMenu();
+    });
+    
+    const navLinks = nav.querySelectorAll('a');
+    navLinks.forEach(link => {
+      link.addEventListener('click', function(e) {
+        const href = this.getAttribute('href');
+        
+        if (window.innerWidth <= 768) {
+          toggleMenu();
+        }
+        
+        if (href && href.startsWith('#') && href.length > 1) {
+          e.preventDefault();
+          
+          const targetId = href.substring(1);
+          const targetElement = document.getElementById(targetId);
+          
+          if (targetElement) {
+            setTimeout(() => {
+              const offset = targetElement.getBoundingClientRect().top + window.pageYOffset - 80;
+              window.scrollTo({ top: offset, behavior: 'smooth' });
+            }, 300);
+          }
+        }
+      });
+    });
+    
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && nav.classList.contains('active')) {
+        toggleMenu();
+      }
+    });
+    
+    window.addEventListener('resize', function() {
+      if (window.innerWidth > 768 && nav.classList.contains('active')) {
+        hamburger.classList.remove('active');
+        nav.classList.remove('active');
+        overlay.classList.remove('active');
+        document.body.classList.remove('menu-open');
+      }
+    });
+  }
+});
+
 // ---------------- CART FUNCTIONALITY ----------------
 let cart = [];
 const cartIcon = document.getElementById('cartIcon');
@@ -13,7 +79,6 @@ const orderTotal = document.getElementById('orderTotal');
 const placeOrderBtn = document.getElementById('placeOrderBtn');
 const paymentOptions = document.querySelectorAll('.payment-option');
 
-// Initialize button states
 function initializeAddToCartButtons() {
     const addToCartButtons = document.querySelectorAll('.add-to-cart');
     addToCartButtons.forEach(button => {
@@ -98,7 +163,9 @@ function showAddedNotification(productName) {
 
 function updateCart() {
     const totalItems = cart.reduce((t, i) => t + i.quantity, 0);
-    cartCountElement.textContent = totalItems;
+    if (cartCountElement) cartCountElement.textContent = totalItems;
+    
+    if (!cartItems) return;
     
     if (cart.length === 0) {
         cartItems.innerHTML = '<p class="empty-cart-message">Your cart is empty.</p>';
@@ -128,8 +195,8 @@ function updateCart() {
     
     const subtotal = cart.reduce((t, i) => t + i.price * i.quantity, 0);
     const deliveryFee = subtotal > 0 ? 30 : 0;
-    cartSubtotal.textContent = `₹${subtotal.toFixed(2)}`;
-    cartTotal.textContent = `₹${(subtotal + deliveryFee).toFixed(2)}`;
+    if (cartSubtotal) cartSubtotal.textContent = `₹${subtotal.toFixed(2)}`;
+    if (cartTotal) cartTotal.textContent = `₹${(subtotal + deliveryFee).toFixed(2)}`;
     
     updateAllButtonStates();
 }
@@ -164,28 +231,37 @@ function updateAllButtonStates() {
     document.querySelectorAll('.add-to-cart').forEach(updateButtonState);
 }
 
-cartIcon.addEventListener('click', () => {
-    cartPage.style.display = 'block';
-    paymentPage.style.display = 'none';
-    setTimeout(() => cartPage.scrollIntoView({ behavior: 'smooth' }), 100);
-});
-
-checkoutBtn.addEventListener('click', () => {
-    if (!cart.length) return alert('Your cart is empty!');
-    
-    orderSummaryItems.innerHTML = '';
-    cart.forEach(item => {
-        const orderItem = document.createElement('div');
-        orderItem.className = 'summary-item';
-        orderItem.innerHTML = `<span>${item.name} x${item.quantity}</span>
-                               <span>₹${(item.price * item.quantity).toFixed(2)}</span>`;
-        orderSummaryItems.appendChild(orderItem);
+if (cartIcon) {
+    cartIcon.addEventListener('click', () => {
+        if (cartPage) cartPage.style.display = 'block';
+        if (paymentPage) paymentPage.style.display = 'none';
+        setTimeout(() => {
+            if (cartPage) cartPage.scrollIntoView({ behavior: 'smooth' });
+        }, 100);
     });
-    const subtotal = cart.reduce((t, i) => t + i.price * i.quantity, 0);
-    orderTotal.textContent = `₹${(subtotal + 30).toFixed(2)}`;
-    cartPage.style.display = 'none';
-    paymentPage.style.display = 'block';
-});
+}
+
+if (checkoutBtn) {
+    checkoutBtn.addEventListener('click', () => {
+        if (!cart.length) return alert('Your cart is empty!');
+        
+        if (orderSummaryItems) {
+            orderSummaryItems.innerHTML = '';
+            cart.forEach(item => {
+                const orderItem = document.createElement('div');
+                orderItem.className = 'summary-item';
+                orderItem.innerHTML = `<span>${item.name} x${item.quantity}</span>
+                                       <span>₹${(item.price * item.quantity).toFixed(2)}</span>`;
+                orderSummaryItems.appendChild(orderItem);
+            });
+        }
+        
+        const subtotal = cart.reduce((t, i) => t + i.price * i.quantity, 0);
+        if (orderTotal) orderTotal.textContent = `₹${(subtotal + 30).toFixed(2)}`;
+        if (cartPage) cartPage.style.display = 'none';
+        if (paymentPage) paymentPage.style.display = 'block';
+    });
+}
 
 paymentOptions.forEach(opt =>
     opt.addEventListener('click', () => {
@@ -194,31 +270,36 @@ paymentOptions.forEach(opt =>
     })
 );
 
-placeOrderBtn.addEventListener('click', () => {
-    const name = document.getElementById('name').value;
-    const address = document.getElementById('address').value;
-    const phone = document.getElementById('phone').value;
-    const method = document.querySelector('.payment-option.selected');
-    
-    if (!name || !address || !phone) return alert('Fill all details.');
-    if (!method) return alert('Select payment method.');
-    
-    alert(`Order placed!\nPayment: ${method.dataset.method.toUpperCase()}`);
-    cart = [];
-    updateCart();
-    document.getElementById('name').value = '';
-    document.getElementById('address').value = '';
-    document.getElementById('phone').value = '+91 ';
-    paymentOptions.forEach(o => o.classList.remove('selected'));
-    paymentPage.style.display = 'none';
-});
+if (placeOrderBtn) {
+    placeOrderBtn.addEventListener('click', () => {
+        const nameField = document.getElementById('name');
+        const addressField = document.getElementById('address');
+        const phoneField = document.getElementById('phone');
+        const method = document.querySelector('.payment-option.selected');
+        
+        const name = nameField ? nameField.value : '';
+        const address = addressField ? addressField.value : '';
+        const phone = phoneField ? phoneField.value : '';
+        
+        if (!name || !address || !phone) return alert('Fill all details.');
+        if (!method) return alert('Select payment method.');
+        
+        alert(`Order placed!\nPayment: ${method.dataset.method.toUpperCase()}`);
+        cart = [];
+        updateCart();
+        if (nameField) nameField.value = '';
+        if (addressField) addressField.value = '';
+        if (phoneField) phoneField.value = '+91 ';
+        paymentOptions.forEach(o => o.classList.remove('selected'));
+        if (paymentPage) paymentPage.style.display = 'none';
+    });
+}
 
-// ---------------- SMOOTH SCROLLING (FIXED - NO DUPLICATES) ----------------
+// ---------------- SMOOTH SCROLLING ----------------
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
         const href = this.getAttribute('href');
         
-        // Only handle internal # links
         if (href && href.startsWith('#') && href.length > 1) {
             e.preventDefault();
             
@@ -232,10 +313,8 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 }
             }
             
-            // Update URL without page reload
             history.pushState(null, null, href);
         }
-        // For links like /blog/, ../page, etc - let them work normally
     });
 });
 
@@ -257,7 +336,7 @@ function initSlider() {
     const prevBtn = document.querySelector(".prev-btn");
     const nextBtn = document.querySelector(".next-btn");
     const cards = document.querySelectorAll(".benefit-item");
-    const dotsContainer = document.querySelector(".slider-dots");
+    
     if (!track || !cards.length) return;
 
     let currentIndex = 0;
@@ -274,25 +353,8 @@ function initSlider() {
         if (currentIndex < 0) currentIndex = 0;
         if (currentIndex > maxIndex) currentIndex = maxIndex;
         track.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
-        document.querySelectorAll(".slider-dot").forEach((dot, i) =>
-            dot.classList.toggle("active", i === currentIndex)
-        );
         if (prevBtn) prevBtn.disabled = currentIndex === 0;
         if (nextBtn) nextBtn.disabled = currentIndex === maxIndex;
-    }
-
-    if (dotsContainer) {
-        dotsContainer.innerHTML = '';
-        for (let i = 0; i <= maxIndex; i++) {
-            const dot = document.createElement("div");
-            dot.className = "slider-dot";
-            if (i === 0) dot.classList.add("active");
-            dot.addEventListener("click", () => {
-                currentIndex = i;
-                updateSlider();
-            });
-            dotsContainer.appendChild(dot);
-        }
     }
 
     if (nextBtn) nextBtn.addEventListener("click", () => { currentIndex++; updateSlider(); });
@@ -316,6 +378,8 @@ function initSlider() {
 document.addEventListener("DOMContentLoaded", () => {
     const section = document.querySelector("#microgreens-info");
     const cards = document.querySelectorAll("#microgreens-info .card");
+    
+    if (!section || !cards.length) return;
     
     cards.forEach((card, index) => {
         card.style.opacity = "0";
@@ -348,7 +412,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     );
 
-    if (section) observer.observe(section);
+    observer.observe(section);
     cards.forEach(card => observer.observe(card));
 
     cards.forEach(card => {
@@ -368,96 +432,17 @@ document.addEventListener("DOMContentLoaded", () => {
 document.querySelectorAll('.faq-question').forEach(button => {
     button.addEventListener('click', () => {
         const faqItem = button.closest('.faq-item');
-        faqItem.classList.toggle('active');
+        if (faqItem) faqItem.classList.toggle('active');
     });
 });
-
-// ---------------- PERFORMANCE OPTIMIZATIONS ----------------
-function optimizeDOMOperations() {
-    const reads = [];
-    const elementsToMeasure = document.querySelectorAll('.product-card, .benefit-item, .card');
-    
-    elementsToMeasure.forEach(el => {
-        reads.push({
-            element: el,
-            width: el.offsetWidth,
-            height: el.offsetHeight
-        });
-    });
-    
-    requestAnimationFrame(() => {
-        reads.forEach(({element, width}) => {
-            if (width < 300) {
-                element.classList.add('compact');
-            }
-        });
-    });
-}
-
-function createScrollManager() {
-    let lastScrollY = window.scrollY;
-    let ticking = false;
-    
-    function update() {
-        const scrollY = window.scrollY;
-        const direction = scrollY > lastScrollY ? 'down' : 'up';
-        lastScrollY = scrollY;
-        
-        requestAnimationFrame(() => {
-            const header = document.querySelector('header');
-            if (header && scrollY > 100 && direction === 'down') {
-                header.style.transform = 'translateY(-100%)';
-            } else if (header) {
-                header.style.transform = 'translateY(0)';
-            }
-        });
-        
-        ticking = false;
-    }
-    
-    window.addEventListener('scroll', () => {
-        if (!ticking) {
-            requestAnimationFrame(update);
-            ticking = true;
-        }
-    });
-}
-
-function createResizeManager() {
-    let resizeTimeout;
-    
-    function handleResize() {
-        const windowWidth = window.innerWidth;
-        const windowHeight = window.innerHeight;
-        
-        clearTimeout(resizeTimeout);
-        resizeTimeout = setTimeout(() => {
-            requestAnimationFrame(() => {
-                document.documentElement.style.setProperty('--vh', `${windowHeight * 0.01}px`);
-                
-                if (windowWidth < 768) {
-                    document.body.classList.add('mobile');
-                } else {
-                    document.body.classList.remove('mobile');
-                }
-            });
-        }, 150);
-    }
-    
-    window.addEventListener('resize', handleResize);
-}
 
 // ---------------- INITIALIZE ALL ----------------
 function init() {
     initializeAddToCartButtons();
     updateCart();
     initSlider();
-    optimizeDOMOperations();
-    createScrollManager();
-    createResizeManager();
 }
 
-// Run init when DOM is ready
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init);
 } else {

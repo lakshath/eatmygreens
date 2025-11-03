@@ -1,243 +1,418 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- rest of your meta, preload, and schema -->
-
-
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- rest of your meta, preload, and schema -->
 
     <!-- CRITICAL CSS - INLINE THIS -->
     <style>
-    /* Critical above-the-fold styles */
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: system-ui, -apple-system, sans-serif; line-height: 1.6; }
-    
-    /* Header styles */
-    header { background: #fff; box-shadow: 0 2px 10px rgba(0,0,0,0.1); position: fixed; width: 100%; top: 0; z-index: 1000; }
-    .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-    .header-content { display: flex; justify-content: space-between; align-items: center; padding: 1rem 0; }
-    
-    /* Hero section above-the-fold */
-    .hero { padding: 120px 0 80px; background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); }
-    .hero-content { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
-    .hero-text h1 { font-size: 3rem; color: #166534; margin-bottom: 1rem; }
-    .hero-text p { font-size: 1.2rem; color: #374151; margin-bottom: 1rem; }
-    
-    /* Basic button styles */
-    .cta-button { background: #22c55e; color: white; padding: 12px 30px; border: none; border-radius: 8px; font-size: 1.1rem; cursor: pointer; }
-    
-    /* Ensure content is visible immediately */
-    .logo { font-size: 1.5rem; font-weight: bold; color: #166534; }
-    nav ul { display: flex; list-style: none; gap: 2rem; }
-    nav a { text-decoration: none; color: #374151; font-weight: 500; }
-    
-    /* Loading state for non-critical resources */
-    .loading { opacity: 0; }
-    .loaded { opacity: 1; transition: opacity 0.3s ease; }
+      /* Critical above-the-fold styles */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: system-ui, -apple-system, sans-serif;
+        line-height: 1.6;
+      }
+
+      /* Header styles */
+      header {
+        background: #fff;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+      }
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+      .header-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 0;
+      }
+
+      /* Hero section above-the-fold */
+      .hero {
+        padding: 120px 0 80px;
+        background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+      }
+      .hero-content {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+        align-items: center;
+      }
+      .hero-text h1 {
+        font-size: 3rem;
+        color: #166534;
+        margin-bottom: 1rem;
+      }
+      .hero-text p {
+        font-size: 1.2rem;
+        color: #374151;
+        margin-bottom: 1rem;
+      }
+
+      /* Basic button styles */
+      .cta-button {
+        background: #22c55e;
+        color: white;
+        padding: 12px 30px;
+        border: none;
+        border-radius: 8px;
+        font-size: 1.1rem;
+        cursor: pointer;
+      }
+
+      /* Ensure content is visible immediately */
+      .logo {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #166534;
+      }
+      nav ul {
+        display: flex;
+        list-style: none;
+        gap: 2rem;
+      }
+      nav a {
+        text-decoration: none;
+        color: #374151;
+        font-weight: 500;
+      }
+
+      /* Loading state for non-critical resources */
+      .loading {
+        opacity: 0;
+      }
+      .loaded {
+        opacity: 1;
+        transition: opacity 0.3s ease;
+      }
     </style>
 
     <!-- PRELOAD non-critical CSS -->
-    <link rel="preload" href="styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    
+    <link
+      rel="preload"
+      href="styles.css"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <link
+      rel="preload"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+
     <!-- NOSCRIPT fallback -->
     <noscript>
-        <link rel="stylesheet" href="styles.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+      <link rel="stylesheet" href="styles.css" />
+      <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      />
     </noscript>
 
-
-
     <!-- Add these lines in your head section -->
-<link rel="preconnect" href="https://cdnjs.cloudflare.com">
-<link rel="preconnect" href="https://images.unsplash.com">
-<link rel="preconnect" href="https://images.unsplash.com">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
+    <link rel="preconnect" href="https://images.unsplash.com" />
+    <link rel="preconnect" href="https://images.unsplash.com" />
 
-<!-- Optimize font loading -->
-<style>
-/* Critical font styles */
-body {
-    font-family: system-ui, -apple-system, sans-serif;
-    font-display: swap;
-}
-</style>
+    <!-- Optimize font loading -->
+    <style>
+      /* Critical font styles */
+      body {
+        font-family: system-ui, -apple-system, sans-serif;
+        font-display: swap;
+      }
+    </style>
 
-<!-- Preload critical images -->
-<link rel="preload" href="logoemg.png" as="image" type="image/png">
-<link rel="preload" href="https://images.unsplash.com/photo-1640671511581-0cc93ea3ebf2?q=80&w=600" as="image">
+    <!-- Preload critical images -->
+    <link rel="preload" href="logoemg.png" as="image" type="image/png" />
+    <link
+      rel="preload"
+      href="https://images.unsplash.com/photo-1640671511581-0cc93ea3ebf2?q=80&w=600"
+      as="image"
+    />
 
+    <style>
+      /* Critical CSS to prevent render blocking */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: system-ui, -apple-system, sans-serif;
+      }
+      header {
+        background: #fff;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+      }
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+      .hero {
+        padding-top: 120px;
+      }
+    </style>
 
+    <link
+      rel="preload"
+      href="styles.css"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <link
+      rel="preload"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <noscript>
+      <link rel="stylesheet" href="styles.css" />
+      <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      />
+    </noscript>
 
-
-<style>
-/* Critical CSS to prevent render blocking */
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: system-ui, -apple-system, sans-serif; }
-header { background: #fff; position: fixed; width: 100%; top: 0; z-index: 1000; }
-.container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-.hero { padding-top: 120px; }
-</style>
-
-<link rel="preload" href="styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-</noscript>
-
-
-
-    
     <!-- PRIMARY META TAGS -->
-    <title>EatMyGreens - Fresh Microgreens Delivery in Bangalore | 40x More Nutrients</title>
-    <meta name="description" content="EatMyGreens delivers fresh, nutrient-packed microgreens grown locally in Bangalore. 40x more nutrients than mature vegetables. Chemical-free, same-day harvest. Order broccoli, radish, sunflower microgreens.">
-    
+    <title>
+      EatMyGreens - Fresh Microgreens Delivery in Bangalore | 40x More Nutrients
+    </title>
+    <meta
+      name="description"
+      content="EatMyGreens delivers fresh, nutrient-packed microgreens grown locally in Bangalore. 40x more nutrients than mature vegetables. Chemical-free, same-day harvest. Order broccoli, radish, sunflower microgreens."
+    />
+
     <!-- KEYWORDS (Still useful for some search engines) -->
-    <meta name="keywords" content="microgreens, fresh microgreens, bangalore, organic vegetables, healthy food, nutrition, broccoli microgreens, radish microgreens, sunflower microgreens, home delivery, chemical-free, pesticide-free">
-    
+    <meta
+      name="keywords"
+      content="microgreens, fresh microgreens, bangalore, organic vegetables, healthy food, nutrition, broccoli microgreens, radish microgreens, sunflower microgreens, home delivery, chemical-free, pesticide-free"
+    />
+
     <!-- AUTHOR & COPYRIGHT -->
-    <meta name="author" content="EatMyGreens">
-    <meta name="copyright" content="EatMyGreens">
-    
+    <meta name="author" content="EatMyGreens" />
+    <meta name="copyright" content="EatMyGreens" />
+
     <!-- OPEN GRAPH (for Facebook, LinkedIn, WhatsApp) -->
-    <meta property="og:title" content="EatMyGreens - Fresh Microgreens Delivery in Bangalore">
-    <meta property="og:description" content="40x more nutrients than mature vegetables. Chemical-free, same-day harvest. Order fresh microgreens delivered to your door.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://eatmygreens.com">
-    <meta property="og:image" content="https://eatmygreens.com/logoemg.png">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
-    <meta property="og:site_name" content="EatMyGreens">
-    <meta property="og:locale" content="en_IN">
-    
+    <meta
+      property="og:title"
+      content="EatMyGreens - Fresh Microgreens Delivery in Bangalore"
+    />
+    <meta
+      property="og:description"
+      content="40x more nutrients than mature vegetables. Chemical-free, same-day harvest. Order fresh microgreens delivered to your door."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://eatmygreens.com" />
+    <meta property="og:image" content="https://eatmygreens.com/logoemg.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:site_name" content="EatMyGreens" />
+    <meta property="og:locale" content="en_IN" />
+
     <!-- TWITTER CARD -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="EatMyGreens - Fresh Microgreens Delivery">
-    <meta name="twitter:description" content="40x more nutrients than mature vegetables. Chemical-free, same-day harvest in Bangalore.">
-    <meta name="twitter:image" content="https://eatmygreens.com/logoemg.png">
-    <meta name="twitter:site" content="@eatmygreens">
-    
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="EatMyGreens - Fresh Microgreens Delivery"
+    />
+    <meta
+      name="twitter:description"
+      content="40x more nutrients than mature vegetables. Chemical-free, same-day harvest in Bangalore."
+    />
+    <meta name="twitter:image" content="https://eatmygreens.com/logoemg.png" />
+    <meta name="twitter:site" content="@eatmygreens" />
+
     <!-- ADDITIONAL IMPORTANT META TAGS -->
-    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
-    <meta name="theme-color" content="#22c55e">
-    <meta name="format-detection" content="telephone=yes">
-    
+    <meta
+      name="robots"
+      content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"
+    />
+    <meta name="theme-color" content="#22c55e" />
+    <meta name="format-detection" content="telephone=yes" />
+
     <!-- GEO LOCATION (Important for local SEO) -->
-    <meta name="geo.region" content="IN-KA">
-    <meta name="geo.placename" content="Bangalore">
-    <meta name="geo.position" content="12.9716;77.5946">
-    <meta name="ICBM" content="12.9716, 77.5946">
-    
+    <meta name="geo.region" content="IN-KA" />
+    <meta name="geo.placename" content="Bangalore" />
+    <meta name="geo.position" content="12.9716;77.5946" />
+    <meta name="ICBM" content="12.9716, 77.5946" />
+
     <!-- CANONICAL URL (Prevent duplicate content) -->
-    <link rel="canonical" href="https://eatmygreens.netlify.app/">
-    
+    <link rel="canonical" href="https://eatmygreens.netlify.app/" />
+
     <!-- SCHEMA MARKUP (JSON-LD for rich snippets) -->
     <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "HealthFoodStore",
-      "name": "EatMyGreens",
-      "description": "Fresh microgreens delivery service in Bangalore",
-      "url": "https://eatmygreens.com",
-      "telephone": "+91-7483069438",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "Babusapalya",
-        "addressLocality": "Bangalore",
-        "postalCode": "560043",
-        "addressCountry": "IN"
-      },
-      "openingHours": "Mo-Su 09:00-20:00",
-      "areaServed": "Bangalore",
-      "servesCuisine": "Healthy Food",
-      "priceRange": "₹",
-      "sameAs": [
-        "https://www.instagram.com/eat.my_greens/"
-      ]
-    }
+      {
+        "@context": "https://schema.org",
+        "@type": "HealthFoodStore",
+        "name": "EatMyGreens",
+        "description": "Fresh microgreens delivery service in Bangalore",
+        "url": "https://eatmygreens.com",
+        "telephone": "+91-7483069438",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Babusapalya",
+          "addressLocality": "Bangalore",
+          "postalCode": "560043",
+          "addressCountry": "IN"
+        },
+        "openingHours": "Mo-Su 09:00-20:00",
+        "areaServed": "Bangalore",
+        "servesCuisine": "Healthy Food",
+        "priceRange": "₹",
+        "sameAs": ["https://www.instagram.com/eat.my_greens/"]
+      }
     </script>
 
     <!-- FAVICON & APPLE TOUCH ICON -->
-    <link rel="icon" type="image/x-icon" href="image.png">
-    <link rel="apple-touch-icon" href="apple-touch-icon.png">
-    
+    <link rel="icon" type="image/x-icon" href="image.png" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+
     <!-- STYLESHEETS -->
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
     <!-- GOOGLE SITE VERIFICATION -->
-    
-    <meta name="google-site-verification" content="Y1pGvzBxmS66kejSNHCEG2JfTfKR3_bFToJZXvaQHJ8" />
 
-<style>
-/* Critical font styles - loads immediately */
-body {
-    font-family: system-ui, -apple-system, sans-serif;
-    font-display: swap;
-}
-</style>
+    <meta
+      name="google-site-verification"
+      content="Y1pGvzBxmS66kejSNHCEG2JfTfKR3_bFToJZXvaQHJ8"
+    />
 
-<!-- Load non-critical fonts async -->
-<link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <style>
+      /* Critical font styles - loads immediately */
+      body {
+        font-family: system-ui, -apple-system, sans-serif;
+        font-display: swap;
+      }
+    </style>
 
+    <!-- Load non-critical fonts async -->
+    <link
+      rel="preload"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
 
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "What are microgreens?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Microgreens are young edible plants harvested just after the first leaves develop. They contain up to 40× more nutrients than mature vegetables."
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What are microgreens?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Microgreens are young edible plants harvested just after the first leaves develop. They contain up to 40× more nutrients than mature vegetables."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Are your microgreens organic or chemical-free?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes! Our microgreens are grown naturally in clean, controlled environments — free from pesticides or fertilizers."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How are microgreens delivered?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "We harvest every morning and deliver the same day across Bangalore to guarantee freshness and nutrition."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How should I store microgreens after delivery?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Keep them refrigerated in the original pack. They stay fresh for up to 5–6 days when stored properly."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I eat microgreens raw?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Absolutely! They’re best eaten raw — in salads, smoothies, or as garnishes for maximum flavor and nutrients."
+            }
+          }
+        ]
       }
-    },
-    {
-      "@type": "Question",
-      "name": "Are your microgreens organic or chemical-free?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes! Our microgreens are grown naturally in clean, controlled environments — free from pesticides or fertilizers."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How are microgreens delivered?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "We harvest every morning and deliver the same day across Bangalore to guarantee freshness and nutrition."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How should I store microgreens after delivery?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Keep them refrigerated in the original pack. They stay fresh for up to 5–6 days when stored properly."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Can I eat microgreens raw?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Absolutely! They’re best eaten raw — in salads, smoothies, or as garnishes for maximum flavor and nutrients."
-      }
+    </script>
+
+    <script>
+// ================= HAMBURGER MENU =================
+// Add this to the TOP of your script.js
+  
+  if (hamburger && nav && overlay) {
+    // Toggle menu
+    function toggleMenu() {
+      hamburger.classList.toggle('active');
+      nav.classList.toggle('active');
+      overlay.classList.toggle('active');
+      document.body.classList.toggle('menu-open');
     }
-  ]
-}
+    
+    // Hamburger click
+    hamburger.addEventListener('click', toggleMenu);
+    
+    // Overlay click - close menu
+    overlay.addEventListener('click', toggleMenu);
+    
+    // Close menu when clicking nav links
+    const navLinks = nav.querySelectorAll('a');
+    navLinks.forEach(link => {
+      link.addEventListener('click', function() {
+        if (window.innerWidth <= 768) {
+          toggleMenu();
+        }
+      });
+    });
+    
+    // Close on window resize
+    window.addEventListener('resize', function() {
+      if (window.innerWidth > 768 && nav.classList.contains('active')) {
+        toggleMenu();
+      }
+    });
+  }
 </script>
 
 
 
 
-</head>
-<body>
-    
-  <!-- Header Section -->
+  </head>
+  <body>
+    <!-- Header Section -->
+<!-- Updated Header Structure -->
+<!-- Use this in BOTH your main index.html AND blog/index.html -->
+
+<!-- Replace ENTIRE <header> section in your MAIN index.html with this: -->
+
 <header>
     <div class="container">
         <div class="header-content">
@@ -247,17 +422,23 @@ body {
                 <div class="logo">EatMyGreens</div>
             </div>
             
-           <nav>
-  <ul>
-    <li><a href="#home">Home</a></li>
-    <li><a href="#microgreens-info">Why Microgreens</a></li>
-    <li><a href="#products">Products</a></li>
-    <li><a href="./blog/">Blogs</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-</nav>
-
-
+            <!-- Hamburger Menu Button (mobile only) -->
+            <button class="hamburger" id="hamburgerBtn" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            
+            <!-- Navigation in the middle -->
+            <nav id="navMenu">
+              <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#microgreens-info">Why Microgreens</a></li>
+                <li><a href="#products">Products</a></li>
+                <li><a href="./blog/">Blogs</a></li>
+                <li><a href="#contact">Contact</a></li>
+              </ul>
+            </nav>
             
             <!-- Cart icon on the right -->
             <div class="cart-icon" id="cartIcon">
@@ -268,670 +449,897 @@ body {
     </div>
 </header>
 
-<!-- MAIN CONTENT LANDMARK - ADD THIS -->
-<main>
-    <!-- Hero Section -->
-    <section class="hero" id="home">
+<!-- Nav overlay - ADD THIS RIGHT AFTER </header> -->
+<div class="nav-overlay" id="navOverlay"></div>
+
+
+
+    <!-- MAIN CONTENT LANDMARK - ADD THIS -->
+    <main>
+      <!-- Hero Section -->
+      <section class="hero" id="home">
         <div class="container">
-            <div class="hero-content">
-                <div class="hero-text">
-                    <h1> Super Fresh Nutritious Microgreens.</h1>
-                    <p>Packed with 40x more nutrients than mature veggies.
-                         Grown locally, harvested same-day, and delivered fresh to your doorstep.</p>
-                    <p style="font-weight: bold;" id="ch">Chemical-free | Flavor-rich | Health-boosting</p>
-                    <button class="cta-button" id="orderNowBtn">Order Now</button>
-
-                </div>
-                <div class="hero-image">
-                    <img 
-    src="https://images.unsplash.com/photo-1640671511581-0cc93ea3ebf2?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
-    alt="Fresh Microgreens"
-    width="687"
-    height="400"
-    loading="eager"
-    decoding="sync"
-    fetchpriority="high"
->
-                </div>
+          <div class="hero-content">
+            <div class="hero-text">
+              <h1>Super Fresh Nutritious Microgreens.</h1>
+              <p>
+                Packed with 40x more nutrients than mature veggies. Grown
+                locally, harvested same-day, and delivered fresh to your
+                doorstep.
+              </p>
+              <p style="font-weight: bold" id="ch">
+                Chemical-free | Flavor-rich | Health-boosting
+              </p>
+              <button class="cta-button" id="orderNowBtn">Order Now</button>
             </div>
-        </div>
-    </section>
-
-    <section id="microgreens-info" class="microgreens-section">
-      <div class="container">
-        <div class="section-header">
-          <h2 class="section-title">Why Microgreens Are the Real Nutrition Your Family Needs</h2>
-          <p class="intro-text">
-            Do you know where your daily veggies come from? Most of the vegetables in markets today are grown using pesticides, chemical fertilizers, and contaminated water. By the time they reach your kitchen, they've already lost up to 50% of their nutrients.
-          </p>
-        </div>
-
-        <div class="cards">
-          <!-- Problem Card -->
-          <div class="card problem-card">
-            <div class="card-icon">
-              <i class="fas fa-exclamation-triangle"></i>
-            </div>
-            <h3>The Problem with Market Veggies</h3>
-            <ul>
-              <li>Spinach travels days in trucks, sprayed to look fresh, but loses most of its iron & vitamins.</li>
-              <li>Tomatoes & cucumbers are grown with chemicals that disrupt hormones & gut health.</li>
-              <li>Leafy greens carry pesticide residues that your body silently absorbs every single day.</li>
-            </ul>
-            <div class="highlight-box">
-              <p>This silent damage builds up → fatigue, weak immunity, diabetes, gut problems, early aging.</p>
+            <div class="hero-image">
+              <img
+                src="https://images.unsplash.com/photo-1640671511581-0cc93ea3ebf2?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                alt="Fresh Microgreens"
+                width="687"
+                height="400"
+                loading="eager"
+                decoding="sync"
+                fetchpriority="high"
+              />
             </div>
           </div>
+        </div>
+      </section>
 
-          <!-- Solution Card -->
-          <div class="card solution-card">
-            <div class="card-icon">
-              <i class="fas fa-seedling"></i>
-            </div>
-            <h3>Microgreens = Concentrated Life Force</h3>
-            <p>
-              Microgreens are not just "tiny plants." They are nutrient bombs — up to
-              <strong>40× more vitamins, minerals, and antioxidants</strong> compared to their mature versions.
+      <section id="microgreens-info" class="microgreens-section">
+        <div class="container">
+          <div class="section-header">
+            <h2 class="section-title">
+              Why Microgreens Are the Real Nutrition Your Family Needs
+            </h2>
+            <p class="intro-text">
+              Do you know where your daily veggies come from? Most of the
+              vegetables in markets today are grown using pesticides, chemical
+              fertilizers, and contaminated water. By the time they reach your
+              kitchen, they've already lost up to 50% of their nutrients.
             </p>
-            <ul class="benefits">
-              <li><i class="fas fa-check-circle"></i> Better blood sugar control</li>
-              <li><i class="fas fa-check-circle"></i> Faster metabolism & weight balance</li>
-              <li><i class="fas fa-check-circle"></i> Stronger immunity</li>
-              <li><i class="fas fa-check-circle"></i> Clean digestion & gut health</li>
-              <li><i class="fas fa-check-circle"></i> Energy that lasts all day</li>
-            </ul>
           </div>
 
-          <!-- Why Us Card -->
-          <div class="card why-us-card">
-            <div class="card-icon">
-              <i class="fas fa-leaf"></i>
+          <div class="cards">
+            <!-- Problem Card -->
+            <div class="card problem-card">
+              <div class="card-icon">
+                <i class="fas fa-exclamation-triangle"></i>
+              </div>
+              <h3>The Problem with Market Veggies</h3>
+              <ul>
+                <li>
+                  Spinach travels days in trucks, sprayed to look fresh, but
+                  loses most of its iron & vitamins.
+                </li>
+                <li>
+                  Tomatoes & cucumbers are grown with chemicals that disrupt
+                  hormones & gut health.
+                </li>
+                <li>
+                  Leafy greens carry pesticide residues that your body silently
+                  absorbs every single day.
+                </li>
+              </ul>
+              <div class="highlight-box">
+                <p>
+                  This silent damage builds up → fatigue, weak immunity,
+                  diabetes, gut problems, early aging.
+                </p>
+              </div>
             </div>
-            <h3>Why Our Microgreens Are Different</h3>
-            <ul>
-              <li><i class="fas fa-spa"></i> Grown fresh in small batches (no storage, no chemicals)</li>
-              <li><i class="fas fa-calendar-day"></i> Harvested same day → reach you at full power</li>
-              <li><i class="fas fa-shield-alt"></i> 100% safe, clean, and pesticide-free</li>
-            </ul>
-            <div class="impact-box">
-              <p>This isn't a luxury. It's health insurance on your plate. Every week you eat microgreens, you're protecting yourself and your family from the toxic system outside.</p>
+
+            <!-- Solution Card -->
+            <div class="card solution-card">
+              <div class="card-icon">
+                <i class="fas fa-seedling"></i>
+              </div>
+              <h3>Microgreens = Concentrated Life Force</h3>
+              <p>
+                Microgreens are not just "tiny plants." They are nutrient bombs
+                — up to
+                <strong>40× more vitamins, minerals, and antioxidants</strong>
+                compared to their mature versions.
+              </p>
+              <ul class="benefits">
+                <li>
+                  <i class="fas fa-check-circle"></i> Better blood sugar control
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i> Faster metabolism & weight
+                  balance
+                </li>
+                <li><i class="fas fa-check-circle"></i> Stronger immunity</li>
+                <li>
+                  <i class="fas fa-check-circle"></i> Clean digestion & gut
+                  health
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i> Energy that lasts all day
+                </li>
+              </ul>
             </div>
-            <div class="cta-box">
-              <p>Skip them for a week, and you're back to the same cycle of nutrient-depleted, chemical-coated veggies.</p>
-            </div>
-            <div class="final-line">
-              <p>That's why people who understand health don't buy once. They make it a weekly habit.</p>
+
+            <!-- Why Us Card -->
+            <div class="card why-us-card">
+              <div class="card-icon">
+                <i class="fas fa-leaf"></i>
+              </div>
+              <h3>Why Our Microgreens Are Different</h3>
+              <ul>
+                <li>
+                  <i class="fas fa-spa"></i> Grown fresh in small batches (no
+                  storage, no chemicals)
+                </li>
+                <li>
+                  <i class="fas fa-calendar-day"></i> Harvested same day → reach
+                  you at full power
+                </li>
+                <li>
+                  <i class="fas fa-shield-alt"></i> 100% safe, clean, and
+                  pesticide-free
+                </li>
+              </ul>
+              <div class="impact-box">
+                <p>
+                  This isn't a luxury. It's health insurance on your plate.
+                  Every week you eat microgreens, you're protecting yourself and
+                  your family from the toxic system outside.
+                </p>
+              </div>
+              <div class="cta-box">
+                <p>
+                  Skip them for a week, and you're back to the same cycle of
+                  nutrient-depleted, chemical-coated veggies.
+                </p>
+              </div>
+              <div class="final-line">
+                <p>
+                  That's why people who understand health don't buy once. They
+                  make it a weekly habit.
+                </p>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- Products Section -->
-    <section class="products" id="products">
+      <!-- Products Section -->
+      <section class="products" id="products">
         <div class="container">
-            <h2 class="section-title">Our Microgreen Varieties</h2>
-            <p style="display: block;">Each pack is freshly harvested, hand-packed, and full of flavor + nutrition.</p>
-            <div class="product-grid">
-
-                <!-- Product 1 -->
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://www.allthatgrows.in/cdn/shop/articles/Feat-Broccoli_Microgreens.jpg?v=1611040823" alt="Fresh Broccoli Microgreens - high in sulforaphane for detox"  width="418"
-    height="279"
-    loading="lazy"
-    decoding="async"
-    fetchpriority="low">
-                    </div>
-                    <div class="product-info">
-                        <h3>Broccoli Microgreens</h3>
-                        <p>High in sulforaphane, great for detox and anti-cancer properties.</p>
-                        <div class="product-price">89/- 1 box(30g)</div>
-                        <button class="add-to-cart" data-id="1" data-name="Broccoli Microgreens" data-price="89">Add to Cart</button>
-                    </div>
-                </div>
-                
-                <!-- Product 2 -->
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://mybageecha.com/cdn/shop/products/What-Are-M.jpg?v=1623598708" alt="Radish Microgreens - rich in Vitamin C for immunity"  width="418"
-    height="279"
-    loading="lazy"
-    decoding="async"
-    fetchpriority="low">
-                    </div>
-                    <div class="product-info">
-                        <h3>Radish Microgreens</h3>
-                        <p>Rich in Vitamin C, supports immunity and skin health.</p>
-                        <div class="product-price">89/- 1 box(30g)</div>
-                        <button class="add-to-cart" data-id="2" data-name="Radish Microgreens" data-price="89">Add to Cart</button>
-                    </div>
-                </div>
-                
-                <!-- Product 3 -->
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://5.imimg.com/data5/GG/GH/RN/SELLER-49389010/sunflower-microgreens.jpg" alt="Sunflower Microgreens - high protein for energy"  width="418"
-    height="279"
-    loading="lazy"
-    decoding="async"
-    fetchpriority="low">
-                    </div>
-                    <div class="product-info">
-                        <h3>Sunflower Microgreens</h3>
-                        <p>High in protein, supports muscle growth and energy.</p>
-                        <div class="product-price">89/- 1 box(30g)</div>
-                        <button class="add-to-cart" data-id="3" data-name="Sunflower Microgreens" data-price="89">Add to Cart</button>
-                    </div>
-                </div>
-                
-                <!-- Product 4 -->
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://m.media-amazon.com/images/I/61x6KFkBqzL._UF1000,1000_QL80_.jpg" alt="Pea Shoot Microgreens - rich in Vitamin K and folate"  width="418"
-    height="279"
-    loading="lazy"
-    decoding="async"
-    fetchpriority="low">
-                    </div>
-                    <div class="product-info">
-                        <h3>Pea Shoot Microgreens</h3>
-                        <p>Rich in Vitamin K and folate, great for bones and blood health.</p>
-                        <div class="product-price">89/- 1 box(30g)</div>
-                        <button class="add-to-cart" data-id="4" data-name="Pea Shoot Microgreens" data-price="89">Add to Cart</button>
-                    </div>
-                </div>
-
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://bettergreenhealth.com/wp-content/uploads/2022/07/Fenugreek.jpeg" alt="Methi Fenugreek Microgreens - helps control blood sugar"  width="418"
-    height="279"
-    loading="lazy"
-    decoding="async"
-    fetchpriority="low">
-                    </div>
-                    <div class="product-info">
-                        <h3>Methi (Fenugreek) Microgreens</h3>
-                        <p>Helps control blood sugar and improves digestion.</p>
-                        <div class="product-price">89/- 1 box(30g)</div>
-                        <button class="add-to-cart" data-id="5" data-name="Methi (Fenugreek) Microgreens" data-price="89">Add to Cart</button>
-                    </div>
-                </div>
-
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://goldenhillsfarm.in/media/product_images/efhjefgeh.jpg" alt="Basil Microgreens - antioxidant rich for heart health"  width="418"
-    height="279"
-    loading="lazy"
-    decoding="async"
-    fetchpriority="low">
-                    </div>
-                    <div class="product-info">
-                        <h3>Basil Microgreens</h3>
-                        <p>Full of antioxidants, boosts heart and also mental health. Also reduces inflammation.</p>
-                        <div class="product-price">89/- 1 box(30g)</div>
-                        <button class="add-to-cart" data-id="6" data-name="Basil Microgreens" data-price="89">Add to Cart</button>
-                    </div>
-                </div>
-
+          <h2 class="section-title">Our Microgreen Varieties</h2>
+          <p style="display: block">
+            Each pack is freshly harvested, hand-packed, and full of flavor +
+            nutrition.
+          </p>
+          <div class="product-grid">
+            <!-- Product 1 -->
+            <div class="product-card">
+              <div class="product-image">
+                <img
+                  src="https://www.allthatgrows.in/cdn/shop/articles/Feat-Broccoli_Microgreens.jpg?v=1611040823"
+                  alt="Fresh Broccoli Microgreens - high in sulforaphane for detox"
+                  width="418"
+                  height="279"
+                  loading="lazy"
+                  decoding="async"
+                  fetchpriority="low"
+                />
+              </div>
+              <div class="product-info">
+                <h3>Broccoli Microgreens</h3>
+                <p>
+                  High in sulforaphane, great for detox and anti-cancer
+                  properties.
+                </p>
+                <div class="product-price">89/- 1 box(30g)</div>
+                <button
+                  class="add-to-cart"
+                  data-id="1"
+                  data-name="Broccoli Microgreens"
+                  data-price="89"
+                >
+                  Add to Cart
+                </button>
+              </div>
             </div>
-        </div>
-    </section>
 
-    <!-- About Section -->
-    <section class="about" id="about">
+            <!-- Product 2 -->
+            <div class="product-card">
+              <div class="product-image">
+                <img
+                  src="https://mybageecha.com/cdn/shop/products/What-Are-M.jpg?v=1623598708"
+                  alt="Radish Microgreens - rich in Vitamin C for immunity"
+                  width="418"
+                  height="279"
+                  loading="lazy"
+                  decoding="async"
+                  fetchpriority="low"
+                />
+              </div>
+              <div class="product-info">
+                <h3>Radish Microgreens</h3>
+                <p>Rich in Vitamin C, supports immunity and skin health.</p>
+                <div class="product-price">89/- 1 box(30g)</div>
+                <button
+                  class="add-to-cart"
+                  data-id="2"
+                  data-name="Radish Microgreens"
+                  data-price="89"
+                >
+                  Add to Cart
+                </button>
+              </div>
+            </div>
+
+            <!-- Product 3 -->
+            <div class="product-card">
+              <div class="product-image">
+                <img
+                  src="https://5.imimg.com/data5/GG/GH/RN/SELLER-49389010/sunflower-microgreens.jpg"
+                  alt="Sunflower Microgreens - high protein for energy"
+                  width="418"
+                  height="279"
+                  loading="lazy"
+                  decoding="async"
+                  fetchpriority="low"
+                />
+              </div>
+              <div class="product-info">
+                <h3>Sunflower Microgreens</h3>
+                <p>High in protein, supports muscle growth and energy.</p>
+                <div class="product-price">89/- 1 box(30g)</div>
+                <button
+                  class="add-to-cart"
+                  data-id="3"
+                  data-name="Sunflower Microgreens"
+                  data-price="89"
+                >
+                  Add to Cart
+                </button>
+              </div>
+            </div>
+
+            <!-- Product 4 -->
+            <div class="product-card">
+              <div class="product-image">
+                <img
+                  src="https://m.media-amazon.com/images/I/61x6KFkBqzL._UF1000,1000_QL80_.jpg"
+                  alt="Pea Shoot Microgreens - rich in Vitamin K and folate"
+                  width="418"
+                  height="279"
+                  loading="lazy"
+                  decoding="async"
+                  fetchpriority="low"
+                />
+              </div>
+              <div class="product-info">
+                <h3>Pea Shoot Microgreens</h3>
+                <p>
+                  Rich in Vitamin K and folate, great for bones and blood
+                  health.
+                </p>
+                <div class="product-price">89/- 1 box(30g)</div>
+                <button
+                  class="add-to-cart"
+                  data-id="4"
+                  data-name="Pea Shoot Microgreens"
+                  data-price="89"
+                >
+                  Add to Cart
+                </button>
+              </div>
+            </div>
+
+            <div class="product-card">
+              <div class="product-image">
+                <img
+                  src="https://bettergreenhealth.com/wp-content/uploads/2022/07/Fenugreek.jpeg"
+                  alt="Methi Fenugreek Microgreens - helps control blood sugar"
+                  width="418"
+                  height="279"
+                  loading="lazy"
+                  decoding="async"
+                  fetchpriority="low"
+                />
+              </div>
+              <div class="product-info">
+                <h3>Methi (Fenugreek) Microgreens</h3>
+                <p>Helps control blood sugar and improves digestion.</p>
+                <div class="product-price">89/- 1 box(30g)</div>
+                <button
+                  class="add-to-cart"
+                  data-id="5"
+                  data-name="Methi (Fenugreek) Microgreens"
+                  data-price="89"
+                >
+                  Add to Cart
+                </button>
+              </div>
+            </div>
+
+            <div class="product-card">
+              <div class="product-image">
+                <img
+                  src="https://goldenhillsfarm.in/media/product_images/efhjefgeh.jpg"
+                  alt="Basil Microgreens - antioxidant rich for heart health"
+                  width="418"
+                  height="279"
+                  loading="lazy"
+                  decoding="async"
+                  fetchpriority="low"
+                />
+              </div>
+              <div class="product-info">
+                <h3>Basil Microgreens</h3>
+                <p>
+                  Full of antioxidants, boosts heart and also mental health.
+                  Also reduces inflammation.
+                </p>
+                <div class="product-price">89/- 1 box(30g)</div>
+                <button
+                  class="add-to-cart"
+                  data-id="6"
+                  data-name="Basil Microgreens"
+                  data-price="89"
+                >
+                  Add to Cart
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- About Section -->
+      <section class="about" id="about">
         <div class="container">
-            <h2 class="section-title">About Us</h2>
-            <div class="about-content">
-                <p>Our microgreens are grown locally in small batches, without chemicals, harvested fresh just for you. Whether you're adding them to salads, smoothies, or daily meals, they bring nutrition and taste straight from our trays to your plate.</p>
-                <br>
-                <p>We're not just selling greens — we're building a healthier community, one pack at a time. 🌱</p>
-                <div class="benefits">
-                    <div class="benefit">
-                        <h3>🌱 Harvested Fresh & Local</h3>
-                        <p>Harvested daily in small batches — straight from our trays to your plate.</p>
-                    </div>
-                    <div class="benefit">
-                        <h3>💪 Packed with Nutrition</h3>
-                        <p>Up to 40x more vitamins, minerals, and antioxidants than mature veggies.</p>
-                    </div>
-                    <div class="benefit">
-                        <h3>🚫 100% Clean & Safe</h3>
-                        <p>No chemicals, pesticides, or preservatives — just pure, healthy greens.</p>
-                    </div>
-                </div>
+          <h2 class="section-title">About Us</h2>
+          <div class="about-content">
+            <p>
+              Our microgreens are grown locally in small batches, without
+              chemicals, harvested fresh just for you. Whether you're adding
+              them to salads, smoothies, or daily meals, they bring nutrition
+              and taste straight from our trays to your plate.
+            </p>
+            <br />
+            <p>
+              We're not just selling greens — we're building a healthier
+              community, one pack at a time. 🌱
+            </p>
+            <div class="benefits">
+              <div class="benefit">
+                <h3>🌱 Harvested Fresh & Local</h3>
+                <p>
+                  Harvested daily in small batches — straight from our trays to
+                  your plate.
+                </p>
+              </div>
+              <div class="benefit">
+                <h3>💪 Packed with Nutrition</h3>
+                <p>
+                  Up to 40x more vitamins, minerals, and antioxidants than
+                  mature veggies.
+                </p>
+              </div>
+              <div class="benefit">
+                <h3>🚫 100% Clean & Safe</h3>
+                <p>
+                  No chemicals, pesticides, or preservatives — just pure,
+                  healthy greens.
+                </p>
+              </div>
             </div>
+          </div>
         </div>
-    </section>
+      </section>
 
-    <!-- Best for Health Section -->
-    <section class="health-benefits">
+      <!-- Best for Health Section -->
+      <section class="health-benefits">
         <div class="container">
-            <h2 class="section-title">Power-Packed Microgreens</h2>
-            <p class="section-subtitle">Tiny shoots, big nutrition. Each 30g pack equals the goodness of multiple everyday foods fresher, healthier, and straight from the grower to your plate.</p>
-            
-            <div class="benefits-slider">
-                <div class="slider-container">
-                    <div class="slider-track">
-                        <!-- Plant 1 -->
-                        <div class="benefit-item">
-                            <div class="benefit-image">
-                                <img src="https://www.allthatgrows.in/cdn/shop/articles/Feat-Broccoli_Microgreens.jpg?v=1611040823" alt="Broccoli Microgreens nutrition comparison"  width="418"
-    height="279"
-    loading="lazy"
-    decoding="async"
-    fetchpriority="low">
-                            </div>
-                            <div class="benefit-content">
-                                <h3>Broccoli Microgreens (30g) = Nutrition of:</h3>
-                                <ul class="benefit-list">
-                                    <li>🥕 2 Carrots → Vitamin A</li>
-                                    <li>🍊 1 Orange → Vitamin C</li>
-                                    <li>🥛 ½ Glass Milk → Calcium</li>
-                                    <li>🍌 ½ Banana → Potassium</li>
-                                </ul>
-                            </div>
-                        </div>
-                        
-                        <!-- Plant 2 -->
-                        <div class="benefit-item">
-                            <div class="benefit-image">
-                                <img src="https://mybageecha.com/cdn/shop/products/What-Are-M.jpg?v=1623598708" alt="Radish Microgreens nutrition benefits"  width="418"
-    height="279"
-    loading="lazy"
-    decoding="async"
-    fetchpriority="low">
-                            </div>
-                            <div class="benefit-content">
-                                <h3>Radish Microgreens (30g) = Nutrition of:</h3>
-                                <ul class="benefit-list">
-                                    <li>🧄 3 Garlic Cloves → Detox compounds</li>
-                                    <li>🥬 1 Bowl Palak → Folate & Iron</li>
-                                    <li>🍋 1 Lemon → Vitamin C</li>
-                                    <li>🥒 1 Cucumber → Hydration minerals</li>
-                                </ul>
-                            </div>
-                        </div>
-                        
-                        <!-- Plant 3 -->
-                        <div class="benefit-item">
-                            <div class="benefit-image">
-                                <img src="https://5.imimg.com/data5/GG/GH/RN/SELLER-49389010/sunflower-microgreens.jpg" alt="Sunflower Microgreens protein content"  width="418"
-    height="279"
-    loading="lazy"
-    decoding="async"
-    fetchpriority="low">
-                            </div>
-                            <div class="benefit-content">
-                                <h3>Sunflower Microgreens (30g) = Nutrition of:</h3>
-                                <ul class="benefit-list">
-                                    <li>🥚 2 Eggs → Plant protein & B-Vitamins</li>
-                                    <li>🥛 1 Glass Milk → Calcium</li>
-                                    <li>🥜 1 Handful Nuts → Vitamin E & Magnesium</li>
-                                    <li>🍌 1 Banana → Potassium</li>
-                                </ul>
-                            </div>
-                        </div>
-                        
-                        <!-- Plant 4 -->
-                        <div class="benefit-item">
-                            <div class="benefit-image">
-                                <img src="https://m.media-amazon.com/images/I/61x6KFkBqzL._UF1000,1000_QL80_.jpg" alt="Pea Shoot Microgreens Vitamin K benefits"  width="418"
-    height="279"
-    loading="lazy"
-    decoding="async"
-    fetchpriority="low">
-                            </div>
-                            <div class="benefit-content">
-                                <h3>Pea Shoot Microgreens (30g) = Nutrition of:</h3>
-                                <ul class="benefit-list">
-                                    <li>🥦 1 Bowl Broccoli → Vitamin K</li>
-                                    <li>🥬 1 Bowl Spinach → Iron & Folate</li>
-                                    <li>🥛 ½ Glass Milk → Calcium</li>
-                                    <li>🍎 1 Apple → Vitamin C & Fiber</li>
-                                </ul>
-                            </div>
-                        </div>
+          <h2 class="section-title">Power-Packed Microgreens</h2>
+          <p class="section-subtitle">
+            Tiny shoots, big nutrition. Each 30g pack equals the goodness of
+            multiple everyday foods fresher, healthier, and straight from the
+            grower to your plate.
+          </p>
 
-                        <!-- Plant 5 -->
-                        <div class="benefit-item">
-                            <div class="benefit-image">
-                                <img src="https://bettergreenhealth.com/wp-content/uploads/2022/07/Fenugreek.jpeg" alt="Methi Microgreens blood sugar control"  width="418"
-    height="279"
-    loading="lazy"
-    decoding="async"
-    fetchpriority="low">
-                            </div>
-                            <div class="benefit-content">
-                                <h3>Methi Microgreens (30g) = Nutrition of:</h3>
-                                <ul class="benefit-list">
-                                    <li>🍅 1 Tomato → Vitamin C</li>
-                                    <li>🍌 ½ Banana → Potassium</li>
-                                    <li>🥛 ½ Glass Milk → Calcium</li>
-                                    <li>🥚 1 Egg → Protein & B-Vitamins</li>
-                                </ul>
-                            </div>
-                        </div>
+          <div class="benefits-slider">
+            <div class="slider-container">
+              <div class="slider-track">
+                <!-- Plant 1 -->
+                <div class="benefit-item">
+                  <div class="benefit-image">
+                    <img
+                      src="https://www.allthatgrows.in/cdn/shop/articles/Feat-Broccoli_Microgreens.jpg?v=1611040823"
+                      alt="Broccoli Microgreens nutrition comparison"
+                      width="418"
+                      height="279"
+                      loading="lazy"
+                      decoding="async"
+                      fetchpriority="low"
+                    />
+                  </div>
+                  <div class="benefit-content">
+                    <h3>Broccoli Microgreens (30g) = Nutrition of:</h3>
+                    <ul class="benefit-list">
+                      <li>🥕 2 Carrots → Vitamin A</li>
+                      <li>🍊 1 Orange → Vitamin C</li>
+                      <li>🥛 ½ Glass Milk → Calcium</li>
+                      <li>🍌 ½ Banana → Potassium</li>
+                    </ul>
+                  </div>
+                </div>
 
-                        <!-- Plant 6 -->
-                        <div class="benefit-item">
-                            <div class="benefit-image">
-                                <img src="https://goldenhillsfarm.in/media/product_images/efhjefgeh.jpg" alt="Basil Microgreens antioxidant properties"  width="418"
-    height="279"
-    loading="lazy"
-    decoding="async"
-    fetchpriority="low">
-                            </div>
-                            <div class="benefit-content">
-                                <h3>Basil Microgreens (30g) = Nutrition of:</h3>
-                                <ul class="benefit-list">
-                                    <li>🍅 2 Tomatoes → Antioxidants</li>
-                                    <li>🍋 1 Lemon → Vitamin C</li>
-                                    <li>🥜 1 Handful Seeds → Magnesium</li>
-                                    <li>🧄 Garlic clove → Natural antibacterial power</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
+                <!-- Plant 2 -->
+                <div class="benefit-item">
+                  <div class="benefit-image">
+                    <img
+                      src="https://mybageecha.com/cdn/shop/products/What-Are-M.jpg?v=1623598708"
+                      alt="Radish Microgreens nutrition benefits"
+                      width="418"
+                      height="279"
+                      loading="lazy"
+                      decoding="async"
+                      fetchpriority="low"
+                    />
+                  </div>
+                  <div class="benefit-content">
+                    <h3>Radish Microgreens (30g) = Nutrition of:</h3>
+                    <ul class="benefit-list">
+                      <li>🧄 3 Garlic Cloves → Detox compounds</li>
+                      <li>🥬 1 Bowl Palak → Folate & Iron</li>
+                      <li>🍋 1 Lemon → Vitamin C</li>
+                      <li>🥒 1 Cucumber → Hydration minerals</li>
+                    </ul>
+                  </div>
                 </div>
-                
-                <!-- Slider Navigation -->
-                <div class="slider-nav">
-                    <button class="nav-btn prev-btn">&#8249;</button>
-                    <div class="slider-dots"></div>
-                    <button class="nav-btn next-btn">&#8250;</button>
+
+                <!-- Plant 3 -->
+                <div class="benefit-item">
+                  <div class="benefit-image">
+                    <img
+                      src="https://5.imimg.com/data5/GG/GH/RN/SELLER-49389010/sunflower-microgreens.jpg"
+                      alt="Sunflower Microgreens protein content"
+                      width="418"
+                      height="279"
+                      loading="lazy"
+                      decoding="async"
+                      fetchpriority="low"
+                    />
+                  </div>
+                  <div class="benefit-content">
+                    <h3>Sunflower Microgreens (30g) = Nutrition of:</h3>
+                    <ul class="benefit-list">
+                      <li>🥚 2 Eggs → Plant protein & B-Vitamins</li>
+                      <li>🥛 1 Glass Milk → Calcium</li>
+                      <li>🥜 1 Handful Nuts → Vitamin E & Magnesium</li>
+                      <li>🍌 1 Banana → Potassium</li>
+                    </ul>
+                  </div>
                 </div>
+
+                <!-- Plant 4 -->
+                <div class="benefit-item">
+                  <div class="benefit-image">
+                    <img
+                      src="https://m.media-amazon.com/images/I/61x6KFkBqzL._UF1000,1000_QL80_.jpg"
+                      alt="Pea Shoot Microgreens Vitamin K benefits"
+                      width="418"
+                      height="279"
+                      loading="lazy"
+                      decoding="async"
+                      fetchpriority="low"
+                    />
+                  </div>
+                  <div class="benefit-content">
+                    <h3>Pea Shoot Microgreens (30g) = Nutrition of:</h3>
+                    <ul class="benefit-list">
+                      <li>🥦 1 Bowl Broccoli → Vitamin K</li>
+                      <li>🥬 1 Bowl Spinach → Iron & Folate</li>
+                      <li>🥛 ½ Glass Milk → Calcium</li>
+                      <li>🍎 1 Apple → Vitamin C & Fiber</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <!-- Plant 5 -->
+                <div class="benefit-item">
+                  <div class="benefit-image">
+                    <img
+                      src="https://bettergreenhealth.com/wp-content/uploads/2022/07/Fenugreek.jpeg"
+                      alt="Methi Microgreens blood sugar control"
+                      width="418"
+                      height="279"
+                      loading="lazy"
+                      decoding="async"
+                      fetchpriority="low"
+                    />
+                  </div>
+                  <div class="benefit-content">
+                    <h3>Methi Microgreens (30g) = Nutrition of:</h3>
+                    <ul class="benefit-list">
+                      <li>🍅 1 Tomato → Vitamin C</li>
+                      <li>🍌 ½ Banana → Potassium</li>
+                      <li>🥛 ½ Glass Milk → Calcium</li>
+                      <li>🥚 1 Egg → Protein & B-Vitamins</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <!-- Plant 6 -->
+                <div class="benefit-item">
+                  <div class="benefit-image">
+                    <img
+                      src="https://goldenhillsfarm.in/media/product_images/efhjefgeh.jpg"
+                      alt="Basil Microgreens antioxidant properties"
+                      width="418"
+                      height="279"
+                      loading="lazy"
+                      decoding="async"
+                      fetchpriority="low"
+                    />
+                  </div>
+                  <div class="benefit-content">
+                    <h3>Basil Microgreens (30g) = Nutrition of:</h3>
+                    <ul class="benefit-list">
+                      <li>🍅 2 Tomatoes → Antioxidants</li>
+                      <li>🍋 1 Lemon → Vitamin C</li>
+                      <li>🥜 1 Handful Seeds → Magnesium</li>
+                      <li>🧄 Garlic clove → Natural antibacterial power</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
             </div>
-        </div>
-    </section>
 
-    <!-- Cart Page -->
-    <section class="cart-page" id="cartPage">
+            <!-- Slider Navigation -->
+            <div class="slider-nav">
+              <button class="nav-btn prev-btn">&#8249;</button>
+              <div class="slider-dots"></div>
+              <button class="nav-btn next-btn">&#8250;</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Cart Page -->
+      <section class="cart-page" id="cartPage">
         <div class="container">
-            <h2 class="section-title">Your Shopping Cart</h2>
-            
-            <div class="cart-items" id="cartItems">
-                <!-- Cart items will be added here dynamically -->
-                <p class="empty-cart-message">Your cart is empty.</p>
-            </div>
-            
-            <div class="cart-summary">
-                <div class="summary-item">
-                    <span>Subtotal</span>
-                    <span id="cartSubtotal">₹0.00</span>
-                </div>
-                <div class="summary-item">
-                    <span>Delivery Fee</span>
-                    <span id="deliveryFee">₹30</span>
-                </div>
-                <div class="summary-item total">
-                    <span>Total</span>
-                    <span id="cartTotal">₹0.00</span>
-                </div>
-                
-                <button class="checkout-btn" id="checkoutBtn">Proceed to Checkout</button>
-            </div>
-        </div>
-    </section>
+          <h2 class="section-title">Your Shopping Cart</h2>
 
-    <!-- Payment Page -->
-    <section class="payment-page" id="paymentPage">
+          <div class="cart-items" id="cartItems">
+            <!-- Cart items will be added here dynamically -->
+            <p class="empty-cart-message">Your cart is empty.</p>
+          </div>
+
+          <div class="cart-summary">
+            <div class="summary-item">
+              <span>Subtotal</span>
+              <span id="cartSubtotal">₹0.00</span>
+            </div>
+            <div class="summary-item">
+              <span>Delivery Fee</span>
+              <span id="deliveryFee">₹30</span>
+            </div>
+            <div class="summary-item total">
+              <span>Total</span>
+              <span id="cartTotal">₹0.00</span>
+            </div>
+
+            <button class="checkout-btn" id="checkoutBtn">
+              Proceed to Checkout
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Payment Page -->
+      <section class="payment-page" id="paymentPage">
         <div class="container">
-            <h2 class="section-title">Complete Your Order</h2>
-            
-            <div class="order-summary">
-                <h3>Order Summary</h3>
-                <div id="orderSummaryItems">
-                    <!-- Order items will be added here dynamically -->
-                </div>
-                <div class="summary-item total">
-                    <span>Total</span>
-                    <span id="orderTotal">₹0.00</span>
-                </div>
-            </div>
-            
-            <!-- Delivery Form -->
-            <div class="delivery-form">
-                <h3>Delivery Information</h3>
-                <div class="form-group">
-                    <label for="name">Full Name *</label>
-                    <input type="text" id="name" name="name" required placeholder="Enter your full name">
-                </div>
-                <div class="form-group">
-                    <label for="address">Delivery Address *</label>
-                    <input type="text" id="address" name="address" required placeholder="Enter your delivery address">
-                </div>
-                <div class="form-group">
-                    <label for="phone">Phone Number *</label>
-                    <input type="tel" id="phone" name="phone" required placeholder="+91 Enter your phone number" value="+91 ">
-                </div>
-            </div>
+          <h2 class="section-title">Complete Your Order</h2>
 
-            <!-- Payment Options -->
-            <div class="payment-options">
-                <h3>Select Payment Method</h3>
-                <div class="payment-option" data-method="upi">
-                    <h4>UPI Payment</h4>
-                    <p>Pay using your UPI ID</p>
-                </div>
-                <div class="payment-option" data-method="cod">
-                    <h4>Cash on Delivery</h4>
-                    <p>Pay when you receive your order</p>
-                </div>
+          <div class="order-summary">
+            <h3>Order Summary</h3>
+            <div id="orderSummaryItems">
+              <!-- Order items will be added here dynamically -->
             </div>
+            <div class="summary-item total">
+              <span>Total</span>
+              <span id="orderTotal">₹0.00</span>
+            </div>
+          </div>
 
-            <!-- Place Order Button -->
-            <button class="place-order-btn" id="placeOrderBtn">Place Order</button>
+          <!-- Delivery Form -->
+          <div class="delivery-form">
+            <h3>Delivery Information</h3>
+            <div class="form-group">
+              <label for="name">Full Name *</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                required
+                placeholder="Enter your full name"
+              />
+            </div>
+            <div class="form-group">
+              <label for="address">Delivery Address *</label>
+              <input
+                type="text"
+                id="address"
+                name="address"
+                required
+                placeholder="Enter your delivery address"
+              />
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone Number *</label>
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+                required
+                placeholder="+91 Enter your phone number"
+                value="+91 "
+              />
+            </div>
+          </div>
+
+          <!-- Payment Options -->
+          <div class="payment-options">
+            <h3>Select Payment Method</h3>
+            <div class="payment-option" data-method="upi">
+              <h4>UPI Payment</h4>
+              <p>Pay using your UPI ID</p>
+            </div>
+            <div class="payment-option" data-method="cod">
+              <h4>Cash on Delivery</h4>
+              <p>Pay when you receive your order</p>
+            </div>
+          </div>
+
+          <!-- Place Order Button -->
+          <button class="place-order-btn" id="placeOrderBtn">
+            Place Order
+          </button>
         </div>
-    </section>
-</main> <!-- CLOSING MAIN TAG -->
-
+      </section>
+    </main>
+    <!-- CLOSING MAIN TAG -->
 
     <section class="faq" id="faq">
-  <div class="container">
-    <h2 class="section-title">Frequently Asked Questions</h2>
+      <div class="container">
+        <h2 class="section-title">Frequently Asked Questions</h2>
 
-    <div class="faq-list">
-      <div class="faq-item">
-        <button class="faq-question">
-          <span>What are microgreens?</span>
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-answer">
-          <p>Microgreens are young edible plants harvested just after the first leaves develop. They contain up to 40× more nutrients than mature vegetables.</p>
+        <div class="faq-list">
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>What are microgreens?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                Microgreens are young edible plants harvested just after the
+                first leaves develop. They contain up to 40× more nutrients than
+                mature vegetables.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>Are your microgreens organic or chemical-free?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                Yes! Our microgreens are grown naturally in clean, controlled
+                environments — free from any pesticides or chemical fertilizers.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>How are microgreens delivered?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                We harvest every morning and deliver the same day across
+                Bangalore to guarantee maximum freshness and nutrition.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>How should I store microgreens after delivery?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                Keep them refrigerated in the original pack. They stay fresh for
+                up to 5–6 days when stored properly.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>Can I eat microgreens raw?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                Absolutely! They’re best eaten raw — in salads, smoothies, or as
+                garnishes for maximum flavor and nutrients.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
-
-      <div class="faq-item">
-        <button class="faq-question">
-          <span>Are your microgreens organic or chemical-free?</span>
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-answer">
-          <p>Yes! Our microgreens are grown naturally in clean, controlled environments — free from any pesticides or chemical fertilizers.</p>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-question">
-          <span>How are microgreens delivered?</span>
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-answer">
-          <p>We harvest every morning and deliver the same day across Bangalore to guarantee maximum freshness and nutrition.</p>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-question">
-          <span>How should I store microgreens after delivery?</span>
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-answer">
-          <p>Keep them refrigerated in the original pack. They stay fresh for up to 5–6 days when stored properly.</p>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-question">
-          <span>Can I eat microgreens raw?</span>
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-answer">
-          <p>Absolutely! They’re best eaten raw — in salads, smoothies, or as garnishes for maximum flavor and nutrients.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-
+    </section>
 
     <!-- Footer -->
     <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>Contact Us</h3>
-                    <p>Email: eatmygreens.in@gmail.com</p>
-                    <p>Phone: Coming soon</p>
-                    <p>Address: Babusapalya, Bangalore 560043</p>
-                </div>
-                
-                <div class="footer-section">
-                        <h3>Quick Links</h3>
-                        <p><a href="#home">Home</a></p>
-                        <p><a href="#products">Products</a></p>
-                        <p><a href="#about">About Us</a></p>
-                        <p><a href="#contact">Contact</a></p>
-                </div>
-                
-                <div class="footer-section">
-                    <h3>Follow Us</h3>
-                    <p><a href="#">Facebook</a></p>
-                    <p><a href="https://www.instagram.com/eat.my_greens/" target="_blank">Instagram</a></p>
-                    <p><a href="#">Twitter</a></p>
-                </div>
-            </div>
-            
-            <div class="footer-bottom">
-                <p>&copy; EatMyGreens 2025. All rights reserved.</p>
-            </div>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <h3>Contact Us</h3>
+            <p>Email: eatmygreens.in@gmail.com</p>
+            <p>Phone: Coming soon</p>
+            <p>Address: Babusapalya, Bangalore 560043</p>
+          </div>
+
+          <div class="footer-section">
+            <h3>Quick Links</h3>
+            <p><a href="#home">Home</a></p>
+            <p><a href="#products">Products</a></p>
+            <p><a href="#about">About Us</a></p>
+            <p><a href="#contact">Contact</a></p>
+          </div>
+
+          <div class="footer-section">
+            <h3>Follow Us</h3>
+            <p><a href="#">Facebook</a></p>
+            <p>
+              <a href="https://www.instagram.com/eat.my_greens/" target="_blank"
+                >Instagram</a
+              >
+            </p>
+            <p><a href="#">Twitter</a></p>
+          </div>
         </div>
+
+        <div class="footer-bottom">
+          <p>&copy; EatMyGreens 2025. All rights reserved.</p>
+        </div>
+      </div>
     </footer>
 
     <script src="script.js"></script>
 
     <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const placeOrderBtn = document.getElementById("placeOrderBtn");
+      document.addEventListener("DOMContentLoaded", () => {
+        const placeOrderBtn = document.getElementById("placeOrderBtn");
 
-      // Highlight payment selection
-      document.querySelectorAll(".payment-option").forEach(option => {
-        option.addEventListener("click", function () {
-          document.querySelectorAll(".payment-option").forEach(opt =>
-            opt.classList.remove("selected")
-          );
-          this.classList.add("selected");
+        // Highlight payment selection
+        document.querySelectorAll(".payment-option").forEach((option) => {
+          option.addEventListener("click", function () {
+            document
+              .querySelectorAll(".payment-option")
+              .forEach((opt) => opt.classList.remove("selected"));
+            this.classList.add("selected");
+          });
+        });
+
+        // Place Order
+        placeOrderBtn.addEventListener("click", (e) => {
+          e.preventDefault();
+
+          const name = document.getElementById("name").value.trim();
+          const address = document.getElementById("address").value.trim();
+          let phone = document.getElementById("phone").value.trim();
+
+          // Clean phone number
+          phone = phone.replace("+91", "").replace(/\D/g, "").trim();
+
+          const paymentMethod =
+            document.querySelector(".payment-option.selected")?.dataset
+              .method || "Not Selected";
+
+          const total = document.getElementById("orderTotal").innerText.trim();
+
+          // Collect items
+          const items = Array.from(
+            document.querySelectorAll("#orderSummaryItems .summary-item")
+          )
+            .map((item) => item.innerText.trim())
+            .join("\n");
+
+          // WhatsApp message
+          const orderText =
+            `📦 *New Order Received!*\n\n` +
+            `👤 Name: ${name}\n` +
+            `📍 Address: ${address}\n` +
+            `📞 Phone: +91 ${phone}\n` +
+            `💳 Payment: ${paymentMethod}\n\n` +
+            `🛒 *Order Items:*\n${items}\n\n` +
+            `💰 Total: ${total}`;
+
+          const myNumber = "917483069438"; // your WhatsApp number
+          const whatsappUrl = `https://wa.me/${myNumber}?text=${encodeURIComponent(
+            orderText
+          )}`;
+
+          window.open(whatsappUrl, "_blank");
+          alert("✅ Order placed successfully! Opening WhatsApp…");
         });
       });
-
-      // Place Order
-      placeOrderBtn.addEventListener("click", e => {
-        e.preventDefault();
-
-        const name = document.getElementById("name").value.trim();
-        const address = document.getElementById("address").value.trim();
-        let phone = document.getElementById("phone").value.trim();
-
-        // Clean phone number
-        phone = phone.replace("+91", "").replace(/\D/g, "").trim();
-
-        const paymentMethod =
-          document.querySelector(".payment-option.selected")?.dataset.method ||
-          "Not Selected";
-
-        const total = document.getElementById("orderTotal").innerText.trim();
-
-        // Collect items
-        const items = Array.from(
-          document.querySelectorAll("#orderSummaryItems .summary-item")
-        )
-          .map(item => item.innerText.trim())
-          .join("\n");
-
-        // WhatsApp message
-        const orderText =
-          `📦 *New Order Received!*\n\n` +
-          `👤 Name: ${name}\n` +
-          `📍 Address: ${address}\n` +
-          `📞 Phone: +91 ${phone}\n` +
-          `💳 Payment: ${paymentMethod}\n\n` +
-          `🛒 *Order Items:*\n${items}\n\n` +
-          `💰 Total: ${total}`;
-
-        const myNumber = "917483069438"; // your WhatsApp number
-        const whatsappUrl = `https://wa.me/${myNumber}?text=${encodeURIComponent(orderText)}`;
-
-        window.open(whatsappUrl, "_blank");
-        alert("✅ Order placed successfully! Opening WhatsApp…");
-      });
-    });
     </script>
 
-<!-- Load non-critical CSS asynchronously -->
-<script>
-// Async CSS loader
-function loadCSS(href) {
-    var link = document.createElement('link');
-    link.rel = 'stylesheet';
-    link.href = href;
-    link.media = 'print';
-    link.onload = function() { 
-        this.media = 'all';
-        document.body.classList.add('loaded');
-    };
-    document.head.appendChild(link);
-}
+    <!-- Load non-critical CSS asynchronously -->
+    <script>
+      // Async CSS loader
+      function loadCSS(href) {
+        var link = document.createElement("link");
+        link.rel = "stylesheet";
+        link.href = href;
+        link.media = "print";
+        link.onload = function () {
+          this.media = "all";
+          document.body.classList.add("loaded");
+        };
+        document.head.appendChild(link);
+      }
 
-// Load non-critical CSS
-loadCSS('styles.css');
-loadCSS('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
+      // Load non-critical CSS
+      loadCSS("styles.css");
+      loadCSS(
+        "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      );
 
-// Remove loading class when page loads
-document.addEventListener('DOMContentLoaded', function() {
-    document.body.classList.remove('loading');
-    document.body.classList.add('loaded');
-});
-</script>
+      // Remove loading class when page loads
+      document.addEventListener("DOMContentLoaded", function () {
+        document.body.classList.remove("loading");
+        document.body.classList.add("loaded");
+      });
+    </script>
 
+    <script>
+      // Async CSS loader
+      function loadCSS(href) {
+        var link = document.createElement("link");
+        link.rel = "stylesheet";
+        link.href = href;
+        document.head.appendChild(link);
+      }
+      loadCSS("styles.css");
+      loadCSS(
+        "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      );
+    </script>
 
-<script>
-// Async CSS loader
-function loadCSS(href) {
-    var link = document.createElement('link');
-    link.rel = 'stylesheet';
-    link.href = href;
-    document.head.appendChild(link);
-}
-loadCSS('styles.css');
-loadCSS('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
-</script>
+    <script>
+      // Mobile performance optimizations
+      if (window.innerWidth <= 768) {
+        // Reduce animations on mobile
+        document.documentElement.style.setProperty(
+          "--transition",
+          "all 0.2s ease"
+        );
 
-<script>
-// Mobile performance optimizations
-if (window.innerWidth <= 768) {
-    // Reduce animations on mobile
-    document.documentElement.style.setProperty('--transition', 'all 0.2s ease');
-    
-    // Lazy load non-critical images
-    const lazyImages = document.querySelectorAll('.product-image img, .benefit-image img');
-    lazyImages.forEach(img => {
-        img.loading = 'lazy';
-    });
-}
-</script>
-
-</body>
+        // Lazy load non-critical images
+        const lazyImages = document.querySelectorAll(
+          ".product-image img, .benefit-image img"
+        );
+        lazyImages.forEach((img) => {
+          img.loading = "lazy";
+        });
+      }
+    </script>
+  </body>
 </html>
