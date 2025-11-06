@@ -60,6 +60,33 @@
     }
   }
   </script>
+  <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const hamburger = document.getElementById('hamburgerBtn');
+    const nav = document.getElementById('navMenu');
+    const overlay = document.getElementById('navOverlay';
+
+    if (hamburger && nav && overlay) {
+      function toggleMenu() {
+        hamburger.classList.toggle('active');
+        nav.classList.toggle('active');
+        overlay.classList.toggle('active');
+        document.body.classList.toggle('menu-open');
+      }
+      hamburger.addEventListener('click', toggleMenu);
+      overlay.addEventListener('click', toggleMenu);
+      const navLinks = nav.querySelectorAll('a');
+      navLinks.forEach(link => {
+        link.addEventListener('click', function() {
+          if (window.innerWidth <= 768) toggleMenu();
+        });
+      });
+      window.addEventListener('resize', function() {
+        if (window.innerWidth > 768 && nav.classList.contains('active')) toggleMenu();
+      });
+    }
+  });
+  </script>
 
 </head>
 
