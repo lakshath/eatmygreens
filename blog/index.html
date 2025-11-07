@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
-<head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
@@ -10,62 +9,55 @@
   <meta name="description" content="Discover what microgreens are, why they contain up to 40x more nutrients than vegetables, and how to use them for daily health and wellness. A complete global guide to tiny superfoods." />
   <meta name="keywords" content="what are microgreens, microgreens nutrition, microgreens health benefits, superfoods guide, how to grow microgreens, microgreens vs vegetables, microgreens recipes, nutrient rich foods" />
 
-  <!-- ✅ Open Graph (for social sharing) -->
+  <!-- ✅ Open Graph -->
   <meta property="og:title" content="What Are Microgreens? A Complete Guide to Tiny Superfoods" />
   <meta property="og:description" content="Explore the science, benefits, and uses of microgreens – nutrient-rich greens that are transforming diets worldwide." />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://eatmygreens.netlify.app/blog/" />
-  <meta property="og:image" content="https://eatmygreens.netlify.app/blog/" />
-  <meta property="og:site_name" content="YourBrand" />
+  <meta property="og:image" content="https://eatmygreens.netlify.app/blog/og-image.jpg" />
+  <meta property="og:site_name" content="EatMyGreens" />
 
   <!-- ✅ Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Discover Microgreens: Nutritional Powerhouses for Daily Health">
   <meta name="twitter:description" content="Learn what microgreens are, how they work, and why they're 40x more nutrient-dense than regular vegetables.">
-  <meta name="twitter:image" content="https://eatmygreens.netlify.app/blog/">
+  <meta name="twitter:image" content="https://eatmygreens.netlify.app/blog/og-image.jpg">
 
-  <!-- ✅ Canonical URL -->
+  <!-- ✅ Canonical -->
   <link rel="canonical" href="https://eatmygreens.netlify.app/blog/" />
 
-  <!-- ✅ Stylesheets -->
+  <!-- ✅ Styles -->
   <link rel="stylesheet" href="../styles.css" />
   <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-  <!-- ✅ Favicon -->
   <link rel="icon" type="image/x-icon" href="../image.png" />
 
-  <!-- ✅ JSON-LD Schema Markup (Article) -->
+  <!-- ✅ JSON-LD Schema -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "Article",
     "headline": "What Are Microgreens? The Nutrient-Dense Superfoods Revolutionizing Healthy Eating",
     "description": "Learn all about microgreens – tiny greens packed with nutrients. Includes types, health benefits, usage tips, and scientific studies.",
-    "author": {
-      "@type": "Organization",
-      "name": "YourBrand"
-    },
-    "image": "https://yourdomain.com/assets/microgreens-blog-banner.jpg",
-    "mainEntityOfPage": "https://yourdomain.com/blog/what-are-microgreens",
+    "author": { "@type": "Organization", "name": "EatMyGreens" },
+    "image": "https://eatmygreens.netlify.app/blog/og-image.jpg",
+    "mainEntityOfPage": "https://eatmygreens.netlify.app/blog/",
     "datePublished": "2025-11-01",
     "dateModified": "2025-11-01",
     "publisher": {
       "@type": "Organization",
-      "name": "YourBrand",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://yourdomain.com/logo.png"
-      }
+      "name": "EatMyGreens",
+      "logo": { "@type": "ImageObject", "url": "https://eatmygreens.netlify.app/logo.png" }
     }
   }
   </script>
+
+  <!-- ✅ Mobile Nav Script -->
   <script>
   document.addEventListener('DOMContentLoaded', function() {
     const hamburger = document.getElementById('hamburgerBtn');
     const nav = document.getElementById('navMenu');
     const overlay = document.getElementById('navOverlay');
-
     if (hamburger && nav && overlay) {
       function toggleMenu() {
         hamburger.classList.toggle('active');
@@ -75,71 +67,191 @@
       }
       hamburger.addEventListener('click', toggleMenu);
       overlay.addEventListener('click', toggleMenu);
-      const navLinks = nav.querySelectorAll('a');
-      navLinks.forEach(link => {
-        link.addEventListener('click', function() {
-          if (window.innerWidth <= 768) toggleMenu();
-        });
-      });
-      window.addEventListener('resize', function() {
-        if (window.innerWidth > 768 && nav.classList.contains('active')) toggleMenu();
-      });
+      nav.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+        if (window.innerWidth <= 768) toggleMenu();
+      }));
     }
   });
   </script>
-
+  <script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Microgreens: Complete Guide to Nutrient-Dense Superfoods, Benefits & How to Buy in Bangalore",
+    "description": "Discover what microgreens are, why they contain up to 40x more nutrients than vegetables, and how to use them for daily health and wellness. A complete guide to tiny superfoods, focusing on local Bangalore supply.",
+    "author": { 
+      "@type": "Person", 
+      "name": "Deepa S. (Nutrition Expert)",
+      "url": "https://eatmygreens.netlify.app/about#deepa" 
+    },
+    "image": "https://eatmygreens.netlify.app/blog/og-image.jpg",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://eatmygreens.netlify.app/blog/"
+    },
+    "datePublished": "2025-11-01",
+    "dateModified": "2025-11-07",
+    "publisher": {
+      "@type": "Organization",
+      "name": "EatMyGreens",
+      "logo": { "@type": "ImageObject", "url": "https://eatmygreens.netlify.app/logo.png" }
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Are microgreens just immature plants with no added benefit?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. Peer-reviewed studies confirm microgreens contain 4 to 40 times higher nutrient levels, including vitamins C, E, and K, compared to their mature counterparts, due to the concentrated energy reserves mobilized during early growth."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do microgreens spoil instantly?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Fact: Properly refrigerated (ideally in an airtight container), microgreens maintain optimal freshness and nutrient integrity for 5–7 days after being harvested and delivered fresh."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Are microgreens only for affluent consumers?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Fact: At around ₹89 per nutrient-dense 30g serving, microgreens offer superior nutritional value per rupee compared to bulk conventional vegetables, making them a cost-effective investment in preventive health."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is the taste of microgreens indistinguishable from mature greens?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. Microgreens possess highly concentrated, intense flavors—ranging from the nutty taste of sunflower to the peppery bite of radish—that transform dishes with minimal quantity."
+        }
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Quiz",
+    "name": "Test Your Microgreens Knowledge",
+    "about": "A short quiz to test knowledge about microgreens nutrition, benefits, and consumption methods based on the blog post content.",
+    "educationalLevel": "Adult Education",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How much more nutrients can microgreens contain compared to mature vegetables?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Up to 40 times more" },
+        "suggestedAnswer": [
+          { "@type": "Answer", "text": "5-10 times more" },
+          { "@type": "Answer", "text": "Up to 40 times more" },
+          { "@type": "Answer", "text": "About the same amount" },
+          { "@type": "Answer", "text": "Slightly less nutrients" }
+        ]
+      },
+      {
+        "@type": "Question",
+        "name": "What makes microgreens more nutrient-dense than regular vegetables?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Harvested at peak nutrient concentration stage" },
+        "suggestedAnswer": [
+          { "@type": "Answer", "text": "They're genetically modified" },
+          { "@type": "Answer", "text": "Harvested at peak nutrient concentration stage" },
+          { "@type": "Answer", "text": "Grown with special fertilizers" },
+          { "@type": "Answer", "text": "They absorb more sunlight" }
+        ]
+      },
+      {
+        "@type": "Question",
+        "name": "Which vitamin is found in significantly higher amounts in microgreens?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Vitamin C (up to 6x higher)" },
+        "suggestedAnswer": [
+          { "@type": "Answer", "text": "Vitamin C (up to 6x higher)" },
+          { "@type": "Answer", "text": "Vitamin B12" },
+          { "@type": "Answer", "text": "Vitamin D" },
+          { "@type": "Answer", "text": "All vitamins are equal" }
+        ]
+      },
+      {
+        "@type": "Question",
+        "name": "What's the main environmental benefit of microgreens farming in Bangalore?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Uses 90% less water than traditional farming" },
+        "suggestedAnswer": [
+          { "@type": "Answer", "text": "Uses 90% less water than traditional farming" },
+          { "@type": "Answer", "text": "Produces more oxygen" },
+          { "@type": "Answer", "text": "Requires no sunlight" },
+          { "@type": "Answer", "text": "Grows faster in polluted air" }
+        ]
+      },
+      {
+        "@type": "Question",
+        "name": "How should you consume microgreens to preserve their nutrients?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Raw, as a garnish or in salads" },
+        "suggestedAnswer": [
+          { "@type": "Answer", "text": "Raw, as a garnish or in salads" },
+          { "@type": "Answer", "text": "Boiled for 10 minutes" },
+          { "@type": "Answer", "text": "Deep fried" },
+          { "@type": "Answer", "text": "Microwaved on high" }
+        ]
+      }
+    ]
+  }
+]
+</script>
 </head>
 
-
 <body>
-
-
 <header>
-    <div class="container">
-        <div class="header-content">
-            <div class="logo-container">
-                <img src="../logoemg.png" alt="EatMyGreens Logo" class="header-logo">
-                <div class="logo">EatMyGreens</div>
-            </div>
-            
-            <button class="hamburger" id="hamburgerBtn" aria-label="Toggle menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-            
-            <nav id="navMenu">
-              <ul>
-                <li><a href="../#home">Home</a></li>
-                <li><a href="../#microgreens-info">Why Microgreens</a></li>
-                <li><a href="../#products">Products</a></li>
-                <li><a href="./">Blogs</a></li>
-                <li><a href="../#contact">Contact</a></li>
-              </ul>
-            </nav>
-            
-            <div class="cart-icon" onclick="window.location.href='../#products'">
-                <i class="fas fa-shopping-cart"></i>
-                <span class="cart-count">0</span>
-            </div>
-        </div>
+  <div class="container">
+    <div class="header-content">
+      <div class="logo-container">
+        <img src="../logoemg.png" alt="EatMyGreens Logo" class="header-logo">
+        <div class="logo">EatMyGreens</div>
+      </div>
+      <button class="hamburger" id="hamburgerBtn" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+      <nav id="navMenu">
+        <ul>
+          <li><a href="../#home">Home</a></li>
+          <li><a href="../#microgreens-info">Why Microgreens</a></li>
+          <li><a href="../#products">Products</a></li>
+          <li><a href="./">Blogs</a></li>
+          <li><a href="../#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="cart-icon" onclick="window.location.href='../#products'">
+        <i class="fas fa-shopping-cart"></i>
+        <span class="cart-count">0</span>
+      </div>
     </div>
+  </div>
 </header>
 
 <div class="nav-overlay" id="navOverlay"></div>
 
-
-<!-- Blog Content -->
 <main class="blog-container">
+
+  
   <article>
-    
-    <h1 class="blog-title">What Are Microgreens? The Nutrient-Dense Superfoods Revolutionizing Healthy Eating in Bangalore</h1>
-    
+    <h1 class="blog-title">What Are Microgreens? The Nutrient-Dense Superfoods Revolutionizing Healthy Eating</h1>
+
     <div class="blog-meta">
       <span>📅 November 2025</span>
       <span>⏱️ 12 min read</span>
       <span>🏷️ Health & Nutrition</span>
     </div>
+
+    <!-- 👇 Added internal link to blog 2 -->
+    <p class="intro-link">
+      🌿 Want to learn how these greens boost immunity and vitality?  
+      Read our follow-up post — 
+      <a href="./benefits-of-microgreens.html"><strong>Top 10 Health Benefits of Microgreens →</strong></a>
+    </p>
 
     <!-- Introduction -->
     <section class="blog-section">
@@ -368,41 +480,475 @@
     </section>
 
   </article>
+
+
+   <section class="quiz-section">
+  <div class="quiz-container">
+    <h2>🧠 Test Your Microgreens Knowledge</h2>
+    <p class="quiz-intro">Take this quick quiz to see how much you've learned about microgreens!</p>
+    
+    <form id="microgreensQuiz" class="quiz-form">
+      
+      <div class="quiz-question" data-correct-answer="b">
+        <h3>1. How much more nutrients can microgreens contain compared to mature vegetables?</h3>
+        <div class="quiz-options">
+          <label class="quiz-option">
+            <input type="radio" name="q1" value="a" required>
+            <span class="option-text">5-10 times more</span>
+          </label>
+          <label class="quiz-option">
+            <input type="radio" name="q1" value="b">
+            <span class="option-text">Up to 40 times more</span>
+          </label>
+          <label class="quiz-option">
+            <input type="radio" name="q1" value="c">
+            <span class="option-text">About the same amount</span>
+          </label>
+          <label class="quiz-option">
+            <input type="radio" name="q1" value="d">
+            <span class="option-text">Slightly less nutrients</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="quiz-question" data-correct-answer="b">
+        <h3>2. What makes microgreens more nutrient-dense than regular vegetables?</h3>
+        <div class="quiz-options">
+          <label class="quiz-option">
+            <input type="radio" name="q2" value="a" required>
+            <span class="option-text">They're genetically modified</span>
+          </label>
+          <label class="quiz-option">
+            <input type="radio" name="q2" value="b">
+            <span class="option-text">Harvested at peak nutrient concentration stage</span>
+          </label>
+          <label class="quiz-option">
+            <input type="radio" name="q2" value="c">
+            <span class="option-text">Grown with special fertilizers</span>
+          </label>
+          <label class="quiz-option">
+            <input type="radio" name="q2" value="d">
+            <span class="option-text">They absorb more sunlight</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="quiz-question" data-correct-answer="a">
+        <h3>3. Which vitamin is found in significantly higher amounts in microgreens?</h3>
+        <div class="quiz-options">
+          <label class="quiz-option">
+            <input type="radio" name="q3" value="a" required>
+            <span class="option-text">Vitamin C (up to 6x higher)</span>
+          </label>
+          <label class="quiz-option">
+            <input type="radio" name="q3" value="b">
+            <span class="option-text">Vitamin B12</span>
+          </label>
+          <label class="quiz-option">
+            <input type="radio" name="q3" value="c">
+            <span class="option-text">Vitamin D</span>
+          </label>
+          <label class="quiz-option">
+            <input type="radio" name="q3" value="d">
+            <span class="option-text">All vitamins are equal</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="quiz-question" data-correct-answer="a">
+        <h3>4. What's the main environmental benefit of microgreens farming in Bangalore?</h3>
+        <div class="quiz-options">
+          <label class="quiz-option">
+            <input type="radio" name="q4" value="a" required>
+            <span class="option-text">Uses 90% less water than traditional farming</span>
+          </label>
+          <label class="quiz-option">
+            <input type="radio" name="q4" value="b">
+            <span class="option-text">Produces more oxygen</span>
+          </label>
+          <label class="quiz-option">
+            <input type="radio" name="q4" value="c">
+            <span class="option-text">Requires no sunlight</span>
+          </label>
+          <label class="quiz-option">
+            <input type="radio" name="q4" value="d">
+            <span class="option-text">Grows faster in polluted air</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="quiz-question" data-correct-answer="a">
+        <h3>5. How should you consume microgreens to preserve their nutrients?</h3>
+        <div class="quiz-options">
+          <label class="quiz-option">
+            <input type="radio" name="q5" value="a" required>
+            <span class="option-text">Raw, as a garnish or in salads</span>
+          </label>
+          <label class="quiz-option">
+            <input type="radio" name="q5" value="b">
+            <span class="option-text">Boiled for 10 minutes</span>
+          </label>
+          <label class="quiz-option">
+            <input type="radio" name="q5" value="c">
+            <span class="option-text">Deep fried</span>
+          </label>
+          <label class="quiz-option">
+            <input type="radio" name="q5" value="d">
+            <span class="option-text">Microwaved on high</span>
+          </label>
+        </div>
+      </div>
+
+      <button type="submit" class="quiz-submit-btn" id="submitBtn">Check Your Score 🎯</button>
+      <button type="button" class="quiz-retry-btn" id="retryBtn" style="display: none;" onclick="resetQuiz()">Try Again 🔄</button>
+    </form>
+
+    <div id="quizResults" class="quiz-results" style="display: none;">
+      <h3>Your Results: <span id="score"></span></h3>
+      <div id="resultMessage"></div>
+      <button onclick="resetQuiz()" class="quiz-retry-btn">Try Again 🔄</button> 
+    </div>
+  </div>
+</section>
+<style>
+  /* Quiz Section Styles - Same as before, using your design */
+  .quiz-section {
+    background: linear-gradient(135deg, #f1f8e9 0%, #e8f5e9 100%);
+    padding: 3rem 0;
+    margin: 3rem 0;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05); 
+  }
+
+  .quiz-container {
+    max-width: 700px; 
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  .quiz-section h2 {
+    color: #1b5e20;
+    text-align: center;
+  }
+
+  .quiz-intro {
+    text-align: center;
+    font-size: 1.1rem;
+    color: #2e7d32;
+    margin-bottom: 2rem;
+  }
+
+  .quiz-question {
+    background: white;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(46, 125, 50, 0.1);
+    border-left: 4px solid #2e7d32;
+    position: relative; /* Needed for absolute checkmarks */
+  }
+
+  .quiz-question h3 {
+    color: #1b5e20;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+  }
+
+  .quiz-options {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    pointer-events: auto; /* Default interaction enabled */
+  }
+
+  /* Styling for the quiz options */
+  .quiz-option {
+    display: flex;
+    align-items: center;
+    padding: 0.8rem;
+    background: #f8f9fa;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+  }
+
+  .quiz-option:hover {
+    background: #e8f5e9;
+    border-color: #2e7d32;
+  }
+
+  .quiz-option input[type="radio"] {
+    margin-right: 1rem;
+    transform: scale(1.2);
+    opacity: 1; /* Ensure radio button remains visible */
+  }
+
+  .option-text {
+    font-size: 1rem;
+    color: #2d3436;
+    position: relative;
+    padding-right: 25px; /* Space for result indicator */
+  }
+  
+  /* Buttons */
+  .quiz-submit-btn, .quiz-retry-btn {
+    background: linear-gradient(135deg, #2e7d32, #1b5e20);
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: block;
+    margin: 2rem auto 0; /* Adjusted margin */
+    font-weight: 600;
+  }
+
+  .quiz-submit-btn:hover, .quiz-retry-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(46, 125, 50, 0.3);
+  }
+
+  /* Result Box */
+  .quiz-results {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 8px 25px rgba(46, 125, 50, 0.15);
+    border: 2px solid #2e7d32;
+    margin-top: 2rem;
+  }
+
+  .quiz-results h3 {
+    color: #1b5e20;
+    margin-bottom: 1rem;
+  }
+
+  #resultMessage {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+  }
+
+  /* --- NEW STYLES FOR ANSWER DISPLAY --- */
+  
+  /* Disable interaction with the form elements after submission */
+  .quiz-form.submitted .quiz-options {
+    pointer-events: none;
+  }
+  
+  /* Apply green border/background for the correct option */
+  .quiz-form.submitted .quiz-option.correct {
+    background: #e8f5e9; /* Light green background */
+    border-color: #4CAF50; /* Green border */
+  }
+  
+  /* Apply red border/background for the user's incorrect option */
+  .quiz-form.submitted .quiz-option.incorrect-selected {
+    background: #ffebee; /* Light red background */
+    border-color: #e53935; /* Red border */
+  }
+  
+  /* Visual indicator (Checkmark/X) */
+  .quiz-form.submitted .quiz-option .option-text::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    font-weight: bold;
+    font-size: 1.2rem;
+    padding-left: 10px;
+  }
+
+  /* Checkmark for correct answer */
+  .quiz-form.submitted .quiz-option.correct .option-text::after {
+    content: '✅';
+    color: #4CAF50;
+  }
+  
+  /* X for user's incorrect selection */
+  .quiz-form.submitted .quiz-option.incorrect-selected .option-text::after {
+    content: '❌';
+    color: #e53935;
+  }
+  /* ------------------------------------- */
+
+  /* Responsive Design - kept same */
+  @media (max-width: 768px) {
+    .quiz-container {
+      padding: 0 1rem;
+    }
+    .quiz-question {
+      padding: 1rem;
+    }
+    .quiz-question h3 {
+      font-size: 1.1rem;
+    }
+    .option-text {
+      font-size: 0.95rem;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const quizForm = document.getElementById('microgreensQuiz');
+    const submitBtn = document.getElementById('submitBtn');
+    const retryBtn = document.getElementById('retryBtn');
+    const questions = document.querySelectorAll('.quiz-question');
+    
+    // Correct answers
+    const answers = {
+      q1: 'b', // Up to 40 times more
+      q2: 'b', // Harvested at peak nutrient concentration stage
+      q3: 'a', // Vitamin C (up to 6x higher)
+      q4: 'a', // Uses 90% less water than traditional farming
+      q5: 'a'  // Raw, as a garnish or in salads
+    };
+
+    if (quizForm) {
+      quizForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // --- 1. Calculate Score and Highlight Answers ---
+        let score = 0;
+        const formData = new FormData(this);
+        const totalQuestions = Object.keys(answers).length;
+        
+        questions.forEach((q, index) => {
+            const questionName = `q${index + 1}`;
+            const userAnswer = formData.get(questionName);
+            const correctAnswer = answers[questionName];
+
+            // Highlight Logic
+            q.querySelectorAll('.quiz-option').forEach(optionLabel => {
+                const radio = optionLabel.querySelector('input[type="radio"]');
+                optionLabel.classList.remove('correct', 'incorrect-selected'); // Clear previous classes
+
+                // Check if this option is the correct answer
+                if (radio.value === correctAnswer) {
+                    optionLabel.classList.add('correct');
+                }
+                
+                // Check if this option was selected by the user AND is incorrect
+                if (radio.checked && radio.value !== correctAnswer) {
+                    optionLabel.classList.add('incorrect-selected');
+                }
+
+                // Disable inputs and remove hover effect after submission
+                radio.disabled = true;
+            });
+
+            if (userAnswer === correctAnswer) {
+                score++;
+            }
+        });
+        
+        // Add class to form to apply submitted styles globally
+        quizForm.classList.add('submitted');
+        
+        // --- 2. Display Score and Message ---
+        const percentage = (score / totalQuestions) * 100;
+        document.getElementById('score').textContent = `${score}/${totalQuestions} (${percentage.toFixed(0)}%)`;
+        
+        let message = '';
+        if (score === totalQuestions) {
+          message = '🎉 **Perfect Score!** You are a Microgreens Guru. You know the health benefits inside and out!';
+        } else if (score >= 4) {
+          message = '👍 **Excellent!** You scored great and clearly understand the core benefits of these nutrient powerhouses.';
+        } else {
+          message = '📚 **Keep learning!** Review the highlighted answers and the article to polish your score.';
+        }
+        
+        document.getElementById('resultMessage').innerHTML = message;
+        
+        // --- 3. Manage Buttons/Visibility ---
+        const quizResults = document.getElementById('quizResults');
+        quizResults.style.display = 'block';
+        submitBtn.style.display = 'none';
+        
+        // FIX: Scroll directly to the results element for guaranteed visibility
+        quizResults.scrollIntoView({ 
+            behavior: 'smooth', 
+            block: 'start' 
+        });
+      });
+      
+      window.resetQuiz = function() {
+        // Clear highlights and re-enable inputs
+        questions.forEach(q => {
+          q.querySelectorAll('.quiz-option').forEach(optionLabel => {
+            optionLabel.classList.remove('correct', 'incorrect-selected');
+            optionLabel.querySelector('input[type="radio"]').disabled = false;
+          });
+        });
+
+        quizForm.classList.remove('submitted');
+        quizForm.reset();
+        
+        document.getElementById('quizResults').style.display = 'none';
+        submitBtn.style.display = 'block';
+
+        // Scroll back to the top of the quiz section
+        quizForm.closest('.quiz-section').scrollIntoView({ 
+            behavior: 'smooth', 
+            block: 'start' 
+        });
+      }
+    }
+  });
+</script>
+
+
+
 </main>
 
+    <!-- ✅ Related Articles Section (updated) -->
+    <section class="related-articles">
+      <h2>📚 Related Articles</h2>
+      <ul>
+        <li><a href="./benefits-of-microgreens.html">Top 10 Health Benefits of Microgreens 🌿</a></li>
+      </ul>
+    </section>
+  </article>
+</main>
 
-<!-- Footer -->
 <footer>
-    <div class="container">
-        <div class="footer-content">
-            <div class="footer-section">
-                <h3>Contact Us</h3>
-                <p>Email: eatmygreens.in@gmail.com</p>
-                <p>Phone: Coming soon</p>
-                <p>Address: Babusapalya, Bangalore 560043</p>
-            </div>
-            
-            <div class="footer-section">
-                <h3>Quick Links</h3>
-                <p><a href="../#home">Home</a></p>
-                <p><a href="../#products">Products</a></p>
-                <p><a href="../#about">About Us</a></p>
-                <p><a href="../#contact">Contact</a></p>
-            </div>
-            
-            <div class="footer-section">
-                <h3>Follow Us</h3>
-                <p><a href="#">Facebook</a></p>
-                <p><a href="https://www.instagram.com/eat.my_greens/" target="_blank">Instagram</a></p>
-                <p><a href="#">Twitter</a></p>
-            </div>
-        </div>
-        
-        <div class="footer-bottom">
-            <p>&copy; EatMyGreens 2025. All rights reserved.</p>
-        </div>
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Contact Us</h3>
+        <p>Email: eatmygreens.in@gmail.com</p>
+        <p>Phone: Coming soon</p>
+        <p>Address: Babusapalya, Bangalore 560043</p>
+      </div>
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <p><a href="../#home">Home</a></p>
+        <p><a href="../#products">Products</a></p>
+        <p><a href="../#about">About Us</a></p>
+        <p><a href="../#contact">Contact</a></p>
+      </div>
+      <div class="footer-section">
+        <h3>Follow Us</h3>
+        <p><a href="#">Facebook</a></p>
+        <p><a href="https://www.instagram.com/eat.my_greens/" target="_blank">Instagram</a></p>
+        <p><a href="#">Twitter</a></p>
+      </div>
     </div>
+    <div class="footer-bottom">
+      <p>&copy; EatMyGreens 2025. All rights reserved.</p>
+    </div>
+  </div>
 </footer>
+
+
+
+
 
 </body>
 </html>

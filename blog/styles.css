@@ -17,7 +17,7 @@ body {
 .blog-container {
   max-width: 900px;
   margin: 0 auto;
-  padding: 140px 20px 60px;
+  padding: 100px 20px 60px;
   font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
 }
 
@@ -329,3 +329,248 @@ body {
     padding: 1.2rem;
   }
 }
+
+
+/* ================= RELATED ARTICLES SECTION (Improved) ================= */
+
+/* 1. Main Container (The Card) */
+.related-articles {
+  margin-top: 4rem; /* Increased top margin for better separation */
+  padding: 2.5rem; /* Slightly increased padding */
+  background: var(--background-light, #f9f9f9);
+  border-radius: 1.25rem; /* Larger, softer border-radius */
+  /* Enhanced box-shadow for a more prominent, lifted card look */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); 
+  border: 1px solid var(--border-light, #e0e0e0); /* Defined border for structure */
+}
+
+/* 2. Section Heading Style */
+.related-articles h2 {
+  font-size: 1.75rem; /* Slightly larger heading */
+  font-weight: 800; /* Bolder heading */
+  color: var(--primary-dark, #2e7d32);
+  margin-bottom: 2rem; /* Increased margin below heading */
+  text-align: left;
+  /* Use a subtle gradient or solid color border */
+  border-left: 6px solid var(--primary-light, #81c784); /* Thicker, lighter border for contrast */
+  padding-left: 1rem; /* Increased padding */
+  line-height: 1.2;
+}
+
+/* 3. List and Grid Layout */
+.related-articles ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  /* Use a responsive grid with a minimum card width */
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+  gap: 1.5rem; /* Increased gap between cards */
+}
+
+/* 4. Individual List Item (Article Link Card) */
+.related-articles ul li {
+  background: #fff;
+  border-radius: 1rem; /* Defined border-radius */
+  padding: 1.5rem; /* Increased padding inside the card */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  /* Cleaner card shadow */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08); 
+  border: 1px solid #f0f0f0; /* Subtle internal border */
+}
+
+/* Hover Effect for Individual Link Cards */
+.related-articles ul li:hover {
+  transform: translateY(-6px); /* More pronounced lift effect */
+  box-shadow: 0 12px 25px rgba(0,0,0,0.15); /* Stronger shadow on hover */
+}
+
+/* 5. Link Styling */
+.related-articles ul li a {
+  text-decoration: none;
+  color: var(--text-dark, #333);
+  font-weight: 700; /* Bolder link text */
+  font-size: 1.1rem; /* Slightly larger font size for readability */
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Separate link text from arrow */
+  gap: 1rem; /* Increased gap */
+  transition: color 0.3s ease;
+  line-height: 1.4;
+}
+
+.related-articles ul li a:hover {
+  color: var(--primary, #4caf50);
+}
+
+/* 6. Arrow Icon Styling */
+.related-articles ul li a::after {
+  content: "→";
+  font-weight: 900; /* Extra bold arrow */
+  font-size: 1.25rem;
+  color: var(--primary-dark, #2e7d32);
+  transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  margin-left: auto; /* Ensures arrow stays on the right */
+}
+
+.related-articles ul li:hover a::after {
+  transform: translateX(6px); /* More noticeable arrow movement */
+}
+
+/* 7. Responsive Layout for Smaller Screens */
+@media (max-width: 768px) {
+  .related-articles {
+    margin-top: 3rem;
+    padding: 2rem 1rem;
+    border-radius: 1rem;
+  }
+
+  .related-articles h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    padding-left: 0.75rem;
+  }
+
+  .related-articles ul {
+    grid-template-columns: 1fr; /* Stack links vertically on small screens */
+    gap: 0.75rem;
+  }
+
+  .related-articles ul li {
+    padding: 1rem;
+    border-radius: 0.75rem;
+  }
+
+  .related-articles ul li a {
+    font-size: 1rem;
+    justify-content: space-between;
+  }
+}
+
+
+
+
+
+
+
+/* FAQ Section Styles */
+.blog-section details {
+    margin-bottom: 1.2rem;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(46, 125, 50, 0.1);
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.blog-section details:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 35px rgba(46, 125, 50, 0.15);
+}
+
+.blog-section summary {
+    width: 100%;
+    background: none;
+    border: none;
+    padding: 1.4rem 1.8rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #1b5e20;
+    text-align: left;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+    transition: all 0.3s ease;
+}
+
+.blog-section summary::-webkit-details-marker {
+    display: none;
+}
+
+.blog-section summary::after {
+    content: '+';
+    font-size: 1.5rem;
+    color: #2e7d32;
+    transition: transform 0.3s ease;
+}
+
+.blog-section details[open] summary::after {
+    content: '+';
+    transform: rotate(45deg);
+    color: #1b5e20;
+}
+
+.blog-section details[open] summary {
+    color: #1b5e20;
+}
+
+.blog-section details p {
+    display: none;
+    padding: 0 1.8rem 1.6rem;
+    color: #2d3436;
+    line-height: 1.6;
+    font-size: 1rem;
+    margin: 0;
+}
+
+.blog-section details[open] p {
+    display: block;
+}
+
+/* Responsive FAQ */
+@media (max-width: 768px) {
+    .blog-section details {
+        margin-bottom: 1rem;
+    }
+    
+    .blog-section summary {
+        font-size: 1.1rem;
+        padding: 1.2rem 1.5rem;
+    }
+    
+    .blog-section details p {
+        padding: 0 1.5rem 1.4rem;
+    }
+    
+    .blog-section summary::after {
+        font-size: 1.3rem;
+    }
+}
+
+
+
+.intro-link {
+    background: linear-gradient(135deg, #f1f8e9 0%, #e8f5e9 100%);
+    padding: 1.2rem 1.5rem;
+    border-radius: 12px;
+    border-left: 4px solid #2e7d32;
+    margin: 2rem 0;
+    font-size: 1.1rem;
+    line-height: 1.5;
+}
+
+.intro-link a {
+    color: #1b5e20;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.intro-link a:hover {
+    color: #2e7d32;
+    text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+    .intro-link {
+        padding: 1rem;
+        font-size: 1rem;
+    }
+}
+
+
+
+
+
+
