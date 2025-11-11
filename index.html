@@ -257,6 +257,13 @@
 
     <!-- CANONICAL URL (Prevent duplicate content) -->
     <link rel="canonical" href="https://eatmygreens.netlify.app/" />
+    <!-- Redirect www to non-www -->
+<script>
+  if (window.location.hostname === "www.eatmygreens.netlify.app") {
+    window.location.href = window.location.href.replace("www.", "");
+  }
+</script>
+
 
     <!-- SCHEMA MARKUP (JSON-LD for rich snippets) -->
     <script type="application/ld+json">
