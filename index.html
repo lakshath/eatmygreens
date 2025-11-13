@@ -425,50 +425,301 @@
 <!-- Replace ENTIRE <header> section in your MAIN index.html with this: -->
 
 <header>
-    <div class="container">
-        <div class="header-content">
-            <!-- Logo on the left -->
-            <div class="logo-container">
-  <img 
-    src="logoop.webp" 
-    alt="EatMyGreens Logo - Fresh microgreens delivery service" 
-    class="header-logo"
-    width="40"
-    height="40"
-    loading="eager"
-    fetchpriority="high"
-    decoding="async"
-  >
-  <div class="logo">EatMyGreens</div>
-</div>
+  <div class="container">
+    <div class="header-content">
+      <!-- Logo on the left -->
+      <div class="logo-container">
+        <img 
+          src="logoop.webp" 
+          alt="EatMyGreens Logo - Fresh microgreens delivery service" 
+          class="header-logo"
+          width="40"
+          height="40"
+          loading="eager"
+          fetchpriority="high"
+          decoding="async"
+        >
+        <div class="logo">EatMyGreens</div>
+      </div>
 
-            
-            <!-- Hamburger Menu Button (mobile only) -->
-            <button class="hamburger" id="hamburgerBtn" aria-label="Toggle menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-            
-            <!-- Navigation in the middle -->
-            <nav id="navMenu">
-              <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#microgreens-info">Why Microgreens</a></li>
-                <li><a href="#products">Products</a></li>
-                <li><a href="./blog/">Blogs</a></li>
-                <li><a href="#contact">Contact</a></li>
-              </ul>
-            </nav>
-            
-            <!-- Cart icon on the right -->
-            <div class="cart-icon" id="cartIcon">
-                <i class="fas fa-shopping-cart"></i>
-                <span class="cart-count">0</span>
-            </div>
-        </div>
+      <!-- Hamburger Menu Button (mobile only) -->
+      <button class="hamburger" id="hamburgerBtn" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <!-- Navigation -->
+      <nav id="navMenu">
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#microgreens-info">Why Microgreens</a></li>
+          <li><a href="#products">Products</a></li>
+
+          <!-- BLOG DROPDOWN -->
+          <li class="dropdown">
+            <a href="javascript:void(0);" id="blogDropdown">Blogs ▾</a>
+            <ul class="dropdown-menu">
+              <li><a href="/blog/">What Are Microgreens? (Beginner’s Guide)</a></li>
+              <li><a href="/blog/benefits-of-microgreens.html">Top 10 Health Benefits of Microgreens</a></li>
+              <li><a href="/blog/how-to-grow-microgreens-at-home.html">How to Grow Microgreens at Home</a></li>
+              
+            </ul>
+          </li>
+
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <!-- Cart Icon -->
+      <div class="cart-icon" id="cartIcon">
+        <i class="fas fa-shopping-cart"></i>
+        <span class="cart-count">0</span>
+      </div>
     </div>
+  </div>
 </header>
+
+<style>
+/* === HEADER BASE === */
+header {
+  background: #ffffff;
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.08);
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 70px;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.header-logo {
+  border-radius: 50%;
+}
+
+.logo {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: #2e7d32;
+}
+
+/* === NAVIGATION === */
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+nav a {
+  text-decoration: none;
+  color: #1b5e20;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+}
+
+nav a:hover {
+  color: #43a047;
+}
+
+/* === BLOG DROPDOWN === */
+.dropdown {
+  position: relative;
+}
+
+#blogDropdown {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 130%;
+  left: 0;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  min-width: 270px;
+  overflow: hidden;
+  animation: dropdownFade 0.25s ease forwards;
+}
+
+@keyframes dropdownFade {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.dropdown-menu li {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.dropdown-menu li:last-child {
+  border-bottom: none;
+}
+
+.dropdown-menu a {
+  display: block;
+  padding: 0.9rem 1.2rem;
+  color: #1b5e20;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  font-weight: 500;
+  position: relative;
+}
+
+.dropdown-menu a::after {
+  content: "→";
+  position: absolute;
+  right: 1rem;
+  opacity: 0;
+  transform: translateX(-5px);
+  transition: all 0.25s ease;
+}
+
+.dropdown-menu a:hover {
+  background: #e8f5e9;
+  color: #2e7d32;
+  padding-left: 1.5rem;
+}
+
+.dropdown-menu a:hover::after {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* === CART ICON === */
+.cart-icon {
+  position: relative;
+  cursor: pointer;
+  color: #1b5e20;
+  font-size: 1.3rem;
+}
+
+.cart-count {
+  position: absolute;
+  top: -6px;
+  right: -10px;
+  background: #4caf50;
+  color: white;
+  border-radius: 50%;
+  padding: 2px 6px;
+  font-size: 0.75rem;
+}
+
+/* === HAMBURGER MENU (MOBILE) === */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 22px;
+  height: 16px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.hamburger span {
+  display: block;
+  height: 2px;
+  background: #1b5e20;
+  border-radius: 2px;
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 768px) {
+  nav ul {
+    position: absolute;
+    top: 70px;
+    left: 0;
+    background: #ffffff;
+    flex-direction: column;
+    width: 100%;
+    display: none;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+    padding: 1.5rem 0;
+  }
+
+  nav ul.active {
+    display: flex;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .dropdown-menu {
+    position: static;
+    box-shadow: none;
+    backdrop-filter: none;
+    background: none;
+  }
+
+  .dropdown-menu a {
+    padding-left: 1rem;
+  }
+}
+</style>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const hamburgerBtn = document.getElementById("hamburgerBtn");
+  const navMenu = document.querySelector("nav ul");
+  const dropdown = document.querySelector(".dropdown");
+  const dropdownMenu = dropdown.querySelector(".dropdown-menu");
+  const blogLink = document.getElementById("blogDropdown");
+
+  // Toggle mobile nav
+  hamburgerBtn.addEventListener("click", () => {
+    navMenu.classList.toggle("active");
+  });
+
+  // Toggle blog dropdown on click
+  blogLink.addEventListener("click", (e) => {
+    e.preventDefault();
+    dropdown.classList.toggle("active");
+    const isActive = dropdown.classList.contains("active");
+    dropdownMenu.style.display = isActive ? "block" : "none";
+  });
+
+  // Close dropdown if clicked outside
+  document.addEventListener("click", (e) => {
+    if (!dropdown.contains(e.target) && e.target !== blogLink) {
+      dropdown.classList.remove("active");
+      dropdownMenu.style.display = "none";
+    }
+  });
+});
+</script>
+
 
 <!-- Nav overlay - ADD THIS RIGHT AFTER </header> -->
 <div class="nav-overlay" id="navOverlay"></div>
