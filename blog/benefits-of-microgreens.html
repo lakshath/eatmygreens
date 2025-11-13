@@ -508,26 +508,44 @@ nav a:hover {
 document.addEventListener("DOMContentLoaded", () => {
   const hamburgerBtn = document.getElementById("hamburgerBtn");
   const navMenu = document.querySelector("nav ul");
+  const blogLink = document.getElementById("blogDropdown");
   const dropdown = document.querySelector(".dropdown");
   const dropdownMenu = dropdown.querySelector(".dropdown-menu");
-  const blogLink = document.getElementById("blogDropdown");
 
-  // Toggle mobile nav
+  // Toggle mobile menu
   hamburgerBtn.addEventListener("click", () => {
     navMenu.classList.toggle("active");
   });
 
-  // Toggle blog dropdown on click
+  // Blog dropdown functionality - FIXED
   blogLink.addEventListener("click", (e) => {
-    e.preventDefault();
-    dropdown.classList.toggle("active");
-    const isActive = dropdown.classList.contains("active");
-    dropdownMenu.style.display = isActive ? "block" : "none";
+    // For mobile devices
+    if (window.innerWidth <= 768) {
+      e.preventDefault();
+      e.stopPropagation(); // Prevent closing the menu
+      
+      // Toggle only the dropdown, not the main menu
+      dropdown.classList.toggle("active");
+      dropdownMenu.style.display = dropdown.classList.contains("active") ? "block" : "none";
+    }
+    // For desktop - normal link behavior (you can add href later)
   });
 
-  // Close dropdown if clicked outside
+  // Close mobile menu when clicking on regular nav links
+  document.querySelectorAll('nav a:not(#blogDropdown)').forEach(link => {
+    link.addEventListener('click', () => {
+      if (window.innerWidth <= 768) {
+        navMenu.classList.remove("active");
+        // Also close dropdown if open
+        dropdown.classList.remove("active");
+        dropdownMenu.style.display = "none";
+      }
+    });
+  });
+
+  // Close dropdown when clicking outside (for desktop)
   document.addEventListener("click", (e) => {
-    if (!dropdown.contains(e.target) && e.target !== blogLink) {
+    if (!dropdown.contains(e.target) && window.innerWidth > 768) {
       dropdown.classList.remove("active");
       dropdownMenu.style.display = "none";
     }

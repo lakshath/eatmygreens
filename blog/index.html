@@ -208,7 +208,6 @@
 
 
 
-
 </head>
 
 <body>
@@ -270,6 +269,16 @@
 </header>
 
 <style>
+
+
+#navMenu.open {
+  background: #fff; /* solid background */
+  backdrop-filter: none;
+}
+
+
+
+
 /* === HEADER BASE === */
 header {
   background: #ffffff;
@@ -478,34 +487,74 @@ nav a:hover {
 }
 </style>
 
+
+
+<!-- ✅ Mobile Nav Script - FIXED -->
 <script>
-document.addEventListener("DOMContentLoaded", () => {
-  const hamburgerBtn = document.getElementById("hamburgerBtn");
-  const navMenu = document.querySelector("nav ul");
-  const dropdown = document.querySelector(".dropdown");
-  const dropdownMenu = dropdown.querySelector(".dropdown-menu");
-  const blogLink = document.getElementById("blogDropdown");
-
-  // Toggle mobile nav
-  hamburgerBtn.addEventListener("click", () => {
-    navMenu.classList.toggle("active");
-  });
-
-  // Toggle blog dropdown on click
-  blogLink.addEventListener("click", (e) => {
-    e.preventDefault();
-    dropdown.classList.toggle("active");
-    const isActive = dropdown.classList.contains("active");
-    dropdownMenu.style.display = isActive ? "block" : "none";
-  });
-
-  // Close dropdown if clicked outside
-  document.addEventListener("click", (e) => {
-    if (!dropdown.contains(e.target) && e.target !== blogLink) {
-      dropdown.classList.remove("active");
-      dropdownMenu.style.display = "none";
+document.addEventListener('DOMContentLoaded', function() {
+  const hamburger = document.getElementById('hamburgerBtn');
+  const nav = document.getElementById('navMenu');
+  const overlay = document.getElementById('navOverlay');
+  const blogLink = document.getElementById('blogDropdown');
+  const dropdown = document.querySelector('.dropdown');
+  
+  if (hamburger && nav && overlay) {
+    function toggleMenu() {
+      const isActive = hamburger.classList.contains('active');
+      
+      if (!isActive) {
+        // Opening menu
+        hamburger.classList.add('active');
+        nav.classList.add('active');
+        overlay.classList.add('active');
+        document.body.classList.add('menu-open');
+      } else {
+        // Closing menu
+        hamburger.classList.remove('active');
+        nav.classList.remove('active');
+        overlay.classList.remove('active');
+        document.body.classList.remove('menu-open');
+        // Also close dropdown when closing menu
+        if (dropdown) {
+          dropdown.classList.remove('active');
+        }
+      }
     }
-  });
+    
+    hamburger.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      toggleMenu();
+    });
+    
+    overlay.addEventListener('click', function() {
+      toggleMenu();
+    });
+    
+    // Blog dropdown functionality
+    if (blogLink && dropdown) {
+      blogLink.addEventListener('click', function(e) {
+        if (window.innerWidth <= 768) {
+          e.preventDefault();
+          e.stopPropagation();
+          dropdown.classList.toggle('active');
+        }
+      });
+    }
+    
+    // Close menu when clicking on regular nav links
+    const navLinks = nav.querySelectorAll('a:not(#blogDropdown)');
+    navLinks.forEach(link => {
+      link.addEventListener('click', function() {
+        if (window.innerWidth <= 768) {
+          toggleMenu();
+          if (dropdown) {
+            dropdown.classList.remove('active');
+          }
+        }
+      });
+    });
+  }
 });
 </script>
 
@@ -1233,7 +1282,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-
+<script src="/script.js"></script>
 
 </body>
 </html>

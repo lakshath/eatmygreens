@@ -1,15 +1,32 @@
-// ================= HAMBURGER MENU (FIXED VERSION) =================
+// ================= HAMBURGER MENU (FIXED FOR BLOG DROPDOWN) =================
 document.addEventListener('DOMContentLoaded', function() {
-  const hamburger = document.querySelector('.hamburger');
-  const nav = document.querySelector('nav');
-  const overlay = document.querySelector('.nav-overlay');
+  const hamburger = document.getElementById('hamburgerBtn');
+  const nav = document.getElementById('navMenu');
+  const overlay = document.getElementById('navOverlay');
+  const blogLink = document.getElementById('blogDropdown');
+  const dropdown = document.querySelector('.dropdown');
   
   if (hamburger && nav && overlay) {
     function toggleMenu() {
-      hamburger.classList.toggle('active');
-      nav.classList.toggle('active');
-      overlay.classList.toggle('active');
-      document.body.classList.toggle('menu-open');
+      const isActive = hamburger.classList.contains('active');
+      
+      if (!isActive) {
+        // Opening menu
+        hamburger.classList.add('active');
+        nav.classList.add('active');
+        overlay.classList.add('active');
+        document.body.classList.add('menu-open');
+      } else {
+        // Closing menu
+        hamburger.classList.remove('active');
+        nav.classList.remove('active');
+        overlay.classList.remove('active');
+        document.body.classList.remove('menu-open');
+        // Also close dropdown when closing menu
+        if (dropdown) {
+          dropdown.classList.remove('active');
+        }
+      }
     }
     
     hamburger.addEventListener('click', function(e) {
@@ -22,15 +39,33 @@ document.addEventListener('DOMContentLoaded', function() {
       toggleMenu();
     });
     
-    const navLinks = nav.querySelectorAll('a');
+    // Blog dropdown functionality - SIMPLIFIED FIX
+    if (blogLink && dropdown) {
+      blogLink.addEventListener('click', function(e) {
+        // For mobile devices only
+        if (window.innerWidth <= 768) {
+          e.preventDefault();
+          e.stopPropagation();
+          
+          // Toggle only the dropdown
+          dropdown.classList.toggle('active');
+          
+          // Don't close the main menu!
+          return false;
+        }
+      });
+    }
+    
+    // Close menu when clicking on regular nav links (excluding blog dropdown and its children)
+    const navLinks = nav.querySelectorAll('a:not(#blogDropdown):not(.dropdown-menu a)');
     navLinks.forEach(link => {
       link.addEventListener('click', function(e) {
-        const href = this.getAttribute('href');
-        
         if (window.innerWidth <= 768) {
           toggleMenu();
         }
         
+        // Handle smooth scrolling for anchor links
+        const href = this.getAttribute('href');
         if (href && href.startsWith('#') && href.length > 1) {
           e.preventDefault();
           
@@ -47,6 +82,20 @@ document.addEventListener('DOMContentLoaded', function() {
       });
     });
     
+    // Close dropdown when clicking on actual blog post links (inside dropdown)
+    const blogPostLinks = nav.querySelectorAll('.dropdown-menu a');
+    blogPostLinks.forEach(link => {
+      link.addEventListener('click', function(e) {
+        if (window.innerWidth <= 768) {
+          // Close both dropdown and main menu when a blog post is clicked
+          if (dropdown) {
+            dropdown.classList.remove('active');
+          }
+          toggleMenu();
+        }
+      });
+    });
+    
     document.addEventListener('keydown', function(e) {
       if (e.key === 'Escape' && nav.classList.contains('active')) {
         toggleMenu();
@@ -59,6 +108,10 @@ document.addEventListener('DOMContentLoaded', function() {
         nav.classList.remove('active');
         overlay.classList.remove('active');
         document.body.classList.remove('menu-open');
+        // Reset dropdown on desktop
+        if (dropdown) {
+          dropdown.classList.remove('active');
+        }
       }
     });
   }

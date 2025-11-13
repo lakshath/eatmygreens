@@ -372,45 +372,6 @@
       }
     </script>
 
-    <script>
-// ================= HAMBURGER MENU =================
-// Add this to the TOP of your script.js
-  
-  if (hamburger && nav && overlay) {
-    // Toggle menu
-    function toggleMenu() {
-      hamburger.classList.toggle('active');
-      nav.classList.toggle('active');
-      overlay.classList.toggle('active');
-      document.body.classList.toggle('menu-open');
-    }
-    
-    // Hamburger click
-    hamburger.addEventListener('click', toggleMenu);
-    
-    // Overlay click - close menu
-    overlay.addEventListener('click', toggleMenu);
-    
-    // Close menu when clicking nav links
-    const navLinks = nav.querySelectorAll('a');
-    navLinks.forEach(link => {
-      link.addEventListener('click', function() {
-        if (window.innerWidth <= 768) {
-          toggleMenu();
-        }
-      });
-    });
-    
-    // Close on window resize
-    window.addEventListener('resize', function() {
-      if (window.innerWidth > 768 && nav.classList.contains('active')) {
-        toggleMenu();
-      }
-    });
-  }
-
-</script>
-
 
 
 
@@ -479,6 +440,19 @@
     </div>
   </div>
 </header>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <style>
 /* === HEADER BASE === */
@@ -634,25 +608,6 @@ nav a:hover {
   font-size: 0.75rem;
 }
 
-/* === HAMBURGER MENU (MOBILE) === */
-.hamburger {
-  display: none;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 22px;
-  height: 16px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-}
-
-.hamburger span {
-  display: block;
-  height: 2px;
-  background: #1b5e20;
-  border-radius: 2px;
-}
 
 /* === RESPONSIVE === */
 @media (max-width: 768px) {
@@ -693,32 +648,61 @@ nav a:hover {
 document.addEventListener("DOMContentLoaded", () => {
   const hamburgerBtn = document.getElementById("hamburgerBtn");
   const navMenu = document.querySelector("nav ul");
+  const blogLink = document.getElementById("blogDropdown");
   const dropdown = document.querySelector(".dropdown");
   const dropdownMenu = dropdown.querySelector(".dropdown-menu");
-  const blogLink = document.getElementById("blogDropdown");
 
-  // Toggle mobile nav
+  // Toggle mobile menu
   hamburgerBtn.addEventListener("click", () => {
     navMenu.classList.toggle("active");
   });
 
-  // Toggle blog dropdown on click
+  // Blog dropdown functionality - FIXED
   blogLink.addEventListener("click", (e) => {
-    e.preventDefault();
-    dropdown.classList.toggle("active");
-    const isActive = dropdown.classList.contains("active");
-    dropdownMenu.style.display = isActive ? "block" : "none";
+    // For mobile devices
+    if (window.innerWidth <= 768) {
+      e.preventDefault();
+      e.stopPropagation(); // Prevent closing the menu
+      
+      // Toggle only the dropdown, not the main menu
+      dropdown.classList.toggle("active");
+      dropdownMenu.style.display = dropdown.classList.contains("active") ? "block" : "none";
+    }
+    // For desktop - normal link behavior (you can add href later)
   });
 
-  // Close dropdown if clicked outside
+  // Close mobile menu when clicking on regular nav links
+  document.querySelectorAll('nav a:not(#blogDropdown)').forEach(link => {
+    link.addEventListener('click', () => {
+      if (window.innerWidth <= 768) {
+        navMenu.classList.remove("active");
+        // Also close dropdown if open
+        dropdown.classList.remove("active");
+        dropdownMenu.style.display = "none";
+      }
+    });
+  });
+
+  // Close dropdown when clicking outside (for desktop)
   document.addEventListener("click", (e) => {
-    if (!dropdown.contains(e.target) && e.target !== blogLink) {
+    if (!dropdown.contains(e.target) && window.innerWidth > 768) {
       dropdown.classList.remove("active");
       dropdownMenu.style.display = "none";
     }
   });
 });
 </script>
+
+
+
+
+
+
+
+
+
+
+
 
 
 <!-- Nav overlay - ADD THIS RIGHT AFTER </header> -->
