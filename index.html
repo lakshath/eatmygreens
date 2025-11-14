@@ -668,7 +668,13 @@ document.addEventListener("DOMContentLoaded", () => {
       dropdown.classList.toggle("active");
       dropdownMenu.style.display = dropdown.classList.contains("active") ? "block" : "none";
     }
-    // For desktop - normal link behavior (you can add href later)
+    // === DESKTOP FIX ===
+    else {
+      e.preventDefault();
+      e.stopPropagation();
+      const isVisible = dropdownMenu.style.display === "block";
+      dropdownMenu.style.display = isVisible ? "none" : "block";
+    }
   });
 
   // Close mobile menu when clicking on regular nav links
@@ -686,7 +692,6 @@ document.addEventListener("DOMContentLoaded", () => {
   // Close dropdown when clicking outside (for desktop)
   document.addEventListener("click", (e) => {
     if (!dropdown.contains(e.target) && window.innerWidth > 768) {
-      dropdown.classList.remove("active");
       dropdownMenu.style.display = "none";
     }
   });

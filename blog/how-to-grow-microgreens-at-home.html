@@ -240,6 +240,7 @@
 </script>
 
   <!-- ✅ Stylesheets -->
+  <link rel="stylesheet" href="/styles.css" />
   <link rel="stylesheet" href="/blog/howtostyles.css" />
   <link rel="icon" type="image/x-icon" href="../image.png" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -1190,6 +1191,240 @@
   </div>
 </header>
 
+<style>
+/* === HEADER BASE === */
+header {
+  background: #ffffff;
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.08);
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 70px;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.header-logo {
+  border-radius: 50%;
+}
+
+.logo {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: #2e7d32;
+}
+
+/* === NAVIGATION === */
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+nav a {
+  text-decoration: none;
+  color: #1b5e20;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+}
+
+nav a:hover {
+  color: #43a047;
+}
+
+/* === BLOG DROPDOWN === */
+.dropdown {
+  position: relative;
+}
+
+#blogDropdown {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 130%;
+  left: 0;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  min-width: 270px;
+  overflow: hidden;
+  animation: dropdownFade 0.25s ease forwards;
+}
+
+@keyframes dropdownFade {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.dropdown-menu li {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.dropdown-menu li:last-child {
+  border-bottom: none;
+}
+
+.dropdown-menu a {
+  display: block;
+  padding: 0.9rem 1.2rem;
+  color: #1b5e20;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  font-weight: 500;
+  position: relative;
+}
+
+.dropdown-menu a::after {
+  content: "→";
+  position: absolute;
+  right: 1rem;
+  opacity: 0;
+  transform: translateX(-5px);
+  transition: all 0.25s ease;
+}
+
+.dropdown-menu a:hover {
+  background: #e8f5e9;
+  color: #2e7d32;
+  padding-left: 1.5rem;
+}
+
+.dropdown-menu a:hover::after {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* === CART ICON === */
+.cart-icon {
+  position: relative;
+  cursor: pointer;
+  color: #1b5e20;
+  font-size: 1.3rem;
+}
+
+.cart-count {
+  position: absolute;
+  top: -6px;
+  right: -10px;
+  background: #4caf50;
+  color: white;
+  border-radius: 50%;
+  padding: 2px 6px;
+  font-size: 0.75rem;
+}
+
+/* === HAMBURGER MENU (MOBILE) === */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 22px;
+  height: 16px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  position: relative;
+  z-index: 1000; /* ADDED THIS */
+}
+
+.hamburger span {
+  display: block;
+  height: 2px;
+  background: #1b5e20;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 768px) {
+  .hamburger {
+    display: flex; /* FIXED: Ensure it shows on mobile */
+  }
+
+  nav ul {
+    position: fixed;
+    top: 70px;
+    left: 0;
+    background: #ffffff;
+    flex-direction: column;
+    width: 100%;
+    height: calc(100vh - 70px);
+    display: none;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+    padding: 2rem 0;
+    overflow-y: auto;
+    z-index: 998;
+  }
+
+  nav ul.active {
+    display: flex;
+  }
+
+  nav ul li {
+    width: 100%;
+    text-align: center;
+  }
+
+  nav ul li a {
+    display: block;
+    padding: 1rem 2rem;
+    width: 100%;
+  }
+
+  .dropdown-menu {
+    position: static;
+    box-shadow: none;
+    backdrop-filter: none;
+    background: none;
+    width: 100%;
+    display: none;
+    animation: none;
+  }
+
+  .dropdown.active .dropdown-menu {
+    display: block;
+  }
+
+  .dropdown-menu a {
+    padding-left: 3rem;
+    font-size: 0.9rem;
+  }
+}
+</style>
+
 <script>
 document.addEventListener("DOMContentLoaded", () => {
   const hamburgerBtn = document.getElementById("hamburgerBtn");
@@ -1198,10 +1433,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const dropdown = document.querySelector(".dropdown");
   const dropdownMenu = dropdown.querySelector(".dropdown-menu");
 
-  // Toggle mobile menu
+  // Toggle mobile menu - FIXED
   hamburgerBtn.addEventListener("click", () => {
     navMenu.classList.toggle("active");
-    hamburgerBtn.classList.toggle("active");
+    hamburgerBtn.classList.toggle("active"); // ADDED THIS LINE
   });
 
   // Blog dropdown functionality
@@ -1210,6 +1445,11 @@ document.addEventListener("DOMContentLoaded", () => {
       e.preventDefault();
       e.stopPropagation();
       dropdown.classList.toggle("active");
+    } else {
+      e.preventDefault();
+      e.stopPropagation();
+      const isVisible = dropdownMenu.style.display === "block";
+      dropdownMenu.style.display = isVisible ? "none" : "block";
     }
   });
 
@@ -1218,7 +1458,7 @@ document.addEventListener("DOMContentLoaded", () => {
     link.addEventListener('click', () => {
       if (window.innerWidth <= 768) {
         navMenu.classList.remove("active");
-        hamburgerBtn.classList.remove("active");
+        hamburgerBtn.classList.remove("active"); // ADDED THIS LINE
         dropdown.classList.remove("active");
       }
     });
@@ -1226,95 +1466,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Close dropdown when clicking outside (for desktop)
   document.addEventListener("click", (e) => {
-    if (!dropdown.contains(e.target) && window.innerWidth > 768) {
-      dropdown.classList.remove("active");
+    if (window.innerWidth > 768 && !dropdown.contains(e.target)) {
+      dropdownMenu.style.display = "none";
     }
   });
-
-  // FAQ functionality
-  document.querySelectorAll(".faq-question").forEach((button) => {
-    button.addEventListener("click", () => {
-      const faqItem = button.parentElement;
-      const isActive = faqItem.classList.contains("active");
-
-      // Close all FAQs
-      document.querySelectorAll(".faq-item").forEach((item) => {
-        item.classList.remove("active");
-      });
-
-      // Open clicked one if it wasn't active
-      if (!isActive) {
-        faqItem.classList.add("active");
-      }
-    });
-  });
-
-  // Quiz functionality
-  const quizForm = document.getElementById("microgreensQuiz");
-  const results = document.getElementById("quizResults");
-  const review = document.getElementById("answerReview");
-
-  const answers = {
-    q1: "b",
-    q2: "b",
-    q3: "c",
-    q4: "a"
-  };
-
-  function getOptionText(q, val) {
-    const el = document.querySelector(`input[name="${q}"][value="${val}"]`);
-    return el ? el.closest("label").textContent.trim() : "";
-  }
-
-  if (quizForm) {
-    quizForm.addEventListener("submit", e => {
-      e.preventDefault();
-      let score = 0;
-      const data = new FormData(quizForm);
-      review.innerHTML = "<h4>Answer Review:</h4>";
-
-      Object.keys(answers).forEach((q, i) => {
-        const user = data.get(q);
-        const correct = answers[q];
-        const isCorrect = user === correct;
-        if (isCorrect) score++;
-
-        const item = document.createElement("div");
-        item.classList.add("review-item", isCorrect ? "correct" : "incorrect");
-        item.innerHTML = `
-          <p>${quizForm.querySelectorAll(".quiz-question h3")[i].textContent}</p>
-          ${isCorrect 
-            ? `<span>✅ Your Answer: <span class="user-answer">${getOptionText(q, user)}</span></span>`
-            : `<span>❌ Your Answer: <span class="user-answer">${getOptionText(q, user)}</span></span>
-               <span>⭐ Correct Answer: <span class="correct-answer">${getOptionText(q, correct)}</span></span>`}
-        `;
-        review.appendChild(item);
-      });
-
-      const percent = (score / Object.keys(answers).length) * 100;
-      document.getElementById("score").textContent = `${score}/${Object.keys(answers).length} (${percent.toFixed(0)}%)`;
-
-      let msg = "";
-      if (score === 4) msg = "🎉 Perfect! You're a true microgreen expert.";
-      else if (score >= 3) msg = "🌿 Great job! You really know your greens.";
-      else msg = "🌱 Keep learning! Review the blog and try again.";
-
-      document.getElementById("resultMessage").innerHTML = msg;
-      results.style.display = "block";
-      quizForm.style.display = "none";
-      results.scrollIntoView({ behavior: "smooth", block: "start" });
-    });
-
-    window.resetQuiz = () => {
-      quizForm.reset();
-      quizForm.style.display = "block";
-      results.style.display = "none";
-      review.innerHTML = "";
-      quizForm.scrollIntoView({ behavior: "smooth", block: "start" });
-    };
-  }
 });
 </script>
+
 
 <div class="blog-container">
   <header class="blog-header">
@@ -1704,6 +1862,35 @@ document.addEventListener("DOMContentLoaded", () => {
     </div>
   </div>
 </footer>
+<script src="/script.js"></script>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const hamburgerBtn = document.getElementById("hamburgerBtn");
+  const navMenu = document.querySelector("nav ul");
+  
+  if (hamburgerBtn && navMenu) {
+    // Toggle mobile menu
+    hamburgerBtn.addEventListener("click", () => {
+      navMenu.classList.toggle("active");
+      hamburgerBtn.classList.toggle("active");
+    });
+
+    // Close menu when clicking on links
+    document.querySelectorAll('nav a').forEach(link => {
+      link.addEventListener('click', () => {
+        if (window.innerWidth <= 768) {
+          navMenu.classList.remove("active");
+          hamburgerBtn.classList.remove("active");
+        }
+      });
+    });
+  }
+});
+</script>
+
+
 
 </body>
 </html>
