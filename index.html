@@ -1,383 +1,195 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="google-adsense-account" content="ca-pub-2709858677165078">
-    <!-- rest of your meta, preload, and schema -->
+<head>
+  <!-- BASIC META -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="google-adsense-account" content="ca-pub-2709858677165078" />
 
-    <!-- CRITICAL CSS - INLINE THIS -->
-    <style>
-      /* Critical above-the-fold styles */
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-      body {
-        font-family: system-ui, -apple-system, sans-serif;
-        line-height: 1.6;
-      }
+  <!-- PRIMARY SEO -->
+  <title>Microgreens: Benefits, Nutrition & Growing Guides | EatMyGreens</title>
+  <meta 
+    name="description" 
+    content="Learn about microgreens, their benefits, nutrition, and how to grow them easily at home. Your global guide to healthy microgreens." 
+  />
+  <link rel="canonical" href="https://eatmygreens.netlify.app/" />
 
-      /* Header styles */
-      header {
-        background: #fff;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        position: fixed;
-        width: 100%;
-        top: 0;
-        z-index: 1000;
-      }
-      .container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 20px;
-      }
-      .header-content {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 1rem 0;
-      }
+  <!-- ROBOTS -->
+  <meta 
+    name="robots" 
+    content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" 
+  />
 
-      /* Hero section above-the-fold */
-      .hero {
-        padding: 120px 0 80px;
-        background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
-      }
-      .hero-content {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 3rem;
-        align-items: center;
-      }
-      .hero-text h1 {
-        font-size: 3rem;
-        color: #166534;
-        margin-bottom: 1rem;
-      }
-      .hero-text p {
-        font-size: 1.2rem;
-        color: #374151;
-        margin-bottom: 1rem;
-      }
-
-      /* Basic button styles */
-      .cta-button {
-        background: #22c55e;
-        color: white;
-        padding: 12px 30px;
-        border: none;
-        border-radius: 8px;
-        font-size: 1.1rem;
-        cursor: pointer;
-      }
-
-      /* Ensure content is visible immediately */
-      .logo {
-        font-size: 1.5rem;
-        font-weight: bold;
-        color: #166534;
-      }
-      nav ul {
-        display: flex;
-        list-style: none;
-        gap: 2rem;
-      }
-      nav a {
-        text-decoration: none;
-        color: #374151;
-        font-weight: 500;
-      }
-
-      /* Loading state for non-critical resources */
-      .loading {
-        opacity: 0;
-      }
-      .loaded {
-        opacity: 1;
-        transition: opacity 0.3s ease;
-      }
-    </style>
-
-    <!-- PRELOAD non-critical CSS -->
-    <link
-      rel="preload"
-      href="styles.css"
-      as="style"
-      onload="this.onload=null;this.rel='stylesheet'"
-    />
-    <link
-      rel="preload"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-      as="style"
-      onload="this.onload=null;this.rel='stylesheet'"
-    />
-
-    <!-- NOSCRIPT fallback -->
-    <noscript>
-      <link rel="stylesheet" href="styles.css" />
-      <link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-      />
-    </noscript>
-
-    <!-- Add these lines in your head section -->
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
-    <link rel="preconnect" href="https://images.unsplash.com" />
-    <link rel="preconnect" href="https://images.unsplash.com" />
-
-    <!-- Optimize font loading -->
-    <style>
-      /* Critical font styles */
-      body {
-        font-family: system-ui, -apple-system, sans-serif;
-        font-display: swap;
-      }
-    </style>
-
-    <!-- Preload critical images -->
-    <link rel="preload" href="logoop.webp" as="image" type="image/png" />
-    <link
-      rel="preload"
-      href="https://images.unsplash.com/photo-1640671511581-0cc93ea3ebf2?q=80&w=600"
-      as="image"
-    />
-
-    <style>
-      /* Critical CSS to prevent render blocking */
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-      body {
-        font-family: system-ui, -apple-system, sans-serif;
-      }
-      header {
-        background: #fff;
-        position: fixed;
-        width: 100%;
-        top: 0;
-        z-index: 1000;
-      }
-      .container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 20px;
-      }
-      .hero {
-        padding-top: 120px;
-      }
-    </style>
-
-    <link
-      rel="preload"
-      href="styles.css"
-      as="style"
-      onload="this.onload=null;this.rel='stylesheet'"
-    />
-    <link
-      rel="preload"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-      as="style"
-      onload="this.onload=null;this.rel='stylesheet'"
-    />
-    <noscript>
-      <link rel="stylesheet" href="styles.css" />
-      <link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-      />
-    </noscript>
-
-    <!-- PRIMARY META TAGS -->
-    <title>
-      Bangalore's Best: Nutrient-Packed Microgreens | Eatmygreens
-    </title>
-    <meta
-      name="description"
-      content="Discover EatMyGreens for fresh, nutrient-rich microgreens in Bangalore. Enjoy 40x more nutrients than veggies, with same-day harvest and no chemicals."
-    />
-
-    <!-- KEYWORDS (Still useful for some search engines) -->
-    <meta
-      name="keywords"
-      content="microgreens, fresh microgreens, bangalore, organic vegetables, healthy food, nutrition, broccoli microgreens, radish microgreens, sunflower microgreens, home delivery, chemical-free, pesticide-free"
-    />
-
-    <!-- AUTHOR & COPYRIGHT -->
-    <meta name="author" content="EatMyGreens" />
-    <meta name="copyright" content="EatMyGreens" />
-
-    <!-- OPEN GRAPH (for Facebook, LinkedIn, WhatsApp) -->
-    <meta
-      property="og:title"
-      content="EatMyGreens - Fresh Microgreens Delivery in Bangalore"
-    />
-    <meta
-      property="og:description"
-      content="40x more nutrients than mature vegetables. Chemical-free, same-day harvest. Order fresh microgreens delivered to your door."
-    />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://eatmygreens.com" />
-    <meta property="og:image" content="https://eatmygreens.com/logoop.webp" />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
-    <meta property="og:site_name" content="EatMyGreens" />
-    <meta property="og:locale" content="en_IN" />
-
-    <!-- TWITTER CARD -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta
-      name="twitter:title"
-      content="EatMyGreens - Fresh Microgreens Delivery"
-    />
-    <meta
-      name="twitter:description"
-      content="40x more nutrients than mature vegetables. Chemical-free, same-day harvest in Bangalore."
-    />
-    <meta name="twitter:image" content="https://eatmygreens.com/logoop.webp" />
-    <meta name="twitter:site" content="@eatmygreens" />
-
-    <!-- ADDITIONAL IMPORTANT META TAGS -->
-    <meta
-      name="robots"
-      content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"
-    />
-    <meta name="theme-color" content="#22c55e" />
-    <meta name="format-detection" content="telephone=yes" />
-
-    <!-- GEO LOCATION (Important for local SEO) -->
-    <meta name="geo.region" content="IN-KA" />
-    <meta name="geo.placename" content="Bangalore" />
-    <meta name="geo.position" content="12.9716;77.5946" />
-    <meta name="ICBM" content="12.9716, 77.5946" />
-
-    <!-- CANONICAL URL (Prevent duplicate content) -->
-    <link rel="canonical" href="https://eatmygreens.netlify.app/" />
-    <!-- Redirect www to non-www -->
-<script>
-  if (window.location.hostname === "www.eatmygreens.netlify.app") {
-    window.location.href = window.location.href.replace("www.", "");
-  }
-</script>
+  <!-- PERFORMANCE / PRECONNECT -->
+  <meta name="theme-color" content="#22c55e" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
+  <link rel="preconnect" href="https://images.unsplash.com" />
+  <link rel="preconnect" href="https://pagead2.googlesyndication.com" />
 
 
-    <!-- SCHEMA MARKUP (JSON-LD for rich snippets) -->
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "HealthFoodStore",
-        "name": "EatMyGreens",
-        "description": "Fresh microgreens delivery service in Bangalore",
-        "url": "https://eatmygreens.com",
-        "telephone": "+91-7483069438",
-        "address": {
-          "@type": "PostalAddress",
-          "streetAddress": "Babusapalya",
-          "addressLocality": "Bangalore",
-          "postalCode": "560043",
-          "addressCountry": "IN"
-        },
-        "openingHours": "Mo-Su 09:00-20:00",
-        "areaServed": "Bangalore",
-        "servesCuisine": "Healthy Food",
-        "priceRange": "₹",
-        "sameAs": ["https://www.instagram.com/eat.my_greens/"]
-      }
-    </script>
 
-    <!-- FAVICON & APPLE TOUCH ICON -->
-    <link rel="icon" type="image/x-icon" href="image.png" />
-    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2709858677165078"
+     crossorigin="anonymous"></script>
 
-    <!-- STYLESHEETS -->
+     <meta name="google-adsense-account" content="ca-pub-2709858677165078">
+
+  <!-- CRITICAL CSS (unchanged, only reorganized) -->
+  <style>
+    * {
+      margin: 0; 
+      padding: 0; 
+      box-sizing: border-box;
+    }
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      line-height: 1.6;
+      font-display: swap;
+    }
+    header {
+      background: #fff;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    .hero {
+      padding: 120px 0 80px;
+      background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+    }
+    .hero-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+    .hero-text h1 {
+      font-size: 3rem;
+      color: #166534;
+      margin-bottom: 1rem;
+    }
+    .hero-text p {
+      font-size: 1.2rem;
+      color: #374151;
+      margin-bottom: 1rem;
+    }
+    .cta-button {
+      background: #22c55e;
+      color: white;
+      padding: 12px 30px;
+      border: none;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      cursor: pointer;
+    }
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #166534;
+    }
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+    }
+    nav a {
+      text-decoration: none;
+      color: #374151;
+      font-weight: 500;
+    }
+  </style>
+
+  <!-- MAIN CSS (non-blocking) -->
+  <link 
+    rel="preload" 
+    href="styles.css" 
+    as="style" 
+    onload="this.onload=null;this.rel='stylesheet'"
+  />
+  <link 
+    rel="preload" 
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    as="style"
+    onload="this.onload=null;this.rel='stylesheet'"
+  />
+  <noscript>
     <link rel="stylesheet" href="styles.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  </noscript>
 
-    <!-- GOOGLE SITE VERIFICATION -->
+  <!-- PRELOAD IMAGES -->
+  <link rel="preload" href="logoop.webp" as="image" />
 
-    <meta
-      name="google-site-verification"
-      content="Y1pGvzBxmS66kejSNHCEG2JfTfKR3_bFToJZXvaQHJ8"
-    />
+  <!-- OPEN GRAPH -->
+  <meta property="og:title" content="Microgreens: Benefits & Growing Guides | EatMyGreens" />
+  <meta property="og:description" content="Your global guide to microgreens: benefits, nutrition, and how to grow them at home." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://eatmygreens.netlify.app/" />
+  <meta property="og:image" content="https://eatmygreens.netlify.app/logoop.webp" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:site_name" content="EatMyGreens" />
 
-    <style>
-      /* Critical font styles - loads immediately */
-      body {
-        font-family: system-ui, -apple-system, sans-serif;
-        font-display: swap;
-      }
-    </style>
+  <!-- TWITTER -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Microgreens: Benefits & Growing Guides | EatMyGreens" />
+  <meta name="twitter:description" content="Learn everything about microgreens and healthy eating." />
+  <meta name="twitter:image" content="https://eatmygreens.netlify.app/logoop.webp" />
 
-    <!-- Load non-critical fonts async -->
-    <link
-      rel="preload"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-      as="style"
-      onload="this.onload=null;this.rel='stylesheet'"
-    />
+  <!-- FAVICON -->
+  <link rel="icon" type="image/png" href="image.png" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
 
-    <script type="application/ld+json">
+  <!-- CANONICAL FIX FOR WWW -->
+  <script>
+    if (window.location.hostname === "www.eatmygreens.netlify.app") {
+      window.location.href = window.location.href.replace("www.", "");
+    }
+  </script>
+
+  <!-- GOOGLE VERIFICATION -->
+  <meta name="google-site-verification" content="Y1pGvzBxmS66kejSNHCEG2JfTfKR3_bFToJZXvaQHJ8" />
+
+  <!-- FAQ SCHEMA -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"FAQPage",
+    "mainEntity":[
       {
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": "What are microgreens?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Microgreens are young edible plants harvested just after the first leaves develop. They contain up to 40× more nutrients than mature vegetables."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Are your microgreens organic or chemical-free?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Yes! Our microgreens are grown naturally in clean, controlled environments free from pesticides or fertilizers."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "How are microgreens delivered?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "We harvest every morning and deliver the same day across Bangalore to guarantee freshness and nutrition."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "How should I store microgreens after delivery?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Keep them refrigerated in the original pack. They stay fresh for up to 5–6 days when stored properly."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Can I eat microgreens raw?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Absolutely! They’re best eaten raw in salads, smoothies, or as garnishes for maximum flavor and nutrients."
-            }
-          }
-        ]
+        "@type":"Question",
+        "name":"What are microgreens?",
+        "acceptedAnswer":{
+          "@type":"Answer",
+          "text":"Microgreens are young edible plants containing higher nutrients compared to mature vegetables."
+        }
+      },
+      {
+        "@type":"Question",
+        "name":"Are microgreens healthy?",
+        "acceptedAnswer":{
+          "@type":"Answer",
+          "text":"Yes, microgreens can contain 4x to 40x more nutrients than regular vegetables."
+        }
+      },
+      {
+        "@type":"Question",
+        "name":"Can you grow microgreens at home?",
+        "acceptedAnswer":{
+          "@type":"Answer",
+          "text":"Yes, microgreens are extremely easy to grow indoors and need only light, seeds, and trays."
+        }
       }
-    </script>
+    ]
+  }
+  </script>
 
+</head>
 
-
-
-
-
-  </head>
   <body>
     <!-- Header Section -->
 <!-- Updated Header Structure -->
