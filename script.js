@@ -40,21 +40,35 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     // Blog dropdown functionality - SIMPLIFIED FIX
-    if (blogLink && dropdown) {
-      blogLink.addEventListener('click', function(e) {
-        // For mobile devices only
-        if (window.innerWidth <= 768) {
-          e.preventDefault();
-          e.stopPropagation();
-          
-          // Toggle only the dropdown
-          dropdown.classList.toggle('active');
-          
-          // Don't close the main menu!
-          return false;
-        }
-      });
+    // Blog dropdown functionality - FIXED VERSION
+if (blogLink && dropdown) {
+  blogLink.addEventListener('click', function(e) {
+    // For mobile devices only
+    if (window.innerWidth <= 768) {
+      // ONLY prevent default if it's actually the blog dropdown link
+      // Don't prevent default for Amazon links inside the dropdown
+      if (!e.target.closest('a[href*="amzn.to"], a[href*="amazon"]')) {
+        e.preventDefault();
+        e.stopPropagation();
+        
+        // Toggle only the dropdown
+        dropdown.classList.toggle('active');
+        
+        // Don't close the main menu!
+        return false;
+      }
     }
+  });
+}
+
+// ✅ FIX: Ensure Amazon affiliate links work properly
+document.addEventListener('click', function(e) {
+  const link = e.target.closest('a');
+  if (link && (link.href.includes('amzn.to') || link.href.includes('amazon'))) {
+    // Allow default link behavior for Amazon links
+    return true;
+  }
+}, true);
     
     // Close menu when clicking on regular nav links (excluding blog dropdown and its children)
     const navLinks = nav.querySelectorAll('a:not(#blogDropdown):not(.dropdown-menu a)');
