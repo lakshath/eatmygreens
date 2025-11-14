@@ -1726,64 +1726,159 @@ document.addEventListener("DOMContentLoaded", () => {
     </div>
   </div>
 
-  <!-- QUIZ SECTION -->
-  <section class="quiz-section">
-    <div class="quiz-container">
-      <h2>🧠 Test Your Microgreens Knowledge</h2>
-      <p class="quiz-intro">Think you've mastered the essentials? Take this short quiz to find out - answers will be revealed after you submit!</p>
+<!-- QUIZ SECTION -->
+<section class="quiz-section">
+  <div class="quiz-container">
+    <h2>🧠 Test Your Microgreens Knowledge</h2>
+    <p class="quiz-intro">Think you've mastered the essentials? Take this short quiz to find out - answers will be revealed after you submit!</p>
 
-      <form id="microgreensQuiz" class="quiz-form">
-        <div class="quiz-question">
-          <h3>1. What's the best medium to grow microgreens in?</h3>
-          <div class="quiz-options" data-correct="b">
-            <label><input type="radio" name="q1" value="a" required> Garden soil</label>
-            <label><input type="radio" name="q1" value="b"> Coco coir</label>
-            <label><input type="radio" name="q1" value="c"> Sand</label>
-            <label><input type="radio" name="q1" value="d"> Compost mix</label>
-          </div>
+    <form id="microgreensQuiz" class="quiz-form">
+      <div class="quiz-question">
+        <h3>1. What's the best medium to grow microgreens in?</h3>
+        <div class="quiz-options" data-correct="b">
+          <label><input type="radio" name="q1" value="a" required> Garden soil</label>
+          <label><input type="radio" name="q1" value="b"> Coco coir</label>
+          <label><input type="radio" name="q1" value="c"> Sand</label>
+          <label><input type="radio" name="q1" value="d"> Compost mix</label>
         </div>
-
-        <div class="quiz-question">
-          <h3>2. How long does it usually take to harvest microgreens?</h3>
-          <div class="quiz-options" data-correct="b">
-            <label><input type="radio" name="q2" value="a" required> 2-3 days</label>
-            <label><input type="radio" name="q2" value="b"> 7-10 days</label>
-            <label><input type="radio" name="q2" value="c"> 20-25 days</label>
-            <label><input type="radio" name="q2" value="d"> Over a month</label>
-          </div>
-        </div>
-
-        <div class="quiz-question">
-          <h3>3. What's the most common cause of mold in microgreen trays?</h3>
-          <div class="quiz-options" data-correct="c">
-            <label><input type="radio" name="q3" value="a" required> Too much light</label>
-            <label><input type="radio" name="q3" value="b"> Too little water</label>
-            <label><input type="radio" name="q3" value="c"> Overwatering and poor airflow</label>
-            <label><input type="radio" name="q3" value="d"> Old seeds</label>
-          </div>
-        </div>
-
-        <div class="quiz-question">
-          <h3>4. What's the best way to eat microgreens to keep nutrients intact?</h3>
-          <div class="quiz-options" data-correct="a">
-            <label><input type="radio" name="q4" value="a" required> Eat them raw</label>
-            <label><input type="radio" name="q4" value="b"> Fry them in oil</label>
-            <label><input type="radio" name="q4" value="c"> Boil for 5 minutes</label>
-            <label><input type="radio" name="q4" value="d"> Steam for 10 minutes</label>
-          </div>
-        </div>
-
-        <button type="submit" class="quiz-submit-btn">Check Your Score 🎯</button>
-      </form>
-
-      <div id="quizResults" class="quiz-results" style="display:none;">
-        <h3>Your Score: <span id="score"></span></h3>
-        <div id="resultMessage"></div>
-        <div id="answerReview"></div>
-        <button onclick="resetQuiz()" class="quiz-retry-btn">Try Again 🔄</button>
       </div>
+
+      <div class="quiz-question">
+        <h3>2. How long does it usually take to harvest microgreens?</h3>
+        <div class="quiz-options" data-correct="b">
+          <label><input type="radio" name="q2" value="a" required> 2-3 days</label>
+          <label><input type="radio" name="q2" value="b"> 7-10 days</label>
+          <label><input type="radio" name="q2" value="c"> 20-25 days</label>
+          <label><input type="radio" name="q2" value="d"> Over a month</label>
+        </div>
+      </div>
+
+      <div class="quiz-question">
+        <h3>3. What's the most common cause of mold in microgreen trays?</h3>
+        <div class="quiz-options" data-correct="c">
+          <label><input type="radio" name="q3" value="a" required> Too much light</label>
+          <label><input type="radio" name="q3" value="b"> Too little water</label>
+          <label><input type="radio" name="q3" value="c"> Overwatering and poor airflow</label>
+          <label><input type="radio" name="q3" value="d"> Old seeds</label>
+        </div>
+      </div>
+
+      <div class="quiz-question">
+        <h3>4. What's the best way to eat microgreens to keep nutrients intact?</h3>
+        <div class="quiz-options" data-correct="a">
+          <label><input type="radio" name="q4" value="a" required> Eat them raw</label>
+          <label><input type="radio" name="q4" value="b"> Fry them in oil</label>
+          <label><input type="radio" name="q4" value="c"> Boil for 5 minutes</label>
+          <label><input type="radio" name="q4" value="d"> Steam for 10 minutes</label>
+        </div>
+      </div>
+
+      <button type="button" class="quiz-submit-btn" onclick="calculateQuizScore()">
+        Check Your Score 🎯
+      </button>
+    </form>
+
+    <div id="quizResults" class="quiz-results" style="display:none;">
+      <h3>Your Score: <span id="score"></span></h3>
+      <div id="resultMessage"></div>
+      <div id="answerReview"></div>
+      <button type="button" class="quiz-retry-btn" onclick="resetQuiz()">
+        Try Again 🔄
+      </button>
     </div>
-  </section>
+  </div>
+</section>
+
+<script>
+function calculateQuizScore() {
+  let score = 0;
+  const totalQuestions = 4;
+  
+  // Get answers
+  const q1 = document.querySelector('input[name="q1"]:checked')?.value;
+  const q2 = document.querySelector('input[name="q2"]:checked')?.value;
+  const q3 = document.querySelector('input[name="q3"]:checked')?.value;
+  const q4 = document.querySelector('input[name="q4"]:checked')?.value;
+  
+  // Calculate score
+  if (q1 === 'b') score++;
+  if (q2 === 'b') score++;
+  if (q3 === 'c') score++;
+  if (q4 === 'a') score++;
+  
+  // Display score
+  document.getElementById('score').textContent = score + '/' + totalQuestions;
+  
+  // Display message
+  let message = '';
+  if (score === totalQuestions) {
+    message = '🎉 Excellent! You\'re a microgreens expert!';
+  } else if (score >= 2) {
+    message = '👍 Good job! You know the basics well.';
+  } else {
+    message = '📚 Keep learning! Review the guide and try again.';
+  }
+  document.getElementById('resultMessage').textContent = message;
+  
+  // Show answer review
+  const answerReview = document.getElementById('answerReview');
+  answerReview.innerHTML = `
+    <div class="review-item ${q1 === 'b' ? 'correct' : 'incorrect'}">
+      <p>Question 1: What's the best medium to grow microgreens in?</p>
+      <span class="user-answer">Your answer: ${getAnswerText('q1', q1)}</span>
+      ${q1 !== 'b' ? '<span class="correct-answer">Correct answer: Coco coir</span>' : ''}
+    </div>
+    <div class="review-item ${q2 === 'b' ? 'correct' : 'incorrect'}">
+      <p>Question 2: How long does it usually take to harvest microgreens?</p>
+      <span class="user-answer">Your answer: ${getAnswerText('q2', q2)}</span>
+      ${q2 !== 'b' ? '<span class="correct-answer">Correct answer: 7-10 days</span>' : ''}
+    </div>
+    <div class="review-item ${q3 === 'c' ? 'correct' : 'incorrect'}">
+      <p>Question 3: What's the most common cause of mold in microgreen trays?</p>
+      <span class="user-answer">Your answer: ${getAnswerText('q3', q3)}</span>
+      ${q3 !== 'c' ? '<span class="correct-answer">Correct answer: Overwatering and poor airflow</span>' : ''}
+    </div>
+    <div class="review-item ${q4 === 'a' ? 'correct' : 'incorrect'}">
+      <p>Question 4: What's the best way to eat microgreens to keep nutrients intact?</p>
+      <span class="user-answer">Your answer: ${getAnswerText('q4', q4)}</span>
+      ${q4 !== 'a' ? '<span class="correct-answer">Correct answer: Eat them raw</span>' : ''}
+    </div>
+  `;
+  
+  // Show results
+  document.getElementById('quizResults').style.display = 'block';
+  
+  // Scroll to results
+  setTimeout(() => {
+    document.getElementById('quizResults').scrollIntoView({ 
+      behavior: 'smooth', 
+      block: 'center'
+    });
+  }, 100);
+}
+
+function getAnswerText(question, answer) {
+  const answers = {
+    'q1': { 'a': 'Garden soil', 'b': 'Coco coir', 'c': 'Sand', 'd': 'Compost mix' },
+    'q2': { 'a': '2-3 days', 'b': '7-10 days', 'c': '20-25 days', 'd': 'Over a month' },
+    'q3': { 'a': 'Too much light', 'b': 'Too little water', 'c': 'Overwatering and poor airflow', 'd': 'Old seeds' },
+    'q4': { 'a': 'Eat them raw', 'b': 'Fry them in oil', 'c': 'Boil for 5 minutes', 'd': 'Steam for 10 minutes' }
+  };
+  return answers[question]?.[answer] || 'Not answered';
+}
+
+function resetQuiz() {
+  document.getElementById('microgreensQuiz').reset();
+  document.getElementById('quizResults').style.display = 'none';
+  
+  // Scroll back to quiz
+  setTimeout(() => {
+    document.querySelector('.quiz-section').scrollIntoView({ 
+      behavior: 'smooth' 
+    });
+  }, 100);
+}
+</script>
 
   <div class="blog-section" id="faq">
     <h2>❓ Frequently Asked Questions</h2>
