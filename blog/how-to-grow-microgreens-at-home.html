@@ -161,50 +161,7 @@
     ]
   }
   </script>
-  <!-- FAQ Section with Inline CSS Fix + FAQPage Schema -->
 
-
-<!-- JSON-LD FAQ Schema -->
-<script type="application/ld+json">
-{
-"@context": "https://schema.org",
-"@type": "FAQPage",
-"mainEntity": [
-{
-"@type": "Question",
-"name": "Do I need special sunlight?",
-"acceptedAnswer": {
-"@type": "Answer",
-"text": "Not necessarily! A sunny windowsill (4-6 hours) works perfectly. No sun? A simple LED grow light for 12-16 hours daily does wonders."
-}
-},
-{
-"@type": "Question",
-"name": "Can I reuse the growing medium?",
-"acceptedAnswer": {
-"@type": "Answer",
-"text": "Yes! After harvest, dry the coco coir in sun for a day, fluff it up, and reuse for 2-3 batches. Compost after that."
-}
-},
-{
-"@type": "Question",
-"name": "Do microgreens attract bugs?",
-"acceptedAnswer": {
-"@type": "Answer",
-"text": "Rarely indoors. If you see fungus gnats, you're overwatering. Let soil dry slightly between watering."
-}
-},
-{
-"@type": "Question",
-"name": "How long do they last after harvest?",
-"acceptedAnswer": {
-"@type": "Answer",
-"text": "3-5 days in fridge in airtight container. Best when fresh! Harvest right before use for maximum nutrition."
-}
-}
-]
-}
-</script>
 
   <!-- Styles -->
   <link rel="stylesheet" href="/styles.css">
@@ -1849,11 +1806,14 @@ function resetQuiz() {
 }
 </script>
 
-  <div class="blog-section" id="faq">
+ <div class="blog-section" id="faq">
     <h2>❓ Frequently Asked Questions</h2>
     <div class="faq-grid">
       <div class="faq-item">
-        <button class="faq-question">
+        <button class="faq-question" onclick="
+          this.parentElement.classList.toggle('active');
+          this.querySelector('.faq-icon').style.transform = this.parentElement.classList.contains('active') ? 'rotate(45deg) scale(1.1)' : 'rotate(0) scale(1)';
+        ">
           Do I need special sunlight?
           <span class="faq-icon">+</span>
         </button>
@@ -1863,7 +1823,10 @@ function resetQuiz() {
       </div>
       
       <div class="faq-item">
-        <button class="faq-question">
+        <button class="faq-question" onclick="
+          this.parentElement.classList.toggle('active');
+          this.querySelector('.faq-icon').style.transform = this.parentElement.classList.contains('active') ? 'rotate(45deg) scale(1.1)' : 'rotate(0) scale(1)';
+        ">
           Can I reuse the growing medium?
           <span class="faq-icon">+</span>
         </button>
@@ -1873,7 +1836,10 @@ function resetQuiz() {
       </div>
       
       <div class="faq-item">
-        <button class="faq-question">
+        <button class="faq-question" onclick="
+          this.parentElement.classList.toggle('active');
+          this.querySelector('.faq-icon').style.transform = this.parentElement.classList.contains('active') ? 'rotate(45deg) scale(1.1)' : 'rotate(0) scale(1)';
+        ">
           Do microgreens attract bugs?
           <span class="faq-icon">+</span>
         </button>
@@ -1883,7 +1849,10 @@ function resetQuiz() {
       </div>
       
       <div class="faq-item">
-        <button class="faq-question">
+        <button class="faq-question" onclick="
+          this.parentElement.classList.toggle('active');
+          this.querySelector('.faq-icon').style.transform = this.parentElement.classList.contains('active') ? 'rotate(45deg) scale(1.1)' : 'rotate(0) scale(1)';
+        ">
           How long do they last after harvest?
           <span class="faq-icon">+</span>
         </button>
@@ -1893,6 +1862,146 @@ function resetQuiz() {
       </div>
     </div>
   </div>
+
+<style>
+.faq-item {
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 2px solid transparent;
+  margin-bottom: 1rem;
+}
+
+.faq-item:hover {
+  box-shadow: 0 8px 30px rgba(46, 125, 50, 0.15);
+  border-color: rgba(76, 175, 80, 0.2);
+  transform: translateY(-2px);
+}
+
+.faq-item.active {
+  box-shadow: 0 12px 40px rgba(46, 125, 50, 0.2);
+  border-color: #4caf50;
+  transform: translateY(-4px);
+}
+
+.faq-question {
+  width: 100%;
+  background: linear-gradient(135deg, #f8fff9 0%, #f1f8e9 100%);
+  border: none;
+  padding: 1.5rem 2rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #1b5e20;
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.faq-question::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(76, 175, 80, 0.1), transparent);
+  transition: left 0.6s ease;
+}
+
+.faq-question:hover::before {
+  left: 100%;
+}
+
+.faq-question:hover {
+  background: linear-gradient(135deg, #f1f8e9 0%, #e8f5e9 100%);
+  color: #2e7d32;
+}
+
+.faq-item.active .faq-question {
+  background: linear-gradient(135deg, #e8f5e9 0%, #dcedc8 100%);
+  color: #1b5e20;
+}
+
+.faq-icon {
+  font-size: 1.4rem;
+  color: #4caf50;
+  font-weight: 300;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  min-width: 20px;
+  text-align: center;
+}
+
+.faq-item.active .faq-icon {
+  color: #2e7d32;
+  transform: rotate(45deg) scale(1.1);
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 0 2rem;
+  opacity: 0;
+  transform: translateY(-10px);
+}
+
+.faq-item.active .faq-answer {
+  max-height: 500px;
+  padding: 0 2rem 1.5rem;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.faq-answer p {
+  color: #2d3436;
+  font-size: 1rem;
+  line-height: 1.7;
+  margin: 0;
+  padding: 1rem 0 0;
+  border-top: 1px solid rgba(76, 175, 80, 0.2);
+}
+
+.faq-answer a {
+  color: #2e7d32;
+  text-decoration: none;
+  font-weight: 600;
+  border-bottom: 2px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.faq-answer a:hover {
+  color: #1b5e20;
+  border-bottom-color: #4caf50;
+}
+
+/* Pulse animation for new items */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.faq-item {
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+.faq-item:nth-child(1) { animation-delay: 0.1s; }
+.faq-item:nth-child(2) { animation-delay: 0.2s; }
+.faq-item:nth-child(3) { animation-delay: 0.3s; }
+.faq-item:nth-child(4) { animation-delay: 0.4s; }
+</style>
 
   <!-- Related Articles -->
   <div class="related-articles">
