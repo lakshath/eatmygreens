@@ -29,4 +29,11 @@
     <priority>0.80</priority>
   </url>
 
+  <url>
+    <loc>https://eatmygreens.netlify.app/blog/microgreens-vs-digital-fatigue</loc>
+    <lastmod>2026-01-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.80</priority>
+  </url>
+
 </urlset>
