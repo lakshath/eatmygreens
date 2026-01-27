@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ✅ Primary SEO Meta Tags -->
+  <title>Microgreens vs. Digital Fatigue: How Tiny Greens Can Fix Your Screen Brain | EatMyGreens</title>
+  <meta name="description" content="Struggling with screen addiction, low focus, and constant fatigue? Discover how microgreens can combat modern digital fatigue and boost your brainpower naturally." />
+  <link rel="canonical" href="https://eatmygreens.netlify.app/blog/microgreens-digital-fatigue" />
+
+  <!-- ✅ Open Graph for Social -->
+  <meta property="og:title" content="Microgreens vs. Digital Fatigue: Fix Your Screen Brain 🌿" />
+  <meta property="og:description" content="Learn how microgreens can counter screen addiction effects, improve focus, and provide natural energy in our hyper-connected world." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://eatmygreens.netlify.app/blog/microgreens-digital-fatigue" />
+  <meta property="og:image" content="https://eatmygreens.netlify.app/images/microgreens-digital-fatigue-banner.jpg" />
+  <meta property="og:site_name" content="EatMyGreens" />
+
+  <!-- ✅ Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Microgreens: Nature's Antidote to Digital Fatigue 🌱" />
+  <meta name="twitter:description" content="How these nutrient-packed greens can fix your focus, energy, and brain fog in the age of screens." />
+  <meta name="twitter:image" content="https://eatmygreens.netlify.app/images/microgreens-digital-fatigue-banner.jpg" />
+
+  <meta property="article:tag" content="microgreens for focus" />
+  <meta property="article:tag" content="digital detox" />
+  <meta property="article:tag" content="screen addiction" />
+  <meta property="article:tag" content="brain food" />
+  <meta property="article:modified_time" content="2025-11-07" />
+
+  <!-- ✅ Stylesheets -->
+  <link rel="stylesheet" href="../styles.css" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" type="image/x-icon" href="../image.png" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2709858677165078"
+     crossorigin="anonymous"></script>
+  <meta name="google-adsense-account" content="ca-pub-2709858677165078">
+
+  <!-- ✅ Navbar Toggle Script -->
+  <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const hamburger = document.getElementById('hamburgerBtn');
+    const nav = document.getElementById('navMenu');
+    const overlay = document.getElementById('navOverlay');
+
+    if (hamburger && nav && overlay) {
+      function toggleMenu() {
+        hamburger.classList.toggle('active');
+        nav.classList.toggle('active');
+        overlay.classList.toggle('active');
+        document.body.classList.toggle('menu-open');
+      }
+      hamburger.addEventListener('click', toggleMenu);
+      overlay.addEventListener('click', toggleMenu);
+      const navLinks = nav.querySelectorAll('a');
+      navLinks.forEach(link => {
+        link.addEventListener('click', function() {
+          if (window.innerWidth <= 768) toggleMenu();
+        });
+      });
+      window.addEventListener('resize', function() {
+        if (window.innerWidth > 768 && nav.classList.contains('active')) toggleMenu();
+      });
+    }
+  });
+  </script>
+
+  <!-- ✅ Schema Markup -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Microgreens vs. Digital Fatigue: How Tiny Greens Can Fix Your Screen Brain",
+    "description": "Explore how microgreens combat screen addiction effects, improve mental focus, and provide natural energy in our technology-saturated world.",
+    "author": {
+      "@type": "Person",
+      "name": "Nutrition & Wellness Team",
+      "url": "https://eatmygreens.netlify.app/about"
+    },
+    "image": "https://eatmygreens.netlify.app/images/microgreens-digital-fatigue-banner.jpg",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://eatmygreens.netlify.app/blog/microgreens-digital-fatigue"
+    },
+    "datePublished": "2025-11-07",
+    "dateModified": "2025-11-07",
+    "publisher": {
+      "@type": "Organization",
+      "name": "EatMyGreens",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://eatmygreens.netlify.app/logoop.webp"
+      }
+    }
+  }
+  </script>
+
+</head>
+
+<body>
+
+<header>
+  <div class="container">
+    <div class="header-content">
+      <!-- Logo on the left -->
+      <div class="logo-container">
+        <img 
+          src="/logoop.webp" 
+          alt="EatMyGreens Logo - Fresh microgreens delivery service" 
+          class="header-logo"
+          width="40"
+          height="40"
+          loading="eager"
+          fetchpriority="high"
+          decoding="async"
+        >
+        <div class="logo">EatMyGreens</div>
+      </div>
+
+      <!-- Hamburger Menu Button (mobile only) -->
+      <button class="hamburger" id="hamburgerBtn" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <!-- Navigation -->
+      <nav id="navMenu">
+        <ul>
+          <li><a href="../#home">Home</a></li>
+          <li><a href="../#microgreens-info">Why Microgreens</a></li>
+          <li><a href="../#products">Products</a></li>
+
+          <!-- BLOG DROPDOWN -->
+          <li class="dropdown">
+            <a href="/blog" id="blogDropdown">Blogs ▾</a>
+            <ul class="dropdown-menu">
+              <li><a href="/blog/">What Are Microgreens? (Beginner's Guide)</a></li>
+              <li><a href="/blog/benefits-of-microgreens.html">Top 10 Health Benefits of Microgreens</a></li>
+              <li><a href="/blog/how-to-grow-microgreens-at-home.html">How to Grow Microgreens at Home</a></li>
+              <li><a href="/blog/microgreens-digital-fatigue.html">Microgreens vs. Digital Fatigue (Current)</a></li>
+            </ul>
+          </li>
+
+          <li><a href="../#contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <!-- Cart Icon -->
+      <div class="cart-icon" id="cartIcon">
+        <i class="fas fa-shopping-cart"></i>
+        <span class="cart-count">0</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<style>
+/* === HEADER BASE === */
+header {
+  background: #ffffff;
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.08);
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 70px;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.header-logo {
+  border-radius: 50%;
+}
+
+.logo {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: #2e7d32;
+}
+
+/* === NAVIGATION === */
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+nav a {
+  text-decoration: none;
+  color: #1b5e20;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+}
+
+nav a:hover {
+  color: #43a047;
+}
+
+/* === BLOG DROPDOWN === */
+.dropdown {
+  position: relative;
+}
+
+#blogDropdown {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 130%;
+  left: 0;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  min-width: 270px;
+  overflow: hidden;
+  animation: dropdownFade 0.25s ease forwards;
+}
+
+@keyframes dropdownFade {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.dropdown-menu li {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.dropdown-menu li:last-child {
+  border-bottom: none;
+}
+
+.dropdown-menu a {
+  display: block;
+  padding: 0.9rem 1.2rem;
+  color: #1b5e20;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  font-weight: 500;
+  position: relative;
+}
+
+.dropdown-menu a::after {
+  content: "→";
+  position: absolute;
+  right: 1rem;
+  opacity: 0;
+  transform: translateX(-5px);
+  transition: all 0.25s ease;
+}
+
+.dropdown-menu a:hover {
+  background: #e8f5e9;
+  color: #2e7d32;
+  padding-left: 1.5rem;
+}
+
+.dropdown-menu a:hover::after {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* === CART ICON === */
+.cart-icon {
+  position: relative;
+  cursor: pointer;
+  color: #1b5e20;
+  font-size: 1.3rem;
+}
+
+.cart-count {
+  position: absolute;
+  top: -6px;
+  right: -10px;
+  background: #4caf50;
+  color: white;
+  border-radius: 50%;
+  padding: 2px 6px;
+  font-size: 0.75rem;
+}
+
+/* === HAMBURGER MENU (MOBILE) === */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 22px;
+  height: 16px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.hamburger span {
+  display: block;
+  height: 2px;
+  background: #1b5e20;
+  border-radius: 2px;
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 768px) {
+  nav ul {
+    position: absolute;
+    top: 70px;
+    left: 0;
+    background: #ffffff;
+    flex-direction: column;
+    width: 100%;
+    display: none;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+    padding: 1.5rem 0;
+  }
+
+  nav ul.active {
+    display: flex;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .dropdown-menu {
+    position: static;
+    box-shadow: none;
+    backdrop-filter: none;
+    background: none;
+  }
+
+  .dropdown-menu a {
+    padding-left: 1rem;
+  }
+}
+</style>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const hamburgerBtn = document.getElementById("hamburgerBtn");
+  const navMenu = document.querySelector("nav ul");
+  const blogLink = document.getElementById("blogDropdown");
+  const dropdown = document.querySelector(".dropdown");
+  const dropdownMenu = dropdown.querySelector(".dropdown-menu");
+
+  // Toggle mobile menu
+  hamburgerBtn.addEventListener("click", () => {
+    navMenu.classList.toggle("active");
+  });
+
+  // Blog dropdown functionality - FIXED
+  blogLink.addEventListener("click", (e) => {
+    // For mobile devices
+    if (window.innerWidth <= 768) {
+      e.preventDefault();
+      e.stopPropagation(); // Prevent closing the menu
+      
+      // Toggle only the dropdown, not the main menu
+      dropdown.classList.toggle("active");
+      dropdownMenu.style.display = dropdown.classList.contains("active") ? "block" : "none";
+    }
+    // === DESKTOP FIX ===
+    else {
+      e.preventDefault();
+      e.stopPropagation();
+      const isVisible = dropdownMenu.style.display === "block";
+      dropdownMenu.style.display = isVisible ? "none" : "block";
+    }
+  });
+
+  // Close mobile menu when clicking on regular nav links
+  document.querySelectorAll('nav a:not(#blogDropdown)').forEach(link => {
+    link.addEventListener('click', () => {
+      if (window.innerWidth <= 768) {
+        navMenu.classList.remove("active");
+        // Also close dropdown if open
+        dropdown.classList.remove("active");
+        dropdownMenu.style.display = "none";
+      }
+    });
+  });
+
+  // Close dropdown when clicking outside (for desktop)
+  document.addEventListener("click", (e) => {
+    if (!dropdown.contains(e.target) && window.innerWidth > 768) {
+      dropdownMenu.style.display = "none";
+    }
+  });
+});
+</script>
+
+<div class="nav-overlay" id="navOverlay"></div>
+
+<!-- ✅ BLOG CONTENT START -->
+<main class="blog-container">
+  <article>
+    <h1 class="blog-title">Microgreens vs. Digital Fatigue: How Tiny Greens Can Fix Your Screen Brain</h1>
+
+    <div class="blog-meta">
+      <span>📅 November 2025</span>
+      <span>⏱️ 6 min read</span>
+      <span>🏷️ Modern Wellness, Focus, Nutrition</span>
+    </div>
+
+    <!-- INTRO SECTION -->
+    <section class="blog-section">
+      <h2>💻 The Digital Hangover: Why You're Always Tired in 2025</h2>
+      <p>
+        If you're reading this, you've probably experienced it: that 3 PM brain fog after hours of Zoom calls, 
+        the restless scrolling that leaves you drained, or that feeling of being "always tired" despite sleeping enough. 
+        Welcome to <strong>digital fatigue</strong> - the modern epidemic no one prepared us for.
+      </p>
+      <p>
+        But what if I told you the solution isn't another productivity app or meditation subscription? 
+        It might be growing quietly on your windowsill. Enter <strong>microgreens</strong> - nature's unexpected 
+        answer to our tech-saturated lives.
+      </p>
+      
+      <!-- RELEVANT DOFOLLOW LINK TO TRISHOLA -->
+      <div class="info-box" style="border-left: 4px solid #4a90e2;">
+        <p>
+          🔗 <strong>Related Reading:</strong> For more insights on modern psychological challenges like 
+          <a href="https://trishola.com/psychology-blogs/screen-addiction" target="_blank" rel="dofollow">screen addiction</a>, 
+          <a href="https://trishola.com/psychology-blogs/why-tired-all-time" target="_blank" rel="dofollow">chronic fatigue</a>, and 
+          <a href="https://trishola.com/psychology-blogs/how-to-focus-in-2026" target="_blank" rel="dofollow">improving focus in 2026</a>, 
+          check out these comprehensive guides on Trishola.
+        </p>
+      </div>
+    </section>
+
+    <!-- MAIN CONTENT -->
+    <section class="blog-section">
+      <h2>🌿 The 5 Ways Microgreens Combat Digital Fatigue</h2>
+
+      <h3>1. Nutrient Repletion for Overstimulated Brains 🧠</h3>
+      <p>
+        Every notification, email, and social media scroll depletes your brain's nutrient stores. 
+        Microgreens deliver <strong>40x more concentrated nutrients</strong> than mature vegetables, 
+        providing the vitamins and minerals your overtaxed neurons desperately need.
+      </p>
+      <p>
+        <strong>Key players:</strong> Broccoli microgreens (sulforaphane), sunflower (Vitamin E), 
+        and radish (antioxidants) help repair oxidative damage caused by blue light exposure.
+      </p>
+
+      <h3>2. Natural Energy Without the Crash ⚡</h3>
+      <p>
+        Unlike coffee that gives you jitters or energy drinks that lead to crashes, 
+        microgreens provide <strong>sustained energy through chlorophyll</strong>. 
+        This "liquid sunshine" helps your cells produce energy more efficiently - exactly what you need 
+        when battling that 4 PM slump during back-to-back meetings.
+      </p>
+
+      <h3>3. Focus Enhancement for Distracted Minds 🔍</h3>
+      <p>
+        In a world where our attention span is shorter than a goldfish's, microgreens offer 
+        <strong>lutein and zeaxanthin</strong> - compounds proven to improve cognitive function 
+        and visual processing. Think of them as natural Adderall, minus the prescription and side effects.
+      </p>
+
+      <!-- ANOTHER RELEVANT DOFOLLOW LINK -->
+      <div class="quote-box">
+        <p>
+          "The modern paradox: We have more information at our fingertips than any generation in history, 
+          yet struggle to concentrate on a single task for 30 minutes. 
+          <a href="https://trishola.com/technology-blogs/why-technology-is-making-humans-dumber" target="_blank" rel="dofollow">
+          Technology might be making us 'dumber' in terms of sustained attention</a>, 
+          but nature provides solutions if we know where to look."
+        </p>
+      </div>
+
+      <h3>4. Digital Detox Through Tangible Connection 🌱</h3>
+      <p>
+        Growing microgreens isn't just about eating them. The act of planting, watering, and harvesting 
+        creates a <strong>tangible connection to reality</strong> that counterbalances our virtual lives. 
+        It's mindfulness with edible rewards.
+      </p>
+
+      <h3>5. Sleep Quality Improvement 😴</h3>
+      <p>
+        Magnesium and potassium in microgreens like kale and arugula help regulate sleep cycles disrupted 
+        by screen time. Better sleep means better resistance to next-day digital fatigue.
+      </p>
+    </section>
+
+    <!-- PRACTICAL SECTION -->
+    <section class="blog-section">
+      <h2>🍽️ The Digital Worker's Microgreens Protocol</h2>
+      
+      <h3>Morning Routine (Pre-screen time):</h3>
+      <ul>
+        <li><strong>Microgreens smoothie:</strong> Blend sunflower microgreens with banana and almond milk for sustained morning energy</li>
+        <li><strong>On your eggs:</strong> Top scrambled eggs with broccoli microgreens for brain-boosting sulforaphane</li>
+      </ul>
+
+      <h3>Afternoon Slump (3 PM Reset):</h3>
+      <ul>
+        <li><strong>Microgreens salad:</strong> Instead of reaching for coffee, have a small radish microgreens salad</li>
+        <li><strong>Green snack:</strong> Pea shoot microgreens on whole-grain toast</li>
+      </ul>
+
+      <h3>Evening Wind-down (Digital Detox):</h3>
+      <ul>
+        <li><strong>In your dinner:</strong> Mix microgreens into pasta, stir-fries, or soups</li>
+        <li><strong>Growing ritual:</strong> Spend 5 minutes tending to your microgreens instead of scrolling before bed</li>
+      </ul>
+    </section>
+
+    <!-- SCIENCE SECTION -->
+    <section class="blog-section">
+      <h2>🔬 The Science Behind Greens vs. Screens</h2>
+      
+      <div class="comparison-table">
+        <table>
+          <thead>
+            <tr>
+              <th>Digital Fatigue Symptom</th>
+              <th>Microgreens Solution</th>
+              <th>Key Nutrients</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Brain fog & poor concentration</td>
+              <td>Enhanced cognitive function</td>
+              <td>Lutein, Vitamin K, Folate</td>
+            </tr>
+            <tr>
+              <td>Eye strain & headaches</td>
+              <td>Reduced oxidative stress</td>
+              <td>Zeaxanthin, Vitamin C</td>
+            </tr>
+            <tr>
+              <td>Low energy & fatigue</td>
+              <td>Mitochondrial support</td>
+              <td>Chlorophyll, Iron, B vitamins</td>
+            </tr>
+            <tr>
+              <td>Poor sleep quality</td>
+              <td>Sleep cycle regulation</td>
+              <td>Magnesium, Potassium</td>
+            </tr>
+            <tr>
+              <td>Anxiety from information overload</td>
+              <td>Stress response modulation</td>
+              <td>Antioxidants, Magnesium</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- PHILOSOPHICAL CONNECTION -->
+    <section class="blog-section">
+      <h2>💭 Beyond Nutrition: The Philosophical Connection</h2>
+      <p>
+        There's something profoundly meaningful about growing your own food in an age of digital abstraction. 
+        While we're busy chasing virtual dopamine hits through likes and notifications, 
+        microgreens offer <strong>tangible growth, real nourishment, and quiet patience</strong>.
+      </p>
+      
+      <!-- PHILOSOPHY DOFOLLOW LINK -->
+      <div class="info-box" style="border-left: 4px solid #8e44ad;">
+        <p>
+          🤔 <strong>Deep Thought:</strong> This connection between simple natural processes and complex modern life 
+          echoes themes explored in 
+          <a href="https://trishola.com/philosophy-blogs/meaning-of-life" target="_blank" rel="dofollow">philosophical discussions about life's meaning</a> 
+          and our relationship with nature in a technological world.
+        </p>
+      </div>
+    </section>
+
+    <!-- FAQ SECTION -->
+    <section class="blog-section">
+      <h2>🤔 FAQs: Microgreens for Modern Life</h2>
+
+      <details>
+        <summary>Can microgreens really help with screen addiction?</summary>
+        <p>
+          While they're not a magic cure, they address the <strong>nutritional depletion and oxidative stress</strong> 
+          caused by excessive screen time. Combined with digital boundaries, they're powerful allies in recovery.
+        </p>
+      </details>
+
+      <details>
+        <summary>I work from home 10+ hours daily. Which microgreens are best?</summary>
+        <p>
+          <strong>Broccoli microgreens</strong> (for cognitive protection), <strong>sunflower</strong> (for sustained energy), 
+          and <strong>radish</strong> (for antioxidant support). Rotate them for maximum benefits.
+        </p>
+      </details>
+
+      <details>
+        <summary>How soon will I notice improvements in focus?</summary>
+        <p>
+          Most people report better concentration within <strong>1-2 weeks</strong> of daily consumption, 
+          especially when combined with reduced evening screen time.
+        </p>
+      </details>
+
+      <details>
+        <summary>Can kids who are always on devices benefit?</summary>
+        <p>
+          Absolutely! The nutrient density supports developing brains exposed to more screens than any generation. 
+          Try calling them "superhero greens" - kids love adding them to sandwiches and wraps.
+        </p>
+      </details>
+    </section>
+
+    <!-- RELATED ARTICLES -->
+    <section class="related-articles">
+      <h2>🔗 Read Next</h2>
+      <ul>
+        <li><a href="/blog/benefits-of-microgreens.html">Top 10 Health Benefits of Microgreens (Comprehensive Guide)</a></li>
+        <li><a href="/blog/how-to-grow-microgreens-at-home.html">How to Grow Microgreens at Home (Simple Step-by-Step)</a></li>
+      </ul>
+    </section>
+
+    <!-- FINAL THOUGHTS -->
+    <section class="blog-section">
+      <h2>🌟 Final Thought: Reclaiming Your Attention in 2025</h2>
+      <p>
+        In a world competing for your attention every second, what you choose to focus on becomes who you are. 
+        Microgreens offer more than nutrition - they represent a <strong>small, daily rebellion against digital overwhelm</strong>.
+      </p>
+      <p>
+        They remind us that growth happens slowly, quietly, and offline. That sometimes the most powerful 
+        productivity hack isn't an app, but a handful of living greens on your plate.
+      </p>
+      <p>
+        So the next time you feel that digital fatigue creeping in, skip the extra coffee. 
+        Try some microgreens instead. Your brain - and your attention span - will thank you.
+      </p>
+    </section>
+
+  </article>
+</main>
+<!-- ✅ BLOG CONTENT END -->
+
+<!-- STYLES -->
+<style>
+  .blog-container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1.5rem;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  }
+
+  .blog-title {
+    font-size: 2.5rem;
+    color: #1b5e20;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+  }
+
+  .blog-meta {
+    display: flex;
+    gap: 1.5rem;
+    color: #666;
+    margin-bottom: 2rem;
+    font-size: 0.9rem;
+  }
+
+  .blog-section {
+    margin-bottom: 2.5rem;
+  }
+
+  .blog-section h2 {
+    color: #2e7d32;
+    margin: 1.5rem 0 1rem;
+    font-size: 1.8rem;
+  }
+
+  .blog-section h3 {
+    color: #43a047;
+    margin: 1.2rem 0 0.8rem;
+    font-size: 1.4rem;
+  }
+
+  .blog-section p {
+    line-height: 1.7;
+    margin-bottom: 1rem;
+    color: #333;
+  }
+
+  .blog-section ul {
+    margin-left: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .blog-section li {
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
+  }
+
+  .info-box, .quote-box {
+    background: #f9fff9;
+    border-left: 4px solid #2e7d32;
+    padding: 1.2rem 1.5rem;
+    margin: 1.5rem 0;
+    border-radius: 0 8px 8px 0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  }
+
+  .quote-box {
+    background: #f0f7ff;
+    border-left-color: #4a90e2;
+    font-style: italic;
+  }
+
+  .info-box a, .quote-box a {
+    color: #1b5e20;
+    text-decoration: none;
+    font-weight: 600;
+    border-bottom: 1px dotted #2e7d32;
+  }
+
+  .info-box a:hover, .quote-box a:hover {
+    color: #43a047;
+    border-bottom-style: solid;
+  }
+
+  .comparison-table {
+    overflow-x: auto;
+    margin: 1.5rem 0;
+  }
+
+  .comparison-table table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  }
+
+  .comparison-table th {
+    background: #2e7d32;
+    color: white;
+    padding: 1rem;
+    text-align: left;
+    font-weight: 600;
+  }
+
+  .comparison-table td {
+    padding: 0.9rem 1rem;
+    border-bottom: 1px solid #e8f5e9;
+  }
+
+  .comparison-table tr:nth-child(even) {
+    background: #f9fff9;
+  }
+
+  details {
+    background: #f8f9fa;
+    padding: 1rem;
+    margin-bottom: 0.8rem;
+    border-radius: 8px;
+    border: 1px solid #e8f5e9;
+  }
+
+  details summary {
+    font-weight: 600;
+    color: #1b5e20;
+    cursor: pointer;
+  }
+
+  details[open] summary {
+    margin-bottom: 0.8rem;
+  }
+
+  details p {
+    margin: 0;
+    color: #444;
+  }
+
+  .related-articles {
+    margin-top: 3rem;
+    padding: 2rem;
+    background: #f9fff9;
+    border-radius: 12px;
+    border: 1.5px solid #e0f2e9;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  }
+
+  .related-articles h2 {
+    color: #1b5e20;
+    margin-bottom: 1rem;
+    font-size: 1.6rem;
+    border-left: 5px solid #2e7d32;
+    padding-left: 1rem;
+  }
+
+  .related-articles ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .related-articles li {
+    margin-bottom: 0.8rem;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #e0f2e9;
+    transition: background 0.3s ease;
+  }
+
+  .related-articles li:last-child {
+    border-bottom: none;
+  }
+
+  .related-articles a {
+    text-decoration: none;
+    color: #2e7d32;
+    font-weight: 600;
+    transition: color 0.3s ease;
+  }
+
+  .related-articles a:hover {
+    color: #1b5e20;
+    text-decoration: underline;
+  }
+
+  @media (max-width: 768px) {
+    .blog-title {
+      font-size: 1.8rem;
+    }
+    
+    .blog-meta {
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    
+    .comparison-table {
+      font-size: 0.9rem;
+    }
+  }
+</style>
+
+<footer>
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Contact Us</h3>
+        <p>Email: eatmygreens.in@gmail.com</p>
+        <p>Phone: Coming soon</p>
+        <p>Address: Babusapalya, Bangalore 560043</p>
+      </div>
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <p><a href="../#home">Home</a></p>
+        <p><a href="../#products">Products</a></p>
+        <p><a href="../#about">About Us</a></p>
+        <p><a href="../#contact">Contact</a></p>
+      </div>
+      <div class="footer-section">
+        <h3>Follow Us</h3>
+        <p><a href="#">Facebook</a></p>
+        <p><a href="https://www.instagram.com/eat.my_greens/" target="_blank">Instagram</a></p>
+        <p><a href="#">Twitter</a></p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; EatMyGreens 2025. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
