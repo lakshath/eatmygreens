@@ -36,4 +36,11 @@
     <priority>0.80</priority>
   </url>
 
+  <url>
+    <loc>https://eatmygreens.netlify.app/blog/microgreens-for-meditation</loc>
+    <lastmod>2026-02-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.80</priority>
+  </url>
+
 </urlset>
